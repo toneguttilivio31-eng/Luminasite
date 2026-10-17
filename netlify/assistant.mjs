@@ -1,1 +1,18 @@
-
+const SYSTEM = `Tu es l'assistant officiel de Lumina, tu réponds en français, simplement et honnêtement. Lumina Product Studio propose : Essentials 59 € au lancement (tarif standard prévu 79 €), jusqu'à 2 visuels, titre, description, 3 arguments fondés sur les faits fournis, texte court, appel à l'action et une série de corrections. Campaign 119 € au lancement (159 € ensuite), éléments Essentials, jusqu'à 2 visuels, texte publicitaire, 2 accroches alternatives et une vidéo jusqu'à 15 secondes uniquement si réalisable avec les outils existants sans coût supplémentaire. Boutique 199 € au lancement (269 € ensuite), jusqu'à 5 produits, 2 visuels max par produit, titres, descriptions, 3 arguments par produit, texte boutique et une série de corrections. Monthly est envisagé à partir de 299 €/mois pour 8 visuels, jusqu'à 4 produits, 4 textes, calendrier simple, idées saisonnières et bilan, mais reste à confirmer avant publication. Promotion prévue : maximum 14 jours à compter du lancement public ET maximum 10 commandes payées et confirmées, la première limite atteinte mettant fin à la promotion. Elle n'est pas activée tant que la date et le suivi des commandes ne sont pas configurés. Les tarifs standards sont des tarifs futurs prévus, pas des anciens prix. Pas de nouveaux abonnements payants. Ne garantis jamais des ventes, des délais non validés, des fonctionnalités de publication/statistiques automatiques, ni une disponibilité d'API gratuite. N'invente pas de caractéristiques produit, de taxes ou de conditions légales. Si une information manque, dis-le et propose de contacter @lumina.product_studio. Lumina Growth est un espace séparé pour enregistrer les produits, organiser les campagnes et saisir manuellement les résultats. Réponses concises, utiles et sans jargon.`;
+export default async (req) => {
+  if (req.method !== 'POST') return new Response(JSON.stringify({error:'Méthode non autorisée.'}), {status:405,headers:{'Content-Type':'application/json'}});
+  const key = process.env.GEMINI_API_KEY;
+  if (!key) return new Response(JSON.stringify({error:'Moteur IA non configuré ; réponses de première orientation disponibles.'}), {status:503,headers:{'Content-Type':'application/json'}});
+  try {
+    const body = await req.json();
+    const messages = Array.isArray(body.messages) ? body.messages.slice(-8) : [];
+    const contents = messages.filter(m => ['user','model'].includes(m.role) && typeof m.content === 'string').map(m => ({role:m.role,parts:[{text:m.content.slice(0,2000)}]}));
+    if (!contents.length || contents[contents.length-1].role !== 'user') return new Response(JSON.stringify({error:'Écrivez une question pour commencer.'}), {status:400,headers:{'Content-Type':'application/json'}});
+    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key='+encodeURIComponent(key), {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:SYSTEM}]},contents,generationConfig:{temperature:0.4,maxOutputTokens:500}})});
+    const data = await response.json();
+    if (!response.ok) return new Response(JSON.stringify({error:'Le service IA est temporairement indisponible. Essayez la FAQ ou contactez Lumina.'}), {status:502,headers:{'Content-Type':'application/json'}});
+    const reply = data.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('').trim();
+    if (!reply) throw new Error('No assistant reply');
+    return new Response(JSON.stringify({reply}), {status:200,headers:{'Content-Type':'application/json'}});
+  } catch { return new Response(JSON.stringify({error:'Impossible de répondre pour le moment.'}), {status:500,headers:{'Content-Type':'application/json'}}); }
+};
