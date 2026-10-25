@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lumina Product Studio &amp; Campaign | Visuels produits et campagnes marketing sans abonnement</title>
+  <meta name="description" content="Valorisez vos produits et structurez vos campagnes marketing avec Lumina. Prestations ponctuelles dès 59 €, livrables précis, délais clairs et sans abonnement.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F6F1E8">
+
+  <!-- URL Canonique : Remplacer par votre futur nom de domaine (ex: https://www.lumina-studio.fr/) -->
+  <link rel="canonical" href="https://lumina-product-studio.netlify.app/">
+
+  <!-- Open Graph / Partage Réseaux Sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Lumina Product Studio &amp; Campaign">
+  <meta property="og:title" content="Lumina Product Studio &amp; Campaign — Valorisez vos produits et structurez vos campagnes">
+  <meta property="og:description" content="Création de visuels produits, rédaction commerciale et plans de campagnes marketing pour petites entreprises, artisans et e-commerçants. Sans abonnement.">
+  <meta property="og:url" content="https://lumina-product-studio.netlify.app/">
+
+  <!-- Typographies : Cormorant Garamond (Éditorial) & Plus Jakarta Sans (Interface & Lisibilité) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES & SYSTÈME DE DESIGN (PALETTE SOBRE, CHALEUREUSE & ACCESSIBLE)
+       ========================================================================== */
+    :root {
+      --bg-primary: #F6F1E8;       /* Ivoire crème */
+      --bg-surface: #FAF8F3;       /* Ivoire clair pour cartes */
+      --bg-warm: #EBE1D5;          /* Beige chaud léger */
+      --text-main: #242321;        /* Noir doux */
+      --text-muted: #52504C;       /* Gris chaud lisible (Contraste AA+) */
+      --accent: #A9B9A5;           /* Vert sauge officiel */
+      --accent-dark: #4F634B;      /* Vert sauge foncé pour texte/badges accessibles */
+      --accent-light: #E4ECE2;     /* Vert sauge très clair */
+      --sand: #D8C7B2;             /* Beige chaud officiel */
+      --border: rgba(36, 35, 33, 0.13);
+      --border-strong: rgba(36, 35, 33, 0.28);
+      --shadow-sm: 0 4px 18px rgba(36, 35, 33, 0.05);
+      --shadow-md: 0 14px 36px rgba(36, 35, 33, 0.09);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 1180px;
+      --header-height: 74px;
+      --transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ==========================================================================
+       2. RESET, ACCESSIBILITÉ & BASE MOBILE-FIRST
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--text-main);
+      color: var(--bg-primary);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      z-index: 999;
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--text-main);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       3. ANIMATIONS DISCRÈTES & SYSTÈME DE VUES
+       ========================================================================== */
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseDot {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(169, 185, 165, 0.8); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 7px rgba(169, 185, 165, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(169, 185, 165, 0); }
+    }
+
+    .page-view {
+      display: none;
+      padding: 48px 0 80px;
+    }
+
+    .page-view.is-active {
+      display: block;
+      animation: fadeSlideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ==========================================================================
+       4. BANDEAU D'ANNONCE CRÉDIBLE (PHASE DE LANCEMENT)
+       ========================================================================== */
+    .top-announcement {
+      background-color: var(--text-main);
+      color: var(--bg-primary);
+      padding: 10px 16px;
+      font-size: 0.84rem;
+      border-bottom: 1px solid rgba(246, 241, 232, 0.15);
+      position: relative;
+      z-index: 102;
+    }
+
+    .top-announcement-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 16px;
+      text-align: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background-color: rgba(169, 185, 165, 0.18);
+      border: 1px solid var(--accent);
+      color: var(--bg-primary);
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      animation: pulseDot 2s infinite;
+    }
+
+    .announcement-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .announcement-link:hover {
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       5. HEADER & NAVIGATION PRINCIPALE
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-height);
+      background-color: rgba(246, 241, 232, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+      text-align: left;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 8px 11px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .nav-btn:hover {
+      color: var(--text-main);
+      background-color: var(--bg-warm);
+    }
+
+    .nav-btn.is-active {
+      color: var(--text-main);
+      font-weight: 700;
+      background-color: var(--accent-light);
+    }
+
+    .nav-cta-desktop {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      background-color: var(--bg-primary);
+      border-bottom: 1px solid var(--border-strong);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
+      max-height: calc(100vh - var(--header-height));
+      overflow-y: auto;
+    }
+
+    .mobile-menu.is-open {
+      display: block;
+    }
+
+    .mobile-menu ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .mobile-menu .nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 13px 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       6. TYPOGRAPHIE & COMPOSANTS VISUELS
+       ========================================================================== */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--accent-dark);
+      background-color: var(--accent-light);
+      border: 1px solid var(--accent);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.16;
+      color: var(--text-main);
+    }
+
+    h1 {
+      font-size: clamp(2.15rem, 4.8vw, 3.45rem);
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.55rem);
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: clamp(1.3rem, 2.3vw, 1.65rem);
+      margin-bottom: 10px;
+    }
+
+    .section-header {
+      max-width: 740px;
+      margin-bottom: 38px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.03rem;
+    }
+
+    .section-divider {
+      margin: 56px 0;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ==========================================================================
+       7. BOUTONS (CTA)
+       ========================================================================== */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 22px;
+      font-size: 0.93rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background-color: var(--text-main);
+      color: var(--bg-primary);
+      border: 1px solid var(--text-main);
+    }
+
+    .btn-primary:hover {
+      background-color: #383633;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-warm);
+    }
+
+    .btn-sage {
+      background-color: var(--accent);
+      color: var(--text-main);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-sage:hover {
+      background-color: #97a993;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       8. GRILLES, CARTES D'OFFRES & PLACEHOLDERS
+       ========================================================================== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-strong);
+    }
+
+    .card.is-highlighted {
+      background-color: var(--bg-primary);
+      border: 2px solid var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: -12px;
+      left: 22px;
+      background-color: var(--text-main);
+      color: var(--bg-primary);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .card-badge.is-sage {
+      background-color: var(--accent);
+      color: var(--text-main);
+    }
+
+    /* Carte d'offre standardisée (OfferCard) */
+    .offer-subtitle {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .offer-price-block {
+      margin: 12px 0 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .offer-price {
+      font-family: var(--font-serif);
+      font-size: 2.7rem;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .offer-price-note {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    .offer-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background-color: var(--bg-warm);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+    }
+
+    .offer-meta-item strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin: 14px 0;
+      font-size: 0.92rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--accent-dark);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cross-list li::before {
+      content: "—";
+      color: var(--text-muted);
+    }
+
+    .spec-box {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background-color: rgba(169, 185, 165, 0.16);
+      border-left: 3px solid var(--accent-dark);
+      padding: 11px 13px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 12px;
+    }
+
+    /* Styles pour les Placeholders honnêtes */
+    .placeholder-card {
+      border: 2px dashed var(--border-strong);
+      background-color: rgba(250, 248, 243, 0.65);
+    }
+
+    .placeholder-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: var(--sand);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* ==========================================================================
+       9. FORMULAIRE DE DEMANDE DE DEVIS ACCESSIBLE
+       ========================================================================== */
+    .form-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .form-hint {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--text-main);
+      box-shadow: 0 0 0 3px rgba(169, 185, 165, 0.35);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 20px 0;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      accent-color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       10. FAQ ACCORDÉON & PAGES LÉGALES
+       ========================================================================== */
+    .faq-list {
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-trigger:hover {
+      background-color: var(--bg-warm);
+    }
+
+    .faq-icon {
+      font-size: 1.25rem;
+      transition: transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .faq-item.is-open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-content {
+      display: none;
+      padding: 14px 20px 18px;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item.is-open .faq-content {
+      display: block;
+    }
+
+    .legal-prose h3 {
+      margin: 24px 0 8px;
+      font-size: 1.35rem;
+    }
+
+    .legal-prose p, .legal-prose li {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      margin-bottom: 10px;
+    }
+
+    /* ==========================================================================
+       11. FOOTER & RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--text-main);
+      color: var(--bg-primary);
+      padding: 56px 0 36px;
+      margin-top: 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(246, 241, 232, 0.15);
+    }
+
+    .footer-col-title {
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sand);
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 0.9rem;
+      color: rgba(246, 241, 232, 0.82);
+    }
+
+    .footer-links button {
+      text-align: left;
+      color: inherit;
+    }
+
+    .footer-links button:hover, .footer-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      font-size: 0.82rem;
+      color: rgba(246, 241, 232, 0.65);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      }
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 1060px) {
+      .menu-toggle, .mobile-menu {
+        display: none !important;
+      }
+      .nav-links {
+        display: flex;
+      }
+      .nav-cta-desktop {
+        display: inline-flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ========================================================================
+       BANDEAU DE LANCEMENT CRÉDIBLE ET JUSTIFIÉ
+       ======================================================================== -->
+  <div class="top-announcement" role="region" aria-label="Information tarif de lancement">
+    <div class="container top-announcement-inner">
+      <span class="status-pill">
+        <span class="status-dot" aria-hidden="true"></span>
+        Phase de lancement
+      </span>
+      <span>
+        Tarifs de lancement valables sur les <strong>15 premières commandes</strong> (Product Studio dès 59 € • Campaign dès 69 €) en échange d'un retour d'expérience client.
+      </span>
+      <button type="button" class="announcement-link js-route" data-page="contact">
+        Demander un devis →
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       COMPOSANT HEADER (NAVIGATION PRINCIPALE)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <button type="button" class="brand-logo js-route" data-page="accueil" aria-label="Lumina Product Studio & Campaign - Accueil">
+        <span class="brand-name">Lumina</span>
+        <span class="brand-sub">Product Studio &amp; Campaign</span>
+      </button>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><button type="button" class="nav-btn is-active js-route" data-page="accueil">Accueil</button></li>
+          <li><button type="button" class="nav-btn js-route" data-page="product-studio">Product Studio</button></li>
+          <li><button type="button" class="nav-btn js-route" data-page="campaign">Campaign</button></li>
+          <li><button type="button" class="nav-btn js-route" data-page="realisations">Réalisations</button></li>
+          <li><button type="button" class="nav-btn js-route" data-page="processus">Processus</button></li>
+          <li><button type="button" class="nav-btn js-route" data-page="faq">FAQ</button></li>
+          <li><button type="button" class="nav-btn js-route" data-page="contact">Contact &amp; Devis</button></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="btn btn-primary nav-cta-desktop js-route" data-page="contact">
+        Demander un devis
+      </button>
+
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu de navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+      <ul>
+        <li><button type="button" class="nav-btn is-active js-route" data-page="accueil">1. Accueil</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="product-studio">2. Product Studio (Visuels &amp; Textes)</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="campaign">3. Campaign (Plans Marketing)</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="realisations">4. Réalisations &amp; Exemples</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="processus">5. Processus (5 étapes)</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="faq">6. FAQ</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="contact">7. Contact &amp; Demande de devis</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="mentions-legales">8. Mentions légales</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="cgv">9. Conditions Générales de Vente (CGV)</button></li>
+        <li><button type="button" class="nav-btn js-route" data-page="confidentialite">10. Politique de confidentialité</button></li>
+      </ul>
+      <button type="button" class="btn btn-primary btn-full js-route" data-page="contact">
+        Demander un devis gratuit
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ======================================================================
+         PAGE 1 : ACCUEIL
+         ====================================================================== -->
+    <section id="page-accueil" class="page-view is-active" aria-labelledby="title-accueil">
+      <div class="container">
+        <!-- HERO -->
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="eyebrow">Prestations ponctuelles • Zéro abonnement</span>
+            <h1 id="title-accueil">Valorisez vos produits et structurez vos campagnes, sans abonnement.</h1>
+            <p style="font-size: 1.06rem; color: var(--text-muted); margin-bottom: 20px;">
+              Lumina accompagne les petites entreprises, créateurs, artisans et e-commerçants avec deux services clairs : la création de visuels et textes produits (<strong>Product Studio</strong>) et la préparation de campagnes marketing prêtes à déployer (<strong>Campaign</strong>).
+            </p>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary js-route" data-page="contact">
+                Demander un devis
+              </button>
+              <button type="button" class="btn btn-secondary js-route" data-page="product-studio">
+                Product Studio (dès 59 €)
+              </button>
+              <button type="button" class="btn btn-secondary js-route" data-page="campaign">
+                Campaign (dès 69 €)
+              </button>
+            </div>
+          </div>
+
+          <!-- Encadré d'engagement et transparence -->
+          <div class="card is-highlighted">
+            <span class="card-badge is-sage">Transparence &amp; Simplicité</span>
+            <div>
+              <h3>Pourquoi travailler avec Lumina ?</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+                Pas de forfait mensuel inutile ni de promesses commerciales irréalistes : vous commandez uniquement ce dont vous avez besoin, au moment où vous en avez besoin.
+              </p>
+              <ul class="check-list">
+                <li><strong>Périmètre validé avant démarrage :</strong> examen de votre besoin et confirmation du tarif exact avant toute facturation.</li>
+                <li><strong>Livrables concrets :</strong> formats HD prêts à publier, textes structurés, délais indicatifs de 3 à 7 jours ouvrés.</li>
+                <li><strong>1 cycle de révisions inclus :</strong> nous ajustons les livrables selon vos retours avant la remise finale.</li>
+                <li><strong>Droits commerciaux cédés :</strong> vous utilisez librement les créations sur votre site et vos réseaux.</li>
+              </ul>
+            </div>
+            <div class="spec-box">
+              <strong>Pourquoi un tarif de lancement ?</strong> Nos tarifs de lancement (59 €, 69 € et 179 €) s'appliquent aux 15 premiers projets du studio afin de constituer nos études de cas publiques avec l'accord des clients.
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- DEUX BLOCS DISTINCTS : PRODUCT STUDIO & CAMPAIGN -->
+        <div class="section-header">
+          <span class="eyebrow">Nos 2 pôles d'intervention</span>
+          <h2>Deux services complémentaires, commandables séparément</h2>
+          <p>Choisissez la mise en valeur d'un produit spécifique ou la structuration complète d'une opération commerciale.</p>
+        </div>
+
+        <div class="grid-2" id="home-services-overview">
+          <article class="card is-highlighted">
+            <span class="card-badge">Pôle 1 — Présentation Produit</span>
+            <div>
+              <div class="offer-subtitle">Lumina Product Studio</div>
+              <h3>Visuels publicitaires &amp; rédaction produit</h3>
+              <p style="color: var(--text-muted); font-size: 0.93rem; margin-top: 8px;">
+                Pour les marques et boutiques qui veulent présenter un ou deux produits avec une image propre, cohérente et des arguments de vente clairs sur leurs fiches produits et réseaux sociaux.
+              </p>
+              <ul class="check-list">
+                <li><strong>Lumina Essentials (59 €) :</strong> 1 produit, jusqu'à 2 visuels HD, 1 titre, 1 description, 3 arguments.</li>
+                <li><strong>Lumina Collection (Sur confirmation) :</strong> Jusqu'à 2 produits, jusqu'à 4 visuels coordonnés et textes complets.</li>
+                <li><strong>Délai indicatif :</strong> 3 à 6 jours ouvrés • 1 cycle de révisions inclus.</li>
+              </ul>
+            </div>
+            <div style="display: grid; gap: 10px;">
+              <button type="button" class="btn btn-primary btn-full js-route" data-page="product-studio">
+                Voir les détails &amp; livrables Product Studio →
+              </button>
+              <button type="button" class="btn btn-secondary btn-full js-select-offer" data-offer="Lumina Product Studio — Essentials (59 €)">
+                Demander un devis Studio
+              </button>
+            </div>
+          </article>
+
+          <article class="card is-highlighted">
+            <span class="card-badge is-sage">Pôle 2 — Campagne Marketing</span>
+            <div>
+              <div class="offer-subtitle">Lumina Campaign</div>
+              <h3>Structuration de campagnes &amp; textes promotionnels</h3>
+              <p style="color: var(--text-muted); font-size: 0.93rem; margin-top: 8px;">
+                Pour les indépendants et entreprises qui préparent un lancement, une promotion ou un temps fort et veulent un plan d'action structuré avec des textes prêts à publier.
+              </p>
+              <ul class="check-list">
+                <li><strong>Campaign Essentiel (69 €) :</strong> Action ciblée (angle, message central, 3 accroches, 2 textes, mini-plan &amp; checklist).</li>
+                <li><strong>Campaign Complète (179 €) :</strong> Campagne sur 7 jours (5 accroches, textes multi-canaux, calendrier 7j, suivi KPI &amp; bilan).</li>
+                <li><strong>Délai indicatif :</strong> 3 à 7 jours ouvrés • 1 cycle de révisions inclus.</li>
+              </ul>
+            </div>
+            <div style="display: grid; gap: 10px;">
+              <button type="button" class="btn btn-primary btn-full js-route" data-page="campaign">
+                Voir les détails &amp; livrables Campaign →
+              </button>
+              <button type="button" class="btn btn-secondary btn-full js-select-offer" data-offer="Lumina Campaign — Essentiel (69 €)">
+                Demander un devis Campaign
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- CE QUE VOUS RECEVEZ CONCRÈTEMENT -->
+        <div class="section-header">
+          <span class="eyebrow">Livrables tangibles</span>
+          <h2>Ce que vous recevez concrètement à la livraison</h2>
+          <p>Pas de concepts flous : chaque prestation aboutit à la remise d'un dossier structuré et directement exploitable.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div>
+              <div class="offer-subtitle">Livrable Visuel (Studio)</div>
+              <h3>Fichiers images HD multi-formats</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 8px;">
+                Visuels livrés en <strong>PNG et JPG haute définition</strong>, déclinés au format carré (1:1 pour fiche produit et carrousel) et vertical (4:5 ou 9:16 pour Instagram/TikTok), optimisés pour le web.
+              </p>
+            </div>
+            <div class="spec-box">Cession complète des droits d'exploitation commerciale incluse.</div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="offer-subtitle">Livrable Rédactionnel (Studio &amp; Campaign)</div>
+              <h3>Textes prêts à copier-coller</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 8px;">
+                Document clair (<strong>PDF + Google Doc / Notion copiable</strong>) regroupant vos titres commerciaux, descriptions structurées, arguments de vente factuels, accroches et appels à l'action.
+              </p>
+            </div>
+            <div class="spec-box">Rédigé en français professionnel, sans promesses mensongères.</div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="offer-subtitle">Livrable Stratégique (Campaign)</div>
+              <h3>Calendrier d'action &amp; Checklist</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 8px;">
+                Feuille de route opérationnelle indiquant <strong>quel message publier, sur quel canal, à quel moment et dans quel but</strong>, accompagnée d'une checklist de vérification avant lancement.
+              </p>
+            </div>
+            <div class="spec-box">Conçu pour être exécuté facilement, même seul(e) avec peu de temps.</div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- APERÇU COMMENT ÇA MARCHE EN 5 ÉTAPES -->
+        <div class="section-header">
+          <span class="eyebrow">Parcours sans surprise</span>
+          <h2>Comment ça marche en 5 étapes</h2>
+          <p>Aucun paiement en ligne automatique : nous validons ensemble la faisabilité de votre projet avant tout engagement.</p>
+        </div>
+
+        <div class="grid-3" id="home-steps-preview">
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 1 &amp; 2</span>
+              <h3>Demande &amp; Examen du brief</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Vous remplissez le formulaire de devis. Sous 24h à 48h ouvrées, nous examinons vos éléments (photos disponibles, produit, objectif) pour vérifier la faisabilité.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 3</span>
+              <h3>Confirmation du périmètre et du prix</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Vous recevez un récapitulatif écrit précisant les livrables exacts, le tarif ferme, le délai de livraison et les modalités de règlement.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 4 &amp; 5</span>
+              <h3>Réalisation, révision &amp; remise</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Après votre accord, nous produisons vos livrables, appliquons 1 cycle d'ajustements selon vos retours, puis vous livrons le dossier final prêt à l'emploi.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary js-route" data-page="processus">
+            Consulter le processus détaillé →
+          </button>
+          <button type="button" class="btn btn-primary js-route" data-page="realisations">
+            Voir les exemples &amp; cas pratiques →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 2 : PRODUCT STUDIO (DÉTAIL DES OFFRES & SPÉCIFICATIONS)
+         ====================================================================== -->
+    <section id="page-product-studio" class="page-view" aria-labelledby="title-studio">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Pôle 1 • Présentation visuelle &amp; commerciale</span>
+          <h1 id="title-studio">Lumina Product Studio</h1>
+          <p>
+            Présentez vos produits avec des visuels publicitaires soignés et un discours commercial clair. Idéal pour améliorer vos fiches produits e-commerce et vos publications sur Instagram ou TikTok.
+          </p>
+        </div>
+
+        <!-- Cartes d'offres Studio générées dynamiquement par le composant OfferCard -->
+        <div class="grid-2" id="studio-offers-container"></div>
+
+        <!-- Tableau Inclus / Exclus explicite -->
+        <div class="grid-2" style="margin-top: 32px;">
+          <div class="card">
+            <div>
+              <h3>Ce qui est systématiquement inclus</h3>
+              <ul class="check-list">
+                <li><strong>Formats livrés :</strong> PNG et JPG haute définition (3000px sur le côté le plus long), prêts pour site web et réseaux sociaux (ratios 1:1, 4:5 ou 9:16 au choix).</li>
+                <li><strong>Rédaction commerciale :</strong> Titre, description structurée et 3 arguments clés par produit fondés sur vos caractéristiques réelles.</li>
+                <li><strong>Révisions :</strong> 1 cycle d'ajustements inclus (retouche texte, ajustement colorimétrique ou recadrage) sous 7 jours après présentation.</li>
+                <li><strong>Droits d'utilisation :</strong> Cession complète des droits patrimoniaux pour usage commercial digital (site, réseaux, publicités) dès règlement complet.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <h3>Ce qui n'est pas inclus (Limites claires)</h3>
+              <ul class="check-list cross-list">
+                <li><strong>Réception physique de marchandises :</strong> Nous travaillons à distance à partir des photos nettes que vous nous transmettez (pas d'envoi postal de produit par défaut).</li>
+                <li><strong>Création de vidéos :</strong> Les formats vidéo Reels/TikTok ne sont pas inclus dans ces deux packs.</li>
+                <li><strong>Modification trompeuse du produit :</strong> Nous sublimons la mise en scène et la lumière, mais nous ne modifions pas l'aspect réel de votre produit afin d'éviter toute déception de vos acheteurs.</li>
+                <li><strong>Garantie de ventes :</strong> Les performances commerciales dépendent de votre marché, de votre prix et de votre trafic.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 3 : LUMINA CAMPAIGN (DÉTAIL DES OFFRES & MÉTHODE)
+         ====================================================================== -->
+    <section id="page-campaign" class="page-view" aria-labelledby="title-campaign">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Pôle 2 • Stratégie &amp; Contenus de campagne</span>
+          <h1 id="title-campaign">Lumina Campaign</h1>
+          <p>
+            « Votre campagne marketing, sans abonnement. » De l'analyse de votre offre aux textes prêts à publier, nous structurons vos lancements, promotions et temps forts commerciaux.
+          </p>
+        </div>
+
+        <!-- Cartes d'offres Campaign générées dynamiquement par le composant OfferCard -->
+        <div class="grid-2" id="campaign-offers-container"></div>
+
+        <!-- Périmètre Inclus / Exclus Campaign -->
+        <div class="grid-2" style="margin-top: 32px;">
+          <div class="card">
+            <div>
+              <h3>Format de remise &amp; Droits</h3>
+              <ul class="check-list">
+                <li><strong>Support livré :</strong> Dossier complet en PDF prêt à lire + lien vers document éditable (Google Docs ou Notion) pour copier-coller facilement vos textes.</li>
+                <li><strong>Méthode des 4 fonctions :</strong> Chaque texte livré indique clairement son rôle (Attirer l'attention, Présenter la valeur, Lever une hésitation, Encourager l'action).</li>
+                <li><strong>Révisions :</strong> 1 cycle d'ajustements rédactionnels et stratégiques inclus.</li>
+                <li><strong>Propriété intellectuelle :</strong> Utilisation libre et illimitée dans le temps pour votre entreprise après paiement.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <h3>Ce que Campaign n'inclut pas</h3>
+              <ul class="check-list cross-list">
+                <li><strong>Création de visuels ou vidéos :</strong> Campaign se concentre sur la stratégie, l'angle et les textes. Vous pouvez combiner Campaign avec un pack <em>Product Studio</em> si vous avez besoin de visuels.</li>
+                <li><strong>Achat d'espace publicitaire :</strong> Nous ne gérons pas vos budgets publicitaires (Meta Ads, Google Ads, TikTok Ads).</li>
+                <li><strong>Community Management :</strong> Vous restez maître de la mise en ligne des publications et de la réponse aux commentaires selon le calendrier fourni.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 4 : RÉALISATIONS, EXEMPLES DE LIVRABLES & PREUVES (PLACEHOLDERS)
+         ====================================================================== -->
+    <section id="page-realisations" class="page-view" aria-labelledby="title-realisations">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Exemples &amp; Preuves</span>
+          <h1 id="title-realisations">Réalisations, livrables types et études de cas</h1>
+          <p>
+            Découvrez un extrait concret de nos livrables rédactionnels ainsi que les emplacements réservés à nos premières études de cas clients vérifiées.
+          </p>
+        </div>
+
+        <!-- EXEMPLE RÉEL DE LIVRABLE TEXTUEL -->
+        <div class="card is-highlighted" style="margin-bottom: 40px;">
+          <span class="card-badge is-sage">Extrait de livrable réel (Démonstration méthodologique)</span>
+          <div class="grid-2">
+            <div>
+              <div class="offer-subtitle">Cas pratique fictif — Bougie artisanale en cire de soja</div>
+              <h3>Exemple de fiche rédactionnelle livrée dans le pack Essentials</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 8px;">
+                Voici comment nous transformons des caractéristiques brutes fournies par un artisan (« bougie 180g, cire soja, parfum figue et bois de santal, mèche coton, 40h ») en livrable prêt à intégrer sur une boutique en ligne :
+              </p>
+              <div class="spec-box" style="margin-top: 16px;">
+                <strong>Titre commercial :</strong><br>
+                Bougie Artisanale « Sous-Bois d'Été » — Figue Sauvage &amp; Santal (40h de diffusion)<br><br>
+                <strong>Description produit :</strong><br>
+                Coulée à la main en petites séries, cette bougie en cire 100 % végétale de soja diffuse un parfum enveloppant mêlant la douceur de la figue fraîche à la chaleur boisée du santal. Sa mèche en pur coton tressé assure une combustion lente et homogène, sans fumée noire.
+              </div>
+            </div>
+            <div>
+              <div class="offer-subtitle">Arguments &amp; Accroches associés</div>
+              <h3>Arguments de vente &amp; déclinaison réseaux</h3>
+              <ul class="check-list" style="margin-top: 12px;">
+                <li><strong>Argument 1 (Composition propre) :</strong> Cire de soja 100 % végétale et mèche en coton non traité pour une diffusion saine dans votre intérieur.</li>
+                <li><strong>Argument 2 (Longévité) :</strong> Format 180 g offrant jusqu'à 40 heures de brûlage continu.</li>
+                <li><strong>Argument 3 (Savoir-faire) :</strong> Fabrication artisanale coulée à la main, verre ambré réutilisable.</li>
+              </ul>
+              <div class="spec-box">
+                <strong>Accroche publication Instagram (Angle sensoriel) :</strong><br>
+                « Trois minutes après l'avoir allumée, votre salon change d'atmosphère. Découvrez l'alliance de la figue fraîche et du bois de santal dans une cire 100 % végétale. »
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTUDES DE CAS / AVANT-APRÈS (PLACEHOLDERS CLAIREMENT IDENTIFIÉS) -->
+        <div class="section-header">
+          <span class="eyebrow">Études de cas &amp; Avant/Après</span>
+          <h2>Exemples de réalisations (Emplacements prêts à personnaliser)</h2>
+          <p>
+            Conformément à notre engagement d'honnêteté, nous n'affichons aucune fausse référence. Les blocs ci-dessous sont structurés pour accueillir vos 3 premières réalisations clientes.
+          </p>
+        </div>
+
+        <div class="grid-3" id="case-studies-container"></div>
+
+        <hr class="section-divider">
+
+        <!-- TÉMOIGNAGES CLIENTS (PLACEHOLDERS CLAIREMENT IDENTIFIÉS) -->
+        <div class="section-header">
+          <span class="eyebrow">Retours d'expérience</span>
+          <h2>Témoignages clients</h2>
+          <p>Emplacements préparés pour intégrer les retours authentiques des premiers clients ayant bénéficié du tarif de lancement.</p>
+        </div>
+
+        <div class="grid-2" id="testimonials-container"></div>
+
+        <!-- Lien vers Instagram & TikTok pour voir les visuels -->
+        <div class="card" style="margin-top: 36px; background-color: var(--bg-warm);">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <h3>Consulter nos démonstrations visuelles sur nos réseaux</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+                Retrouvez nos tests visuels, mises en scène produits et formats courts publiés régulièrement sur nos comptes officiels :
+              </p>
+            </div>
+            <div class="btn-group" style="margin-top: 0;">
+              <a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Instagram (@lumina.product_studio) ↗
+              </a>
+              <a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                TikTok (@lumina.product_st) ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 5 : PROCESSUS EN 5 ÉTAPES
+         ====================================================================== -->
+    <section id="page-processus" class="page-view" aria-labelledby="title-processus">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Méthode de travail</span>
+          <h1 id="title-processus">Un processus en 5 étapes, clair et sans engagement initial</h1>
+          <p>
+            Chaque demande est vérifiée humainement avant d'être acceptée. Vous savez exactement ce que vous allez recevoir, à quel prix et à quelle date.
+          </p>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 36px;">
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 1</span>
+              <h3>Demande via le formulaire</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Vous sélectionnez l'offre souhaitée (Product Studio ou Campaign) et décrivez votre produit, votre objectif et vos canaux de diffusion. Aucun moyen de paiement n'est demandé.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 2</span>
+              <h3>Examen de faisabilité (24h–48h)</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Nous analysons votre besoin et les éléments dont vous disposez (photos du produit, informations techniques). Si le brief ne nous semble pas réalisable avec un rendu de qualité, nous vous le disons honnêtement.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 3</span>
+              <h3>Confirmation du périmètre &amp; devis</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Nous vous envoyons par e-mail la proposition détaillée : liste exacte des livrables, tarif ferme, délai de livraison garanti et modalités de règlement.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <span class="eyebrow">Étape 4</span>
+              <h3>Réalisation &amp; 1 cycle de révisions</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Dès validation du devis, nous produisons vos visuels, textes ou plans de campagne. Vous disposez d'un tour complet d'ajustements pour affiner les textes ou les visuels.
+              </p>
+            </div>
+          </div>
+
+          <div class="card is-highlighted">
+            <div>
+              <span class="eyebrow">Étape 5</span>
+              <h3>Remise des livrables &amp; droits</h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Vos fichiers finaux (PNG/JPG haute définition, PDF structuré et document éditable) vous sont transmis par lien sécurisé, prêts à être publiés.
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="background-color: var(--bg-warm);">
+            <div>
+              <h3>Ce qu'il faut préparer pour votre brief</h3>
+              <ul class="check-list" style="font-size: 0.88rem;">
+                <li><strong>Pour Product Studio :</strong> 2 à 3 photos nettes de votre produit à la lumière du jour (même prises au smartphone) + caractéristiques exactes.</li>
+                <li><strong>Pour Campaign :</strong> Détail de votre offre/promotion, prix, dates souhaitées et profil de vos clients habituels.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary js-route" data-page="contact">
+          Envoyer mon brief pour étude gratuite →
+        </button>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 6 : FAQ COMPLÈTE (10 QUESTIONS)
+         ====================================================================== -->
+    <section id="page-faq" class="page-view" aria-labelledby="title-faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Questions fréquentes</span>
+          <h1 id="title-faq">Vos questions sur nos délais, livrables et garanties</h1>
+          <p>Réponses directes et sans jargon pour vous permettre de commander en toute confiance.</p>
+        </div>
+
+        <!-- Liste FAQ générée dynamiquement par le composant FAQItem -->
+        <div class="faq-list" id="faq-container"></div>
+
+        <div class="card" style="margin-top: 36px; max-width: 860px;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <div>
+              <h3>Vous avez une question spécifique sur votre produit ?</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">Posez-la directement dans notre formulaire de contact, nous vous répondons sous 24h à 48h ouvrées.</p>
+            </div>
+            <button type="button" class="btn btn-primary js-route" data-page="contact">
+              Poser une question / Demander un devis
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 7 : CONTACT & DEMANDE DE DEVIS
+         ====================================================================== -->
+    <section id="page-contact" class="page-view" aria-labelledby="title-contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Devis gratuit &amp; sans engagement</span>
+          <h1 id="title-contact">Demander un devis ou présenter votre besoin</h1>
+          <p>
+            Remplissez le formulaire ci-dessous (compatible Netlify Forms) ou utilisez notre questionnaire Google Forms externe. Nous vous répondons sous 24h à 48h ouvrées avec un périmètre et un tarif précis.
+          </p>
+        </div>
+
+        <div class="grid-2" style="align-items: start;">
+          <!-- Formulaire natif prêt pour Netlify Forms / Formspree -->
+          <div class="form-card">
+            <h2 style="font-size: 1.5rem; margin-bottom: 18px;">Formulaire de demande de devis</h2>
+            <!-- Attributs data-netlify="true" intégrés pour fonctionner immédiatement sur Netlify sans abonnement -->
+            <form name="demande-devis-lumina" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="quoteForm">
+              <input type="hidden" name="form-name" value="demande-devis-lumina">
+              <p style="display: none;">
+                <label>Ne pas remplir si vous êtes humain : <input name="bot-field"></label>
+              </p>
+
+              <div class="form-group">
+                <label for="client-name" class="form-label">Nom et prénom *</label>
+                <input type="text" id="client-name" name="nom" class="form-control" required autocomplete="name" placeholder="Ex : Marie Laurent">
+              </div>
+
+              <div class="form-group">
+                <label for="client-email" class="form-label">Adresse e-mail professionnelle *</label>
+                <input type="email" id="client-email" name="email" class="form-control" required autocomplete="email" placeholder="Ex : contact@maboutique.fr">
+              </div>
+
+              <div class="form-group">
+                <label for="client-company" class="form-label">Entreprise / Marque / Site ou compte Instagram *</label>
+                <input type="text" id="client-company" name="entreprise" class="form-control" required placeholder="Ex : Atelier Botanique (@atelier.botanique)">
+              </div>
+
+              <div class="form-group">
+                <label for="client-offer" class="form-label">Offre souhaitée *</label>
+                <select id="client-offer" name="offre_souhaitee" class="form-control" required>
+                  <option value="">-- Sélectionnez une prestation --</option>
+                  <option value="Lumina Product Studio — Essentials (59 €)">Lumina Product Studio — Essentials (59 € tarif de lancement)</option>
+                  <option value="Lumina Product Studio — Collection (Sur confirmation)">Lumina Product Studio — Collection (2 produits — Sur confirmation)</option>
+                  <option value="Lumina Campaign — Essentiel (69 €)">Lumina Campaign — Essentiel (69 € tarif de lancement)</option>
+                  <option value="Lumina Campaign — Complète (179 €)">Lumina Campaign — Complète 7 jours (179 € tarif de lancement)</option>
+                  <option value="Combinaison Studio + Campaign">Combinaison Product Studio + Campaign</option>
+                  <option value="Besoin de conseil pour choisir">Je souhaite être conseillé(e) selon mon besoin</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="client-budget" class="form-label">Budget indicatif envisagé</label>
+                <select id="client-budget" name="budget_indicatif" class="form-control">
+                  <option value="Moins de 80 € (Packs Essentiels)">Moins de 80 € (Packs Essentials / Campaign Essentiel)</option>
+                  <option value="Entre 80 € et 180 €">Entre 80 € et 180 € (Collection / Campaign Complète)</option>
+                  <option value="Plus de 180 € (Studio + Campaign)">Plus de 180 € (Projet combiné Studio + Campaign)</option>
+                  <option value="À définir selon devis">À définir selon vos recommandations</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="client-message" class="form-label">Description de votre besoin *</label>
+                <span class="form-hint">Précisez le produit ou l'offre à mettre en avant, l'objectif, les canaux visés (Instagram, TikTok, site web) et le délai souhaité.</span>
+                <textarea id="client-message" name="description_besoin" class="form-control" required placeholder="Décrivez votre produit ou votre campagne..."></textarea>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="rgpd-consent" name="consentement_rgpd" value="accepte" required>
+                <label for="rgpd-consent">
+                  J'accepte que les informations saisies dans ce formulaire soient utilisées exclusivement par Lumina pour étudier ma demande et m'envoyer une proposition commerciale, conformément à la <button type="button" class="js-route" data-page="confidentialite" style="text-decoration: underline; font-weight: 600;">politique de confidentialité</button>. *
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full">
+                Envoyer ma demande de devis
+              </button>
+
+              <div id="formFeedback" style="display: none; margin-top: 16px; padding: 14px; background-color: var(--accent-light); border: 1px solid var(--accent-dark); border-radius: var(--radius-sm); font-size: 0.9rem;"></div>
+            </form>
+          </div>
+
+          <!-- Colonne alternative : Google Forms officiel & Réseaux -->
+          <div style="display: flex; flex-direction: column; gap: 22px;">
+            <div class="card is-highlighted">
+              <div>
+                <span class="eyebrow">Alternative directe</span>
+                <h3>Vous préférez passer par Google Forms ?</h3>
+                <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 8px;">
+                  Si vous souhaitez déposer votre brief via notre questionnaire Google Forms externe, cliquez sur le bouton ci-dessous :
+                </p>
+              </div>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full">
+                Ouvrir le questionnaire Google Forms ↗
+              </a>
+            </div>
+
+            <div class="card">
+              <div>
+                <h3>Ce qui se passe après votre envoi</h3>
+                <ul class="check-list">
+                  <li><strong>Sous 24h à 48h ouvrées :</strong> examen complet de votre brief.</li>
+                  <li><strong>Devis clair :</strong> confirmation écrite des livrables, du prix et du délai de livraison.</li>
+                  <li><strong>Aucun engagement automatique :</strong> le travail ne démarre qu'après votre accord explicite.</li>
+                </ul>
+              </div>
+              <div class="spec-box">
+                <strong>Contact direct :</strong> <span id="contactEmailSlot">[PLACEHOLDER : contact@votre-domaine.fr — À renseigner]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 8 : MENTIONS LÉGALES
+         ====================================================================== -->
+    <section id="page-mentions-legales" class="page-view" aria-labelledby="title-mentions">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Informations légales obligatoires</span>
+          <h1 id="title-mentions">Mentions légales</h1>
+          <p>Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique (LCEN).</p>
+        </div>
+
+        <div class="card legal-prose">
+          <div>
+            <span class="placeholder-tag">Champs entre crochets à compléter avant mise en ligne définitive</span>
+
+            <h3>1. Éditeur du site</h3>
+            <p>
+              <strong>Nom commercial :</strong> Lumina Product Studio &amp; Lumina Campaign<br>
+              <strong>Entrepreneur individuel / Dénomination sociale :</strong> [PLACEHOLDER : Prénom Nom ou Raison sociale à compléter]<br>
+              <strong>Forme juridique :</strong> [PLACEHOLDER : Ex. Entrepreneur Individuel / Micro-entreprise]<br>
+              <strong>Siège social :</strong> [PLACEHOLDER : Adresse postale complète à compléter]<br>
+              <strong>Numéro SIRET :</strong> [PLACEHOLDER : Numéro SIRET à 14 chiffres à compléter]<br>
+              <strong>TVA :</strong> [PLACEHOLDER : Ex. « TVA non applicable, art. 293 B du CGI » si franchise en base de TVA]<br>
+              <strong>Directeur de la publication :</strong> [PLACEHOLDER : Prénom Nom]<br>
+              <strong>Contact :</strong> [PLACEHOLDER : Adresse e-mail professionnelle à compléter]
+            </p>
+
+            <h3>2. Hébergement du site</h3>
+            <p>
+              Ce site est hébergé par : <strong>Netlify, Inc.</strong><br>
+              Adresse : 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.<br>
+              Site web : <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">https://www.netlify.com</a>
+            </p>
+
+            <h3>3. Propriété intellectuelle</h3>
+            <p>
+              L'ensemble de la structure de ce site, des textes, de la charte graphique et des démonstrations méthodologiques présentées est la propriété exclusive de Lumina Product Studio &amp; Campaign, sauf mention contraire explicite. Toute reproduction totale ou partielle sans autorisation écrite préalable est interdite.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 9 : CONDITIONS GÉNÉRALES DE VENTE (CGV)
+         ====================================================================== -->
+    <section id="page-cgv" class="page-view" aria-labelledby="title-cgv">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Cadre contractuel des prestations</span>
+          <h1 id="title-cgv">Conditions Générales de Vente et de Prestation de Services (CGV)</h1>
+          <p>Modèle structuré pour vos prestations ponctuelles Product Studio et Campaign (avec emplacements à personnaliser selon votre statut).</p>
+        </div>
+
+        <div class="card legal-prose">
+          <div>
+            <span class="placeholder-tag">Document de travail à compléter avec vos coordonnées officielles</span>
+
+            <h3>Article 1 — Objet et champ d'application</h3>
+            <p>
+              Les présentes Conditions Générales de Vente (CGV) régissent l'ensemble des prestations de services ponctuelles proposées par <strong>Lumina Product Studio &amp; Campaign</strong> ([PLACEHOLDER : Nom / SIRET à compléter]) auprès de clients professionnels ou créateurs : création de visuels publicitaires produits, rédaction commerciale (<em>Product Studio</em>) et conception de plans de campagnes marketing (<em>Campaign</em>).
+            </p>
+
+            <h3>Article 2 — Devis, commande et validation du périmètre</h3>
+            <p>
+              L'envoi d'une demande via le formulaire du site ou via Google Forms ne constitue pas une commande ferme. Après étude du brief fourni par le Client, Lumina adresse une proposition écrite (devis) précisant les livrables exacts, le tarif, le délai de livraison et les modalités de règlement. La prestation débute uniquement après acceptation écrite du devis par le Client, fourniture des éléments nécessaires (photos de base, informations produit) et règlement selon les modalités convenues.
+            </p>
+
+            <h3>Article 3 — Tarifs et modalités de paiement</h3>
+            <p>
+              Les tarifs affichés sur le site sont exprimés en Euros (€) :
+            </p>
+            <ul class="check-list">
+              <li><strong>Lumina Essentials :</strong> 59 € (tarif de lancement limité aux 15 premières commandes, tarif de référence : 79 €).</li>
+              <li><strong>Lumina Collection :</strong> Tarif sur devis confirmé après étude des 2 produits.</li>
+              <li><strong>Campaign Essentiel :</strong> 69 € (tarif de lancement, tarif de référence : 89 €).</li>
+              <li><strong>Campaign Complète :</strong> 179 € (tarif de lancement, tarif de référence : 229 €).</li>
+            </ul>
+            <p>
+              [PLACEHOLDER : Mentionner « TVA non applicable, article 293 B du CGI » si micro-entreprise]. Le paiement s'effectue par [PLACEHOLDER : Virement bancaire / Lien de paiement sécurisé à préciser], selon les échéances indiquées sur le devis.
+            </p>
+
+            <h3>Article 4 — Délais de livraison et cycle de révisions</h3>
+            <p>
+              Les délais indicatifs sont de 3 à 7 jours ouvrés à compter de la réception complète du brief et du règlement convenu. Chaque pack inclut <strong>un (1) cycle de révisions</strong> permettant au Client de demander des ajustements sur les textes ou la mise en valeur visuelle dans la limite du brief initial. Toute demande de modification supplémentaire ou changement de brief en cours de prestation fera l'objet d'un devis complémentaire.
+            </p>
+
+            <h3>Article 5 — Propriété intellectuelle et droits d'utilisation</h3>
+            <p>
+              À compter du paiement intégral de la prestation, Lumina cède au Client les droits de reproduction, de représentation et d'exploitation commerciale des livrables finaux (visuels PNG/JPG, textes, plans de campagne) pour ses propres canaux (site e-commerce, réseaux sociaux, supports publicitaires), sans limitation géographique ni de durée. Sauf refus écrit du Client, Lumina se réserve la possibilité de mentionner la réalisation à titre de référence dans son portfolio uniquement avec l'accord préalable du Client.
+            </p>
+
+            <h3>Article 6 — Obligation de moyens et absence de garantie de chiffre d'affaires</h3>
+            <p>
+              Lumina est tenue à une obligation de moyens portant sur la qualité professionnelle des livrables fournis. Le Client reconnaît expressément que les résultats commerciaux (ventes, taux de conversion, chiffre d'affaires) dépendent de facteurs extérieurs indépendants de Lumina (attractivité du produit, politique tarifaire du Client, saisonnalité, budget de diffusion). En conséquence, Lumina ne garantit aucun volume de ventes ou de chiffre d'affaires.
+            </p>
+
+            <h3>Article 7 — Droit applicable</h3>
+            <p>
+              Les présentes CGV sont soumises au droit français. En cas de différend, les parties s'engagent à rechercher une solution amiable avant toute action judiciaire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PAGE 10 : POLITIQUE DE CONFIDENTIALITÉ & RGPD
+         ====================================================================== -->
+    <section id="page-confidentialite" class="page-view" aria-labelledby="title-rgpd">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Protection des données personnelles (RGPD)</span>
+          <h1 id="title-rgpd">Politique de confidentialité</h1>
+          <p>Transparence sur les données recueillies lors de vos demandes de devis.</p>
+        </div>
+
+        <div class="card legal-prose">
+          <div>
+            <h3>1. Responsable du traitement</h3>
+            <p>
+              Le responsable du traitement des données collectées via ce site est <strong>Lumina Product Studio &amp; Campaign</strong> ([PLACEHOLDER : Nom et e-mail de contact à compléter]).
+            </p>
+
+            <h3>2. Données collectées et finalités</h3>
+            <p>
+              Nous collectons uniquement les données strictement nécessaires à l'étude de votre demande de devis et à la gestion de la relation commerciale :
+            </p>
+            <ul class="check-list">
+              <li>Nom et prénom ;</li>
+              <li>Adresse e-mail professionnelle ;</li>
+              <li>Nom de l'entreprise ou de la marque ;</li>
+              <li>Offre souhaitée, budget indicatif et description du besoin.</li>
+            </ul>
+            <p>
+              <strong>Base légale :</strong> Exécution de mesures précontractuelles prises à votre demande (article 6.1.b du RGPD) et votre consentement explicite lors de l'envoi du formulaire.
+            </p>
+
+            <h3>3. Absence de cookies publicitaires</h3>
+            <p>
+              Ce site vitrine ne dépose aucun cookie publicitaire, traceur de ciblage ou script de revente de données.
+            </p>
+
+            <h3>4. Destinataires et sous-traitants techniques</h3>
+            <p>
+              Vos données ne sont jamais vendues ni cédées à des tiers. Elles transitent uniquement par nos outils techniques de réception de formulaires : <strong>Netlify, Inc.</strong> (pour le formulaire intégré au site) ou <strong>Google Ireland Limited</strong> (si vous utilisez le lien Google Forms).
+            </p>
+
+            <h3>5. Durée de conservation</h3>
+            <p>
+              Les données relatives à une demande de devis sans suite commerciale sont conservées pendant une durée maximale de <strong>12 mois</strong> à compter du dernier échange, puis supprimées. En cas de prestation réalisée, les pièces comptables sont conservées selon les obligations légales en vigueur en France (10 ans).
+            </p>
+
+            <h3>6. Vos droits (Accès, rectification, suppression)</h3>
+            <p>
+              Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition sur vos données personnelles. Vous pouvez exercer ce droit à tout moment sur simple demande envoyée à : [PLACEHOLDER : Adresse e-mail à compléter], ou introduire une réclamation auprès de la CNIL (www.cnil.fr).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       COMPOSANT FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand-name" style="color: var(--bg-primary);">Lumina</span>
+          <span class="brand-sub" style="display: block; color: var(--sand); margin-bottom: 12px;">Product Studio &amp; Campaign</span>
+          <p style="font-size: 0.88rem; color: rgba(246, 241, 232, 0.75); max-width: 320px;">
+            Mise en valeur visuelle de produits et structuration de campagnes marketing ponctuelles pour petites entreprises, artisans et e-commerçants. Sans abonnement.
+          </p>
+        </div>
+
+        <div>
+          <strong class="footer-col-title">Prestations</strong>
+          <ul class="footer-links">
+            <li><button type="button" class="js-route" data-page="accueil">Accueil</button></li>
+            <li><button type="button" class="js-route" data-page="product-studio">Lumina Product Studio</button></li>
+            <li><button type="button" class="js-route" data-page="campaign">Lumina Campaign</button></li>
+            <li><button type="button" class="js-route" data-page="realisations">Réalisations &amp; Exemples</button></li>
+            <li><button type="button" class="js-route" data-page="processus">Processus en 5 étapes</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <strong class="footer-col-title">Informations &amp; Légal</strong>
+          <ul class="footer-links">
+            <li><button type="button" class="js-route" data-page="faq">Questions fréquentes (FAQ)</button></li>
+            <li><button type="button" class="js-route" data-page="contact">Demander un devis</button></li>
+            <li><button type="button" class="js-route" data-page="mentions-legales">Mentions légales</button></li>
+            <li><button type="button" class="js-route" data-page="cgv">Conditions Générales de Vente (CGV)</button></li>
+            <li><button type="button" class="js-route" data-page="confidentialite">Politique de confidentialité (RGPD)</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <strong class="footer-col-title">Réseaux &amp; Contact</strong>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer">Instagram (@lumina.product_studio) ↗</a></li>
+            <li><a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer">TikTok (@lumina.product_st) ↗</a></li>
+            <li><a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer">Questionnaire Google Forms ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear">2026</span> Lumina Product Studio &amp; Campaign. Tous droits réservés.</span>
+        <span>Prestations ponctuelles • Devis validé avant démarrage</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       ARCHITECTURE COMPOSANTS RÉUTILISABLES & ROUTEUR SPA (JAVASCRIPT PROPRE)
+       ======================================================================== -->
+  <script>
+    /**
+     * 1. DONNÉES STRUCTURÉES (OFFRES, ÉTUDES DE CAS PLACEHOLDERS, TÉMOIGNAGES, FAQ)
+     */
+    const STUDIO_OFFERS = [
+      {
+        id: "studio-essentials",
+        badge: "Tarif de lancement (15 premiers projets)",
+        highlighted: true,
+        subtitle: "Offre 1 — Pour 1 produit",
+        title: "Lumina Essentials",
+        price: "59 €",
+        priceNote: "Tarif de lancement • Tarif standard de référence : 79 €",
+        turnaround: "3 à 4 jours ouvrés",
+        revisions: "1 cycle d'ajustements inclus",
+        formats: "PNG & JPG HD (1:1, 4:5 ou 9:16) + Fiche PDF/Doc",
+        rights: "Cession commerciale digitale complète",
+        deliverables: [
+          "Prise en charge d'un (1) produit à partir de vos photos et informations",
+          "Jusqu'à 2 visuels publicitaires haute définition (mises en scène propres et réalistes)",
+          "1 titre commercial accrocheur et clair",
+          "1 description produit structurée prête à intégrer sur votre boutique",
+          "3 arguments de vente clés fondés sur les caractéristiques réelles du produit",
+          "1 direction visuelle adaptée à l'univers de votre marque"
+        ],
+        ctaLabel: "Demander un devis — Essentials (59 €)",
+        offerSelectValue: "Lumina Product Studio — Essentials (59 €)"
+      },
+      {
+        id: "studio-collection",
+        badge: "Pour 2 produits coordonnés",
+        highlighted: false,
+        subtitle: "Offre 2 — Pour 2 produits",
+        title: "Lumina Collection",
+        price: "Sur confirmation",
+        priceNote: "Tarif confirmé sur devis selon vos 2 produits (Réf. indicative : 149 €)",
+        turnaround: "4 à 6 jours ouvrés",
+        revisions: "1 cycle d'ajustements global inclus",
+        formats: "PNG & JPG HD (jusqu'à 4 visuels) + Dossier textes",
+        rights: "Cession commerciale digitale complète",
+        deliverables: [
+          "Prise en charge de jusqu'à deux (2) produits",
+          "Jusqu'à 2 visuels publicitaires par produit (soit 4 visuels HD au maximum)",
+          "1 titre commercial par produit",
+          "1 description structurée par produit",
+          "3 arguments de vente par produit",
+          "Direction artistique cohérente et harmonisée entre les deux produits"
+        ],
+        ctaLabel: "Demander un devis — Collection",
+        offerSelectValue: "Lumina Product Studio — Collection (Sur confirmation)"
+      }
+    ];
+
+    const CAMPAIGN_OFFERS = [
+      {
+        id: "campaign-essentiel",
+        badge: "Tarif de lancement actif",
+        highlighted: true,
+        subtitle: "Offre 1 — Action commerciale ciblée",
+        title: "Campaign Essentiel",
+        price: "69 €",
+        priceNote: "Tarif de lancement • Tarif standard de référence : 89 €",
+        turnaround: "3 à 5 jours ouvrés",
+        revisions: "1 cycle d'ajustements rédactionnels inclus",
+        formats: "Dossier PDF + Document éditable (Google Doc / Notion)",
+        rights: "Exploitation commerciale illimitée",
+        deliverables: [
+          "1. Analyse du besoin, de l'offre et de l'objectif principal",
+          "2. Définition de la cible prioritaire et de l'angle marketing",
+          "3. Un message central pour guider toute la communication",
+          "4. Trois accroches publicitaires avec des angles distincts",
+          "5. Deux textes promotionnels prêts à adapter et publier",
+          "6. Des appels à l'action (CTA) cohérents avec l'objectif",
+          "7. Un mini-plan indiquant où, quand et comment utiliser les contenus",
+          "8. Une checklist complète de vérification avant lancement"
+        ],
+        ctaLabel: "Demander un devis — Campaign Essentiel (69 €)",
+        offerSelectValue: "Lumina Campaign — Essentiel (69 €)"
+      },
+      {
+        id: "campaign-complete",
+        badge: "Tarif de lancement — Plan 7 jours",
+        highlighted: true,
+        subtitle: "Offre 2 — Campagne structurée sur 7 jours",
+        title: "Campaign Complète",
+        price: "179 €",
+        priceNote: "Tarif de lancement • Tarif standard de référence : 229 €",
+        turnaround: "5 à 7 jours ouvrés",
+        revisions: "1 cycle d'ajustements complet inclus",
+        formats: "Dossier PDF + Calendrier 7j & Trames éditables",
+        rights: "Exploitation commerciale illimitée",
+        deliverables: [
+          "1. Analyse approfondie de l'offre, de la cible et de l'objectif",
+          "2. Concept de campagne et message central",
+          "3. Cinq accroches publicitaires aux rôles distincts (attention, valeur, frein, preuve, action)",
+          "4. Textes promotionnels adaptés à un maximum de 3 canaux pertinents",
+          "5. Calendrier de campagne sur 7 jours (action, canal, objectif et CTA quotidien)",
+          "6. Recommandations d'adaptation des messages selon les canaux retenus",
+          "7. Tableau simple pour suivre les indicateurs pertinents",
+          "8. Recommandations conditionnelles selon les premiers retours (poursuivre, ajuster, pivoter)",
+          "9. Checklist de lancement",
+          "10. Trame de bilan à compléter après la campagne"
+        ],
+        ctaLabel: "Demander un devis — Campaign Complète (179 €)",
+        offerSelectValue: "Lumina Campaign — Complète (179 €)"
+      }
+    ];
+
+    const CASE_STUDIES_PLACEHOLDERS = [
+      {
+        tag: "[PLACEHOLDER — EXEMPLE DE RÉALISATION 1 À AJOUTER]",
+        sector: "Secteur : Cosmétique / Soin artisanal",
+        title: "Mise en valeur d'un soin visage (Pack Essentials)",
+        before: "Avant : Photo brute prise sur smartphone avec éclairage intérieur sombre et description purement technique.",
+        after: "Après : 2 visuels lumineux aux tons minéraux (formats 1:1 et 4:5) + titre orienté bénéfice et 3 arguments rassurants sur la composition.",
+        deliverableNote: "Remplacer ce bloc par les visuels Avant/Après de votre 1er client avec son accord écrit."
+      },
+      {
+        tag: "[PLACEHOLDER — EXEMPLE DE RÉALISATION 2 À AJOUTER]",
+        sector: "Secteur : Accessoires / Maroquinerie / Bijoux",
+        title: "Harmonisation de 2 produits (Pack Collection)",
+        before: "Avant : Deux produits photographiés sur des fonds différents sans cohérence visuelle sur la boutique en ligne.",
+        after: "Après : 4 visuels harmonisés dans une même direction artistique + fiches produits structurées.",
+        deliverableNote: "Remplacer ce bloc par votre 2e étude de cas réelle."
+      },
+      {
+        tag: "[PLACEHOLDER — ÉTUDE DE CAS CAMPAIGN À COMPLÉTER]",
+        sector: "Secteur : Lancement d'offre / Promotion saisonnière",
+        title: "Structuration d'un lancement sur 7 jours (Campaign)",
+        before: "Problématique initiale : Lancement d'une nouveauté sans calendrier précis ni angle différenciant.",
+        after: "Livrable remis : Angle central, 5 accroches ciblées, textes pour Instagram et Newsletter + planning jour par jour sur 7 jours.",
+        deliverableNote: "Compléter avec le retour réel d'une entreprise accompagnée en Campaign."
+      }
+    ];
+
+    const TESTIMONIALS_PLACEHOLDERS = [
+      {
+        tag: "[PLACEHOLDER — TÉMOIGNAGE CLIENT 1 À AJOUTER]",
+        quote: "« Emplacement réservé pour le premier retour client réel (Pack Lumina Product Studio). Aucun faux avis n'est affiché avant la livraison effective d'une commande. »",
+        author: "[Prénom Nom — Fondateur/Fondatrice de la boutique à compléter]",
+        service: "Prestation : Lumina Essentials"
+      },
+      {
+        tag: "[PLACEHOLDER — TÉMOIGNAGE CLIENT 2 À AJOUTER]",
+        quote: "« Emplacement réservé pour le retour d'expérience d'un client ayant utilisé Lumina Campaign pour structurer son lancement ou sa promotion. »",
+        author: "[Prénom Nom — Dirigeant(e) de l'entreprise à compléter]",
+        service: "Prestation : Lumina Campaign"
+      }
+    ];
+
+    const FAQ_ITEMS = [
+      {
+        q: "1. Quels sont vos délais de livraison indicatifs ?",
+        a: "Les délais indicatifs sont de 3 à 4 jours ouvrés pour Lumina Essentials, 4 à 6 jours ouvrés pour Lumina Collection, 3 à 5 jours ouvrés pour Campaign Essentiel et 5 à 7 jours ouvrés pour Campaign Complète. Le délai exact vous est systématiquement confirmé par écrit dans votre devis avant tout démarrage."
+      },
+      {
+        q: "2. Combien de révisions sont incluses dans les tarifs ?",
+        a: "Chaque offre inclut un (1) cycle complet de révisions. Après la première présentation des livrables, vous pouvez nous transmettre vos demandes d'ajustements (textes, cadrage, nuances) dans le respect du brief initial."
+      },
+      {
+        q: "3. Comment se déroule le paiement ? Y a-t-il un paiement direct sur le site ?",
+        a: "Non, il n'y a aucun paiement automatique sur le site. Vous envoyez d'abord votre demande de devis gratuitement. Une fois le périmètre et le tarif validés ensemble, nous vous transmettons les modalités de règlement sécurisé pour lancer la production."
+      },
+      {
+        q: "4. Quels sont mes droits d'utilisation sur les visuels et les textes livrés ?",
+        a: "Dès le règlement complet de la prestation, vous bénéficiez d'une cession complète des droits d'utilisation commerciale sur les fichiers finaux (site e-commerce, réseaux sociaux, newsletters, publicités en ligne), sans limite de durée."
+      },
+      {
+        q: "5. Que se passe-t-il si mon brief ou mes photos de départ ne conviennent pas ?",
+        a: "C'est tout l'intérêt de notre étape d'examen préalable : si vos photos de départ sont trop floues ou si votre demande sort de notre champ de compétence, nous vous le disons en toute transparence avant tout engagement financier, et nous vous guidons pour refaire une photo simple à la lumière du jour."
+      },
+      {
+        q: "6. Y a-t-il un abonnement ou un engagement récurrent ?",
+        a: "Aucun. Toutes les prestations Lumina Product Studio et Lumina Campaign sont 100 % ponctuelles. Vous commandez uniquement lorsque vous avez un besoin précis."
+      },
+      {
+        q: "7. Garantissez-vous un chiffre d'affaires ou un nombre de ventes ?",
+        a: "Non, et nous préférons être totalement honnêtes à ce sujet. Les ventes dépendent de nombreux facteurs (votre produit, votre politique de prix, votre trafic, votre marché). Notre garantie porte sur la livraison de visuels professionnels, de textes clairs et d'un plan d'action structuré."
+      },
+      {
+        q: "8. Les visuels sont-ils inclus dans Lumina Campaign ?",
+        a: "Lumina Campaign porte exclusivement sur la stratégie, les angles, les textes et le calendrier d'action. Si vous avez également besoin de visuels produits, vous pouvez combiner Campaign avec un pack Lumina Product Studio."
+      },
+      {
+        q: "9. Pourquoi proposez-vous un « tarif de lancement » ?",
+        a: "Nos tarifs de lancement (59 €, 69 € et 179 €) sont appliqués aux 15 premières commandes réalisées par le studio afin de bâtir nos premières études de cas publiques en échange d'un retour d'expérience honnête de la part des clients."
+      },
+      {
+        q: "10. Comment mes données personnelles sont-elles protégées ?",
+        a: "Les informations transmises dans le formulaire de devis ne sont utilisées que pour étudier votre projet et vous répondre. Elles ne sont jamais revendues et vous pouvez en demander la suppression à tout moment (voir notre Politique de confidentialité)."
+      }
+    ];
+
+    /**
+     * 2. COMPOSANTS RÉUTILISABLES (OfferCard, CaseStudyCard, TestimonialCard, FAQItem)
+     */
+    function createOfferCard(offer) {
+      const deliverablesHtml = offer.deliverables.map(item => `<li>${item}</li>`).join("");
+      return `
+        <article class="card ${offer.highlighted ? 'is-highlighted' : ''}" id="${offer.id}">
+          ${offer.badge ? `<span class="card-badge ${offer.id.includes('campaign') ? 'is-sage' : ''}">${offer.badge}</span>` : ''}
+          <div>
+            <div class="offer-subtitle">${offer.subtitle}</div>
+            <h2>${offer.title}</h2>
+            <div class="offer-price-block">
+              <span class="offer-price">${offer.price}</span>
+              <span class="offer-price-note">${offer.priceNote}</span>
+            </div>
+
+            <div class="offer-meta-grid">
+              <div class="offer-meta-item">
+                <strong>Délai indicatif</strong>
+                <span>${offer.turnaround}</span>
+              </div>
+              <div class="offer-meta-item">
+                <strong>Révisions</strong>
+                <span>${offer.revisions}</span>
+              </div>
+              <div class="offer-meta-item">
+                <strong>Formats remis</strong>
+                <span>${offer.formats}</span>
+              </div>
+              <div class="offer-meta-item">
+                <strong>Droits</strong>
+                <span>${offer.rights}</span>
+              </div>
+            </div>
+
+            <strong style="font-size: 0.88rem; display: block; margin-top: 10px;">Livrables précis inclus :</strong>
+            <ul class="check-list">
+              ${deliverablesHtml}
+            </ul>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-primary btn-full js-select-offer" data-offer="${offer.offerSelectValue}">
+              ${offer.ctaLabel}
+            </button>
+          </div>
+        </article>
+      `;
+    }
+
+    function createCaseStudyCard(cs) {
+      return `
+        <article class="card placeholder-card">
+          <div>
+            <span class="placeholder-tag">${cs.tag}</span>
+            <div class="offer-subtitle">${cs.sector}</div>
+            <h3>${cs.title}</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 10px;">
+              <strong>Situation initiale :</strong> ${cs.before}
+            </p>
+            <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 8px;">
+              <strong>Intervention Lumina :</strong> ${cs.after}
+            </p>
+          </div>
+          <div class="spec-box">
+            ${cs.deliverableNote}
+          </div>
+        </article>
+      `;
+    }
+
+    function createTestimonialCard(t) {
+      return `
+        <article class="card placeholder-card">
+          <div>
+            <span class="placeholder-tag">${t.tag}</span>
+            <p style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-main); margin: 8px 0 14px;">
+              ${t.quote}
+            </p>
+          </div>
+          <div style="border-top: 1px solid var(--border); padding-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
+            <strong style="color: var(--text-main); display: block;">${t.author}</strong>
+            <span>${t.service}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function createFAQItem(item, index) {
+      return `
+        <div class="faq-item ${index === 0 ? 'is-open' : ''}">
+          <button type="button" class="faq-trigger" aria-expanded="${index === 0 ? 'true' : 'false'}">
+            <span>${item.q}</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-content">
+            <p>${item.a}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /**
+     * 3. INITIALISATION DU RENDU & DU ROUTEUR MULTI-PAGES
+     */
+    document.addEventListener("DOMContentLoaded", function () {
+      // Injection des composants réutilisables
+      const studioContainer = document.getElementById("studio-offers-container");
+      if (studioContainer) studioContainer.innerHTML = STUDIO_OFFERS.map(createOfferCard).join("");
+
+      const campaignContainer = document.getElementById("campaign-offers-container");
+      if (campaignContainer) campaignContainer.innerHTML = CAMPAIGN_OFFERS.map(createOfferCard).join("");
+
+      const csContainer = document.getElementById("case-studies-container");
+      if (csContainer) csContainer.innerHTML = CASE_STUDIES_PLACEHOLDERS.map(createCaseStudyCard).join("");
+
+      const testContainer = document.getElementById("testimonials-container");
+      if (testContainer) testContainer.innerHTML = TESTIMONIALS_PLACEHOLDERS.map(createTestimonialCard).join("");
+
+      const faqContainer = document.getElementById("faq-container");
+      if (faqContainer) faqContainer.innerHTML = FAQ_ITEMS.map(createFAQItem).join("");
+
+      // Année dynamique
+      const yearEl = document.getElementById("currentYear");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Titres SEO dynamiques par page
+      const PAGE_TITLES = {
+        "accueil": "Lumina Product Studio & Campaign | Visuels produits et campagnes sans abonnement",
+        "product-studio": "Lumina Product Studio | Visuels publicitaires et fiches produits dès 59 €",
+        "campaign": "Lumina Campaign | Structuration de campagnes marketing dès 69 €",
+        "realisations": "Réalisations & Livrables types | Lumina Product Studio & Campaign",
+        "processus": "Comment ça marche en 5 étapes | Lumina Product Studio & Campaign",
+        "faq": "FAQ — Délais, Révisions, Droits & Tarifs | Lumina",
+        "contact": "Demander un devis gratuit | Lumina Product Studio & Campaign",
+        "mentions-legales": "Mentions légales | Lumina Product Studio & Campaign",
+        "cgv": "Conditions Générales de Vente (CGV) | Lumina",
+        "confidentialite": "Politique de confidentialité & RGPD | Lumina"
+      };
+
+      const views = document.querySelectorAll(".page-view");
+      const navBtns = document.querySelectorAll(".js-route");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuToggle = document.getElementById("menuToggle");
+
+      function navigateTo(pageId, updateHash = true) {
+        const targetView = document.getElementById("page-" + pageId);
+        if (!targetView) return;
+
+        views.forEach(v => v.classList.remove("is-active"));
+        void targetView.offsetWidth;
+        targetView.classList.add("is-active");
+
+        document.querySelectorAll(".nav-btn").forEach(btn => {
+          btn.classList.toggle("is-active", btn.getAttribute("data-page") === pageId);
+        });
+
+        if (PAGE_TITLES[pageId]) {
+          document.title = PAGE_TITLES[pageId];
+        }
+
+        if (updateHash) {
+          history.pushState(null, "", "#" + pageId);
+        }
+
+        if (mobileMenu && mobileMenu.classList.contains("is-open")) {
+          mobileMenu.classList.remove("is-open");
+          if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Écouteurs sur tous les boutons de navigation
+      navBtns.forEach(btn => {
+        btn.addEventListener("click", function () {
+          const pageId = this.getAttribute("data-page");
+          if (pageId) navigateTo(pageId);
+        });
+      });
+
+      // Pré-sélection automatique de l'offre dans le formulaire de devis
+      document.addEventListener("click", function (e) {
+        const offerBtn = e.target.closest(".js-select-offer");
+        if (offerBtn) {
+          const selectedOffer = offerBtn.getAttribute("data-offer");
+          navigateTo("contact");
+          const selectEl = document.getElementById("client-offer");
+          if (selectEl && selectedOffer) {
+            selectEl.value = selectedOffer;
+            selectEl.focus();
+          }
+        }
+      });
+
+      // Gestion du bouton retour navigateur / hash URL initial
+      function handleHashChange() {
+        const hash = window.location.hash.replace("#", "");
+        if (hash && document.getElementById("page-" + hash)) {
+          navigateTo(hash, false);
+        }
+      }
+      window.addEventListener("popstate", handleHashChange);
+      handleHashChange();
+
+      // Menu mobile
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", function () {
+          const isOpen = mobileMenu.classList.toggle("is-open");
+          menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      }
+
+      // Accordéon FAQ
+      document.querySelectorAll(".faq-trigger").forEach(trigger => {
+        trigger.addEventListener("click", function () {
+          const item = this.parentElement;
+          const isOpen = item.classList.toggle("is-open");
+          this.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      });
+
+      // Soumission propre du formulaire (compatible Netlify Forms ou affichage message)
+      const quoteForm = document.getElementById("quoteForm");
+      const formFeedback = document.getElementById("formFeedback");
+      if (quoteForm) {
+        quoteForm.addEventListener("submit", function (e) {
+          // Si hébergé sur Netlify, envoi AJAX natif vers Netlify Forms
+          if (window.location.hostname.includes("netlify") || window.location.protocol.startsWith("http")) {
+            e.preventDefault();
+            const formData = new FormData(quoteForm);
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString()
+            })
+            .then(response => {
+              if (response.ok) {
+                formFeedback.style.display = "block";
+                formFeedback.innerHTML = "<strong>Demande envoyée avec succès.</strong> Nous examinons votre brief et vous répondons sous 24h à 48h ouvrées avec un périmètre et un devis précis.";
+                quoteForm.reset();
+              } else {
+                throw new Error("Redirection Google Forms");
+              }
+            })
+            .catch(() => {
+              formFeedback.style.display = "block";
+              formFeedback.innerHTML = "<strong>Note :</strong> En test local, le formulaire Netlify n'est pas actif. Vous pouvez soumettre votre demande via notre <a href='https://forms.gle/mY2wkRphtXaiv8Eo6' target='_blank' rel='noopener noreferrer' style='text-decoration:underline; font-weight:700;'>Google Forms officiel ↗</a>.";
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
