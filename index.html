@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lumina Product Studio & Campaign | Visuels et campagnes marketing</title>
+  <meta name="description" content="Présentez vos produits et structurez vos campagnes marketing avec Lumina. Des prestations ponctuelles, personnalisées et sans abonnement.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F6F1E8">
+
+  <!-- Open Graph / Partage Réseaux Sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Lumina Product Studio & Campaign | Visuels et campagnes marketing">
+  <meta property="og:description" content="Présentez vos produits et structurez vos campagnes marketing avec Lumina. Des prestations ponctuelles, personnalisées et sans abonnement.">
+  <meta property="og:url" content="https://lumina-product-studio.netlify.app/">
+
+  <!-- Typographies éditoriales (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CHARTE VISUELLE OFFICIELLE LUMINA
+       ========================================================================== */
+    :root {
+      --ivory: #F6F1E8;
+      --ivory-light: #FAF8F3;
+      --charcoal: #242321;
+      --charcoal-muted: #54524E;
+      --sage: #A9B9A5;
+      --sage-dark: #6E8269;
+      --sage-light: #E3EAE1;
+      --beige: #D8C7B2;
+      --beige-light: #EBE1D5;
+      --border: rgba(36, 35, 33, 0.13);
+      --shadow-sm: 0 4px 20px rgba(36, 35, 33, 0.05);
+      --shadow-md: 0 14px 38px rgba(36, 35, 33, 0.09);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 1180px;
+      --header-height: 74px;
+      --transition: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE ACCESSIBLE (OPTIMISÉ SAFARI IPHONE)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--charcoal);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       3. VRAIES ANIMATIONS CSS VISIBLES (SUR MOBILE ET ORDINATEUR)
+       ========================================================================== */
+    @keyframes revealSection {
+      0% {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes revealCard {
+      0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes pulseDot {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(169, 185, 165, 0.8);
+      }
+      70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 8px rgba(169, 185, 165, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(169, 185, 165, 0);
+      }
+    }
+
+    @keyframes badgeFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Application des animations à l'ouverture de chaque onglet */
+    .view-section {
+      display: none;
+      padding: 48px 0 72px;
+    }
+
+    .view-section.is-active {
+      display: block;
+      animation: revealSection 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .view-section.is-active .anim-card-1 {
+      animation: revealCard 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+    }
+
+    .view-section.is-active .anim-card-2 {
+      animation: revealCard 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
+    }
+
+    .view-section.is-active .anim-card-3 {
+      animation: revealCard 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+    }
+
+    .view-section.is-active .anim-card-4 {
+      animation: revealCard 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both;
+    }
+
+    /* Respect de l'accessibilité (personnes sensibles aux mouvements) */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ==========================================================================
+       4. BANDEAU SUPÉRIEUR ANIMÉ (LES 2 PROJETS MIS EN AVANT)
+       ========================================================================== */
+    .launch-banner {
+      background: linear-gradient(270deg, #242321, #383530, #2c332b, #242321);
+      background-size: 300% 300%;
+      animation: gradientFlow 8s ease infinite;
+      color: var(--ivory);
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(246, 241, 232, 0.16);
+      position: relative;
+      z-index: 102;
+    }
+
+    .launch-banner-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px 16px;
+      text-align: center;
+      font-size: 0.86rem;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background-color: rgba(169, 185, 165, 0.2);
+      border: 1px solid var(--sage);
+      color: var(--ivory);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--sage);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulseDot 1.8s infinite;
+    }
+
+    .launch-banner-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--sage);
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 5px 13px;
+      border-radius: 999px;
+      transition: transform var(--transition), background-color var(--transition);
+    }
+
+    .launch-banner-cta:hover {
+      background-color: var(--ivory);
+      transform: scale(1.04);
+    }
+
+    /* Pastille animée dans les sections */
+    .badge-launch-animated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--sage-light);
+      color: var(--charcoal);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--sage);
+      margin-bottom: 16px;
+      animation: badgeFloat 3s ease-in-out infinite;
+    }
+
+    /* ==========================================================================
+       5. TYPOGRAPHIE & STRUCTURE ÉDITORIALE
+       ========================================================================== */
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--charcoal-muted);
+      background-color: var(--beige-light);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.16;
+      color: var(--charcoal);
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 4.8vw, 3.5rem);
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.6vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+      margin-bottom: 10px;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+
+    .section-header p {
+      color: var(--charcoal-muted);
+      font-size: 1.03rem;
+    }
+
+    /* ==========================================================================
+       6. BOUTONS & MICRO-INTERACTIONS
+       ========================================================================== */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 24px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background-color: var(--charcoal);
+      color: var(--ivory);
+      border: 1px solid var(--charcoal);
+    }
+
+    .btn-primary:hover {
+      background-color: #383633;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--charcoal);
+      border: 1px solid var(--charcoal);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--beige-light);
+    }
+
+    .btn-sage {
+      background-color: var(--sage);
+      color: var(--charcoal);
+      border: 1px solid var(--sage);
+    }
+
+    .btn-sage:hover {
+      background-color: #99ab95;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .btn-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 13px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.94rem;
+      text-align: left;
+    }
+
+    .btn-social svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ==========================================================================
+       7. EN-TÊTE & NAVIGATION PAR ONGLETS
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-height);
+      background-color: rgba(246, 241, 232, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal-muted);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-links button {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--charcoal-muted);
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .nav-links button:hover {
+      color: var(--charcoal);
+      background-color: var(--beige-light);
+    }
+
+    .nav-links button.is-active-tab {
+      color: var(--charcoal);
+      font-weight: 700;
+      background-color: var(--sage-light);
+    }
+
+    .nav-cta-desktop {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--charcoal);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      background-color: var(--ivory);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
+      max-height: calc(100vh - var(--header-height));
+      overflow-y: auto;
+    }
+
+    .mobile-menu.is-open {
+      display: block;
+      animation: revealSection 0.25s ease forwards;
+    }
+
+    .mobile-menu ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 18px;
+    }
+
+    .mobile-menu button {
+      width: 100%;
+      text-align: left;
+      display: block;
+      padding: 13px 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      color: var(--charcoal);
+      border-radius: 4px;
+    }
+
+    .mobile-menu button.is-active-tab {
+      background-color: var(--sage-light);
+    }
+
+    /* ==========================================================================
+       8. COMPOSANTS & CARTES (AVEC ANIMATIONS AU SURVOL)
+       ========================================================================== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-subtitle {
+      font-size: 1.06rem;
+      color: var(--charcoal-muted);
+      max-width: 580px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card-elevated {
+      background-color: var(--ivory-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .card-elevated:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(36, 35, 33, 0.28);
+    }
+
+    .card-elevated.is-featured {
+      background-color: var(--ivory);
+      border: 2px solid var(--charcoal);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pack-badge {
+      position: absolute;
+      top: -13px;
+      left: 22px;
+      background-color: var(--charcoal);
+      color: var(--ivory);
+      font-size: 0.71rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .pack-badge-sage {
+      background-color: var(--sage);
+      color: var(--charcoal);
+    }
+
+    .pack-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal-muted);
+      margin-bottom: 6px;
+    }
+
+    .pack-price-wrap {
+      margin: 10px 0 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pack-price {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--charcoal);
+    }
+
+    .pack-price-sub {
+      font-size: 0.86rem;
+      color: var(--charcoal-muted);
+      margin-top: 6px;
+      display: block;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0 20px;
+      font-size: 0.92rem;
+      color: var(--charcoal);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--sage-dark);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .limits-box {
+      font-size: 0.82rem;
+      color: var(--charcoal-muted);
+      background-color: var(--beige-light);
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 18px;
+    }
+
+    .info-callout {
+      margin-top: 28px;
+      padding: 20px 22px;
+      background-color: var(--ivory-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--charcoal);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--charcoal-muted);
+    }
+
+    .sectors-strip {
+      background-color: var(--beige-light);
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--charcoal-muted);
+      margin: 44px 0;
+    }
+
+    .sectors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       9. ÉTAPES (5 ÉTAPES) & FAQ (12 QUESTIONS)
+       ========================================================================== */
+    .steps-grid-5 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .step-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background-color: var(--sage);
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+
+    .faq-list {
+      max-width: 840px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background-color: var(--ivory-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-icon {
+      font-size: 1.25rem;
+      line-height: 1;
+      transition: transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .faq-item.is-open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 14px 20px 18px;
+      color: var(--charcoal-muted);
+      font-size: 0.93rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item.is-open .faq-answer {
+      display: block;
+      animation: revealSection 0.25s ease forwards;
+    }
+
+    /* ==========================================================================
+       10. PIED DE PAGE & RESPONSIVE
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--charcoal);
+      color: var(--ivory);
+      padding: 52px 0 34px;
+      margin-top: 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(246, 241, 232, 0.15);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(246, 241, 232, 0.8);
+    }
+
+    .footer-links button {
+      color: inherit;
+      text-align: left;
+      font-size: inherit;
+    }
+
+    .footer-links button:hover, .footer-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      font-size: 0.82rem;
+      color: rgba(246, 241, 232, 0.65);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .steps-grid-5 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+      }
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .menu-toggle, .mobile-menu {
+        display: none !important;
+      }
+      .nav-links {
+        display: flex;
+      }
+      .nav-cta-desktop {
+        display: inline-flex;
+      }
+      .steps-grid-5 {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       BANDEAU SUPÉRIEUR ANIMÉ — OUVRE LES 2 PROJETS EN MÊME TEMPS
+       ======================================================================== -->
+  <div class="launch-banner" role="region" aria-label="Offres de lancement">
+    <div class="container launch-banner-inner">
+      <span class="live-pill">
+        <span class="live-dot" aria-hidden="true"></span>
+        Tarifs de lancement
+      </span>
+      <span>
+        <strong>Lumina Product Studio</strong> (dès 59 €) &amp; <strong>Lumina Campaign</strong> (dès 69 €) — Sans abonnement
+      </span>
+      <button type="button" class="launch-banner-cta js-nav-tab" data-target="offres-globales">
+        Voir les 2 projets &amp; les tarifs ↗
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       EN-TÊTE & NAVIGATION FLUIDE
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <button type="button" class="brand-logo js-nav-tab" data-target="accueil" aria-label="Lumina Product Studio - Retour à l'accueil">
+        <span class="brand-name">Lumina</span>
+        <span class="brand-sub">Product Studio &amp; Campaign</span>
+      </button>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><button type="button" class="js-nav-tab is-active-tab" data-target="accueil">Accueil</button></li>
+          <li><button type="button" class="js-nav-tab" data-target="offres-globales">Toutes les offres</button></li>
+          <li><button type="button" class="js-nav-tab" data-target="studio">Product Studio</button></li>
+          <li><button type="button" class="js-nav-tab" data-target="campaign">Lumina Campaign</button></li>
+          <li><button type="button" class="js-nav-tab" data-target="fonctionnement">Fonctionnement</button></li>
+          <li><button type="button" class="js-nav-tab" data-target="faq">FAQ</button></li>
+          <li><button type="button" class="js-nav-tab" data-target="contact">Contact</button></li>
+        </ul>
+      </nav>
+
+      <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta-desktop js-order-link">
+        Demander une prestation
+      </a>
+
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile iPhone -->
+    <div class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+      <ul>
+        <li><button type="button" class="js-nav-tab is-active-tab" data-target="accueil">Accueil</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="offres-globales">⚡ Toutes les offres (Studio &amp; Campaign)</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="studio">Lumina Product Studio</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="campaign">Lumina Campaign</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="fonctionnement">Fonctionnement (5 étapes)</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="faq">FAQ (12 questions)</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="contact">Contact &amp; Réseaux</button></li>
+        <li><button type="button" class="js-nav-tab" data-target="mentions-legales">Mentions légales &amp; Confidentialité</button></li>
+      </ul>
+      <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+        Faire une demande (Google Forms)
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         VUE 1 : ACCUEIL (CONVERSION & PRÉSENTATION DES 2 ACTIVITÉS)
+         ====================================================================== -->
+    <section id="accueil" class="view-section is-active">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="anim-card-1">
+            <div class="badge-launch-animated">
+              <span class="live-dot" aria-hidden="true"></span>
+              Offres de lancement actives — Studio &amp; Campaign
+            </div>
+            <h1>Donnez plus d’impact à vos produits et à vos offres.</h1>
+            <p class="hero-subtitle">
+              Visuels publicitaires et campagnes marketing structurées pour les entreprises qui veulent mieux présenter et promouvoir leurs offres, sans complexité inutile.
+            </p>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary js-nav-tab" data-target="studio">
+                Découvrir Product Studio
+              </button>
+              <button type="button" class="btn btn-secondary js-nav-tab" data-target="campaign">
+                Découvrir Campaign
+              </button>
+              <button type="button" class="btn btn-sage js-nav-tab" data-target="offres-globales">
+                Comparer les 2 projets &amp; tarifs
+              </button>
+            </div>
+          </div>
+
+          <!-- Carte Réseaux Sociaux avec Logos SVG -->
+          <div class="card-elevated anim-card-2">
+            <div>
+              <span class="eyebrow">Réalisations &amp; Exemples</span>
+              <h3>Retrouvez Lumina sur les réseaux</h3>
+              <p style="color: var(--charcoal-muted); font-size: 0.94rem; margin-top: 8px;">
+                Pour préserver un site rapide et épuré, toutes nos démonstrations visuelles, mises en scène produits et vidéos sont publiées sur nos comptes officiels.
+              </p>
+            </div>
+
+            <div style="display: grid; gap: 12px;">
+              <a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-social js-ig-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Instagram — @lumina.product_studio</span>
+              </a>
+
+              <a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-social js-tt-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+                <span>TikTok — @lumina.product_st</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bandeau Public Cible -->
+      <div class="sectors-strip">
+        <div class="container sectors-list">
+          <strong style="color: var(--charcoal);">Pour qui ?</strong>
+          <span>Indépendants</span>
+          <span>Commerces &amp; Boutiques physiques</span>
+          <span>Boutiques en ligne (E-commerce)</span>
+          <span>Marques &amp; Vendeurs de produits</span>
+          <span>TPE &amp; PME tous secteurs</span>
+        </div>
+      </div>
+
+      <!-- Deux Zones Visuellement Distinctes : Studio vs Campaign -->
+      <div class="container">
+        <div class="section-header anim-card-2">
+          <span class="eyebrow">Deux activités complémentaires</span>
+          <h2>Présentation du produit ou organisation de sa promotion</h2>
+          <p>
+            Chaque prestation est ponctuelle, personnalisée et accessible sans aucun abonnement mensuel. Vous pouvez commander un seul service ou combiner les deux selon votre besoin.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Activité 1 : Product Studio -->
+          <article class="card-elevated is-featured anim-card-3">
+            <span class="pack-badge">Activité 1 — Présentation Produit</span>
+            <div>
+              <div class="pack-name">Lumina Product Studio</div>
+              <h3>Valoriser vos produits avec des visuels et textes adaptés</h3>
+              <p style="color: var(--charcoal-muted); font-size: 0.94rem; margin-top: 8px;">
+                Aide les entreprises à présenter leurs produits grâce à des visuels publicitaires et des contenus commerciaux structurés, même si vous ne disposez pas encore de visuels parfaits au départ.
+              </p>
+              <ul class="feature-list">
+                <li><strong>Lumina Essentials :</strong> 59 € en lancement (1 produit, jusqu'à 2 visuels + textes)</li>
+                <li><strong>Lumina Collection :</strong> Jusqu'à 2 produits coordonnés (jusqu'à 4 visuels + textes)</li>
+                <li>Direction visuelle, titre commercial, description et arguments de vente</li>
+              </ul>
+            </div>
+            <div style="display: grid; gap: 10px;">
+              <button type="button" class="btn btn-primary btn-full js-nav-tab" data-target="studio">
+                Voir le détail Product Studio
+              </button>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full js-order-link">
+                Demander une prestation Studio
+              </a>
+            </div>
+          </article>
+
+          <!-- Activité 2 : Lumina Campaign -->
+          <article class="card-elevated is-featured anim-card-4">
+            <span class="pack-badge pack-badge-sage">Activité 2 — Campagne Marketing</span>
+            <div>
+              <div class="pack-name">Lumina Campaign</div>
+              <h3>« Votre campagne marketing, sans abonnement. »</h3>
+              <p style="color: var(--charcoal-muted); font-size: 0.94rem; margin-top: 8px;">
+                De la stratégie aux contenus prêts à utiliser, Lumina vous aide à transformer une offre, une nouveauté ou un événement en une campagne structurée et prête à être déployée.
+              </p>
+              <ul class="feature-list">
+                <li><strong>Campaign Essentiel :</strong> 69 € en lancement (action ciblée en 8 livrables)</li>
+                <li><strong>Campaign Complète :</strong> 179 € en lancement (campagne 7 jours en 10 livrables)</li>
+                <li>Analyse, angle marketing, accroches, textes, plan d'action et checklist</li>
+              </ul>
+            </div>
+            <div style="display: grid; gap: 10px;">
+              <button type="button" class="btn btn-primary btn-full js-nav-tab" data-target="campaign">
+                Voir le détail Lumina Campaign
+              </button>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full js-order-link">
+                Demander une prestation Campaign
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Bloc Confiance & Transparence -->
+        <div class="info-callout anim-card-4">
+          <strong style="color: var(--charcoal); display: block; margin-bottom: 6px;">Confiance, méthode et transparence :</strong>
+          Chaque demande envoyée via notre formulaire est examinée individuellement. Le périmètre exact, le tarif applicable et le délai de réalisation sont systématiquement confirmés avec vous avant tout démarrage. Nos prestations visent à structurer et professionnaliser votre communication, sans promesse irréaliste ni garantie artificielle de chiffre d'affaires.
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 2 : TOUTES LES OFFRES (AFFICHE LES 2 PROJETS SUR LA MÊME PAGE !)
+         ====================================================================== -->
+    <section id="offres-globales" class="view-section">
+      <div class="container">
+        <div class="section-header anim-card-1">
+          <div class="badge-launch-animated">
+            <span class="live-dot" aria-hidden="true"></span>
+            Vue globale des 2 projets — Tarifs de lancement
+          </div>
+          <h2>Toutes nos offres : Product Studio &amp; Lumina Campaign</h2>
+          <p>
+            Retrouvez sur cette même page l'ensemble de nos formules pour comparer facilement nos deux activités et choisir la prestation adaptée à votre besoin.
+          </p>
+        </div>
+
+        <!-- BLOC 1 : LUMINA PRODUCT STUDIO -->
+        <div style="margin-bottom: 48px;">
+          <span class="eyebrow">Projet 1 — Présentation visuelle &amp; commerciale de vos produits</span>
+          <h3 style="font-size: 1.9rem; margin-bottom: 20px;">Lumina Product Studio</h3>
+
+          <div class="grid-2">
+            <!-- Pack 1 Studio -->
+            <article class="card-elevated is-featured anim-card-1">
+              <span class="pack-badge">Offre de lancement</span>
+              <div>
+                <div class="pack-name">Product Studio — Offre 1</div>
+                <h3>Lumina Essentials</h3>
+                <div class="pack-price-wrap">
+                  <span class="pack-price">59 €</span>
+                  <span class="pack-price-sub">Prix de lancement • Tarif normal envisagé : 79 €</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--charcoal-muted);">
+                  <strong>Besoin visé :</strong> Présenter un produit avec des visuels publicitaires propres et un texte commercial structuré.
+                </p>
+                <ul class="feature-list">
+                  <li>Un produit pris en charge</li>
+                  <li>Jusqu’à deux visuels publicitaires</li>
+                  <li>Un titre commercial</li>
+                  <li>Une description du produit</li>
+                  <li>Trois arguments de vente fondés sur les informations fournies</li>
+                  <li>Une direction visuelle adaptée au produit</li>
+                </ul>
+              </div>
+              <div>
+                <div class="limits-box">
+                  <strong>À noter :</strong> Basé sur les photos et informations réelles fournies par le client. N'inclut pas de vidéo.
+                </div>
+                <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+                  Demander Lumina Essentials (59 €)
+                </a>
+              </div>
+            </article>
+
+            <!-- Pack 2 Studio -->
+            <article class="card-elevated anim-card-2">
+              <div>
+                <div class="pack-name">Product Studio — Offre 2</div>
+                <h3>Lumina Collection</h3>
+                <div class="pack-price-wrap">
+                  <span class="pack-price" style="font-size: 2.1rem;">Tarif sur confirmation</span>
+                  <span class="pack-price-sub">Périmètre et tarif confirmés après étude de vos 2 produits</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--charcoal-muted);">
+                  <strong>Besoin visé :</strong> Présenter deux produits complémentaires avec une unité visuelle cohérente.
+                </p>
+                <ul class="feature-list">
+                  <li>Jusqu’à deux produits pris en charge</li>
+                  <li>Jusqu’à deux visuels par produit (soit quatre visuels au maximum)</li>
+                  <li>Un titre commercial par produit</li>
+                  <li>Une description par produit</li>
+                  <li>Trois arguments de vente par produit</li>
+                  <li>Une direction visuelle cohérente entre les produits</li>
+                </ul>
+              </div>
+              <div>
+                <div class="limits-box">
+                  <strong>À noter :</strong> Le tarif exact et le délai sont validés avec vous avant tout démarrage selon vos produits.
+                </div>
+                <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full js-order-link">
+                  Demander Lumina Collection
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- BLOC 2 : LUMINA CAMPAIGN -->
+        <div>
+          <span class="eyebrow">Projet 2 — Conception de campagnes marketing sans abonnement</span>
+          <h3 style="font-size: 1.9rem; margin-bottom: 20px;">Lumina Campaign</h3>
+
+          <div class="grid-2">
+            <!-- Pack 1 Campaign -->
+            <article class="card-elevated is-featured anim-card-3">
+              <span class="pack-badge pack-badge-sage">Offre de lancement</span>
+              <div>
+                <div class="pack-name">Lumina Campaign — Offre 1</div>
+                <h3>Campaign Essentiel</h3>
+                <div class="pack-price-wrap">
+                  <span class="pack-price">69 €</span>
+                  <span class="pack-price-sub">Prix de lancement • Tarif normal envisagé : 89 €</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--charcoal-muted);">
+                  <strong>Besoin visé :</strong> Une action commerciale ciblée avec un objectif principal (promotion, nouveauté, offre).
+                </p>
+                <ul class="feature-list">
+                  <li>1. Analyse du besoin, de l’offre et de l’objectif</li>
+                  <li>2. Définition de la cible prioritaire et de l’angle marketing</li>
+                  <li>3. Un message central pour guider la campagne</li>
+                  <li>4. Trois accroches publicitaires avec des angles distincts</li>
+                  <li>5. Deux textes promotionnels prêts à adapter et publier</li>
+                  <li>6. Des appels à l’action cohérents avec l’objectif</li>
+                  <li>7. Un mini-plan indiquant où, quand et comment utiliser les contenus</li>
+                  <li>8. Une checklist de lancement</li>
+                </ul>
+              </div>
+              <div>
+                <div class="limits-box">
+                  <strong>Limites :</strong> Stratégie et textes prêts à déployer. N'inclut pas la création de visuels ni la gestion publicitaire payante.
+                </div>
+                <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+                  Demander Campaign Essentiel (69 €)
+                </a>
+              </div>
+            </article>
+
+            <!-- Pack 2 Campaign -->
+            <article class="card-elevated is-featured anim-card-4">
+              <span class="pack-badge">Offre de lancement — 7 Jours</span>
+              <div>
+                <div class="pack-name">Lumina Campaign — Offre 2</div>
+                <h3>Campaign Complète</h3>
+                <div class="pack-price-wrap">
+                  <span class="pack-price">179 €</span>
+                  <span class="pack-price-sub">Prix de lancement • Tarif normal envisagé : 229 €</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--charcoal-muted);">
+                  <strong>Besoin visé :</strong> Une campagne structurée sur 7 jours, directement exploitable avec cadre de suivi.
+                </p>
+                <ul class="feature-list">
+                  <li>1. Analyse approfondie de l’offre, de la cible et de l’objectif</li>
+                  <li>2. Concept de campagne et message central</li>
+                  <li>3. Cinq accroches publicitaires aux rôles distincts</li>
+                  <li>4. Textes promotionnels adaptés à un maximum de 3 canaux pertinents</li>
+                  <li>5. Calendrier sur 7 jours (action, canal, objectif et appel à l’action)</li>
+                  <li>6. Recommandations d’adaptation selon les canaux retenus</li>
+                  <li>7. Tableau simple pour suivre les indicateurs pertinents</li>
+                  <li>8. Recommandations selon retours (poursuivre, ajuster ou tester)</li>
+                  <li>9. Checklist de lancement complète</li>
+                  <li>10. Bilan à compléter après la campagne</li>
+                </ul>
+              </div>
+              <div>
+                <div class="limits-box">
+                  <strong>Limites :</strong> Conception complète de campagne. Visuels commandables séparément via Product Studio.
+                </div>
+                <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+                  Demander Campaign Complète (179 €)
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 3 : LUMINA PRODUCT STUDIO (DÉTAIL DU SERVICE PRINCIPAL)
+         ====================================================================== -->
+    <section id="studio" class="view-section">
+      <div class="container">
+        <div class="section-header anim-card-1">
+          <div class="badge-launch-animated">
+            <span class="live-dot" aria-hidden="true"></span>
+            Activité principale — Offre Essentials à 59 €
+          </div>
+          <h2>Lumina Product Studio</h2>
+          <p>
+            Nous aidons les indépendants, commerces, boutiques physiques ou en ligne, marques et PME à présenter leurs produits grâce à des visuels publicitaires et des contenus commerciaux adaptés à leur secteur.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card-elevated is-featured anim-card-1">
+            <span class="pack-badge">Prix de lancement actif</span>
+            <div>
+              <div class="pack-name">Offre 1</div>
+              <h3>Lumina Essentials</h3>
+              <div class="pack-price-wrap">
+                <span class="pack-price">59 €</span>
+                <span class="pack-price-sub">Tarif de lancement • Tarif normal envisagé : 79 €</span>
+              </div>
+              <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+                Pour valoriser un produit phare avec une image soignée et un discours commercial clair.
+              </p>
+              <ul class="feature-list">
+                <li>Un produit</li>
+                <li>Jusqu’à deux visuels publicitaires</li>
+                <li>Un titre commercial</li>
+                <li>Une description du produit</li>
+                <li>Trois arguments de vente fondés sur les informations fournies</li>
+                <li>Une direction visuelle adaptée au produit</li>
+              </ul>
+            </div>
+            <div>
+              <div class="limits-box">
+                <strong>Fonctionnement :</strong> Vous fournissez les photos de base et les informations réelles de votre produit. Les modalités de révision sont précisées avant validation.
+              </div>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+                Demander Lumina Essentials (59 €)
+              </a>
+            </div>
+          </article>
+
+          <article class="card-elevated anim-card-2">
+            <div>
+              <div class="pack-name">Offre 2</div>
+              <h3>Lumina Collection</h3>
+              <div class="pack-price-wrap">
+                <span class="pack-price" style="font-size: 2.1rem;">Tarif sur confirmation</span>
+                <span class="pack-price-sub">Validation du tarif après étude de vos 2 produits</span>
+              </div>
+              <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+                Pour présenter deux produits avec une direction artistique harmonieuse et des textes coordonnés.
+              </p>
+              <ul class="feature-list">
+                <li>Jusqu’à deux produits</li>
+                <li>Jusqu’à deux visuels par produit, soit quatre visuels au maximum</li>
+                <li>Un titre commercial par produit</li>
+                <li>Une description par produit</li>
+                <li>Trois arguments de vente par produit</li>
+                <li>Une direction visuelle cohérente entre les produits</li>
+              </ul>
+            </div>
+            <div>
+              <div class="limits-box">
+                <strong>Fonctionnement :</strong> Le périmètre, le prix et le délai sont confirmés avec vous après examen de votre demande via le formulaire.
+              </div>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full js-order-link">
+                Demander Lumina Collection
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="info-callout anim-card-3">
+          <strong style="color: var(--charcoal);">Où voir nos exemples de visuels ?</strong>
+          Nous ne publions pas de galerie statique sur ce site afin de garantir une navigation instantanée. Vous pouvez consulter nos exemples de réalisations directement sur notre <a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">Instagram</a> et notre <a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">TikTok</a>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 4 : LUMINA CAMPAIGN (DÉTAIL DU SERVICE MARKETING)
+         ====================================================================== -->
+    <section id="campaign" class="view-section">
+      <div class="container">
+        <div class="section-header anim-card-1">
+          <div class="badge-launch-animated">
+            <span class="live-dot" aria-hidden="true"></span>
+            Votre campagne marketing, sans abonnement
+          </div>
+          <h2>Lumina Campaign</h2>
+          <p>
+            De la stratégie aux contenus prêts à utiliser, Lumina vous aide à transformer une offre en une campagne structurée, adaptée à votre objectif et prête à être déployée (produit, service, offre commerciale, nouveauté, lancement, promotion ou événement).
+          </p>
+        </div>
+
+        <!-- Les 4 points de différenciation commerciale -->
+        <div class="grid-4" style="margin-bottom: 36px;">
+          <div class="card-elevated anim-card-1" style="padding: 20px;">
+            <div>
+              <strong>1. Sans abonnement</strong>
+              <p style="font-size: 0.88rem; color: var(--charcoal-muted); margin-top: 6px;">Prestation ponctuelle à tarif connu d'avance, sans accompagnement mensuel imposé.</p>
+            </div>
+          </div>
+          <div class="card-elevated anim-card-2" style="padding: 20px;">
+            <div>
+              <strong>2. Objectif précis</strong>
+              <p style="font-size: 0.88rem; color: var(--charcoal-muted); margin-top: 6px;">Chaque campagne est construite autour d'un objectif commercial clairement défini.</p>
+            </div>
+          </div>
+          <div class="card-elevated anim-card-3" style="padding: 20px;">
+            <div>
+              <strong>3. Logique stratégique</strong>
+              <p style="font-size: 0.88rem; color: var(--charcoal-muted); margin-top: 6px;">Chaque contenu a un rôle : attirer l'attention, présenter la valeur, lever une hésitation ou inciter à l'action.</p>
+            </div>
+          </div>
+          <div class="card-elevated anim-card-4" style="padding: 20px;">
+            <div>
+              <strong>4. Cadre d'utilisation</strong>
+              <p style="font-size: 0.88rem; color: var(--charcoal-muted); margin-top: 6px;">Consignes concrètes pour publier vos contenus et ajuster selon les premiers retours.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Les 2 Offres Campaign -->
+        <div class="grid-2">
+          <article class="card-elevated is-featured anim-card-2">
+            <span class="pack-badge pack-badge-sage">Prix de lancement actif</span>
+            <div>
+              <div class="pack-name">Offre 1 — Action commerciale ciblée</div>
+              <h3>Lumina Campaign Essentiel</h3>
+              <div class="pack-price-wrap">
+                <span class="pack-price">69 €</span>
+                <span class="pack-price-sub">Prix de lancement • Tarif normal envisagé : 89 €</span>
+              </div>
+              <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+                Un plan d’action ciblé et cohérent autour d'un objectif principal :
+              </p>
+              <ul class="feature-list">
+                <li>1. Analyse du besoin, de l’offre et de l’objectif</li>
+                <li>2. Définition de la cible prioritaire et de l’angle marketing</li>
+                <li>3. Un message central pour guider la campagne</li>
+                <li>4. Trois accroches publicitaires avec des angles distincts</li>
+                <li>5. Deux textes promotionnels prêts à adapter et publier</li>
+                <li>6. Des appels à l’action cohérents avec l’objectif</li>
+                <li>7. Un mini-plan indiquant où, quand et comment utiliser les contenus</li>
+                <li>8. Une checklist de lancement</li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+                Demander Campaign Essentiel (69 €)
+              </a>
+            </div>
+          </article>
+
+          <article class="card-elevated is-featured anim-card-3">
+            <span class="pack-badge">Prix de lancement — Campagne 7 jours</span>
+            <div>
+              <div class="pack-name">Offre 2 — Campagne structurée sur 7 jours</div>
+              <h3>Lumina Campaign Complète</h3>
+              <div class="pack-price-wrap">
+                <span class="pack-price">179 €</span>
+                <span class="pack-price-sub">Prix de lancement • Tarif normal envisagé : 229 €</span>
+              </div>
+              <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+                Une campagne organisée, directement exploitable et accompagnée d’un cadre de suivi simple :
+              </p>
+              <ul class="feature-list">
+                <li>1. Analyse approfondie de l’offre, de la cible et de l’objectif</li>
+                <li>2. Concept de campagne et message central</li>
+                <li>3. Cinq accroches publicitaires aux rôles distincts</li>
+                <li>4. Des textes promotionnels adaptés à un maximum de trois canaux pertinents</li>
+                <li>5. Un calendrier de campagne sur sept jours (action, canal, objectif et appel à l’action)</li>
+                <li>6. Des recommandations d’adaptation des messages selon les canaux retenus</li>
+                <li>7. Un tableau simple pour suivre les indicateurs pertinents</li>
+                <li>8. Des recommandations conditionnelles selon les premiers retours : poursuivre, ajuster ou tester un autre angle</li>
+                <li>9. Une checklist de lancement</li>
+                <li>10. Un bilan à compléter après la campagne</li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+                Demander Campaign Complète (179 €)
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Limites explicites de Campaign -->
+        <div class="info-callout anim-card-4">
+          <strong style="color: var(--charcoal); display: block; margin-bottom: 6px;">Ce qui n'est pas inclus automatiquement dans Lumina Campaign :</strong>
+          La création de visuels et de vidéos (proposée séparément via <em>Lumina Product Studio</em>), l'achat d'espace publicitaire, la gestion de campagnes publicitaires payantes, la publication quotidienne à votre place, la gestion des commentaires, le community management, un accompagnement mensuel, l'accès à un tableau de bord complexe ou une garantie de ventes.
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 5 : FONCTIONNEMENT EN 5 ÉTAPES
+         ====================================================================== -->
+    <section id="fonctionnement" class="view-section">
+      <div class="container">
+        <div class="section-header anim-card-1">
+          <span class="eyebrow">Parcours client clair</span>
+          <h2>Comment se déroule une prestation ?</h2>
+          <p>
+            Un fonctionnement simple et transparent en 5 étapes, sans paiement automatique ni engagement avant validation complète de votre besoin.
+          </p>
+        </div>
+
+        <div class="steps-grid-5">
+          <div class="card-elevated anim-card-1" style="padding: 22px;">
+            <div>
+              <span class="step-index">1</span>
+              <h3>Demande</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Vous décrivez votre besoin, votre offre et votre objectif via le formulaire Google Forms.</p>
+            </div>
+          </div>
+
+          <div class="card-elevated anim-card-2" style="padding: 22px;">
+            <div>
+              <span class="step-index">2</span>
+              <h3>Examen</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Lumina examine votre demande et vérifie l'adéquation avec le pack choisi.</p>
+            </div>
+          </div>
+
+          <div class="card-elevated anim-card-3" style="padding: 22px;">
+            <div>
+              <span class="step-index">3</span>
+              <h3>Confirmation</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Le périmètre exact, le prix et le délai sont confirmés avec vous avant tout démarrage.</p>
+            </div>
+          </div>
+
+          <div class="card-elevated anim-card-4" style="padding: 22px;">
+            <div>
+              <span class="step-index">4</span>
+              <h3>Réalisation</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">La prestation est réalisée après accord mutuel et selon les modalités convenues.</p>
+            </div>
+          </div>
+
+          <div class="card-elevated anim-card-4" style="padding: 22px;">
+            <div>
+              <span class="step-index">5</span>
+              <h3>Remise</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Les livrables prêts à être utilisés vous sont remis de manière claire et organisée.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-callout anim-card-4">
+          <strong style="color: var(--charcoal);">Important :</strong> L'envoi du formulaire constitue une demande de prestation et non une confirmation automatique de commande. Aucune somme n'est prélevée sur ce site.
+        </div>
+
+        <div class="btn-group">
+          <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary js-order-link">
+            Remplir le formulaire de demande
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 6 : FAQ COMPLÈTE (LES 12 QUESTIONS DU PROMPT)
+         ====================================================================== -->
+    <section id="faq" class="view-section">
+      <div class="container">
+        <div class="section-header anim-card-1">
+          <span class="eyebrow">Réponses transparentes</span>
+          <h2>Questions fréquentes (FAQ)</h2>
+          <p>Tout ce qu'il faut savoir avant d'envoyer une demande pour Product Studio ou Campaign.</p>
+        </div>
+
+        <div class="faq-list anim-card-2">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>1. À qui s’adressent les prestations ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Nos services s'adressent aux indépendants, commerces, boutiques physiques ou en ligne, marques, vendeurs de produits et PME souhaitant présenter un produit ou promouvoir une offre professionnelle.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>2. Quelle est la différence entre Product Studio et Campaign ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <strong>Lumina Product Studio</strong> concerne la présentation de votre produit (visuels publicitaires, titre, description, arguments). <strong>Lumina Campaign</strong> concerne l'organisation de la promotion d'une offre (analyse, angle marketing, accroches, textes, plan d'action et calendrier).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>3. Dois-je souscrire un abonnement ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Non. Toutes nos prestations sont ponctuelles et sans aucun abonnement obligatoire. Vous commandez uniquement lorsque vous avez un besoin précis.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>4. Comment demander une prestation ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Il vous suffit de cliquer sur l'un des boutons de demande du site pour remplir notre formulaire officiel Google Forms en décrivant votre produit ou votre offre.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>5. Quand le travail commence-t-il ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Le travail démarre uniquement après examen de votre demande, confirmation mutuelle du périmètre, du prix et du délai, réception des éléments nécessaires et accord sur les modalités de règlement.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>6. Quel est le délai de livraison ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Le délai dépend de la prestation choisie et de la disponibilité au moment de votre demande. Il vous est systématiquement précisé et confirmé avant toute validation de commande.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>7. Puis-je demander une modification ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Les conditions d'ajustement ou de révision sont précisées avec vous lors de la confirmation du périmètre de la prestation avant le démarrage.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>8. Les visuels sont-ils inclus dans Campaign ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Non, Lumina Campaign porte sur la stratégie, les messages et le plan de campagne. Si vous avez besoin de visuels publicitaires, vous pouvez commander en complément une prestation Lumina Product Studio.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>9. Les publicités payantes sont-elles incluses ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Non. Nos prestations ne comprennent ni l'achat d'espace publicitaire, ni la gestion technique de comptes publicitaires payants.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>10. Les ventes sont-elles garanties ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Non. Aucune prestation sérieuse ne peut garantir un nombre de ventes, car les résultats dépendent aussi de votre produit, de votre prix, de votre marché et de votre diffusion. Notre engagement porte sur la qualité, la clarté et la cohérence des livrables fournis.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>11. Comment le paiement est-il organisé ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Aucun paiement n'est effectué automatiquement sur le site. Les modalités de règlement sont transmises et convenues directement avec le client lors de la validation de la demande.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>12. Que se passe-t-il si mon besoin ne correspond à aucun pack ?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              Vous pouvez décrire votre besoin dans le formulaire de demande : nous vous indiquerons honnêtement quelle formule est la plus adaptée ou si votre demande sort de notre périmètre actuel.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 7 : CONTACT & RÉSEAUX SOCIAUX
+         ====================================================================== -->
+    <section id="contact" class="view-section">
+      <div class="container">
+        <div class="grid-2">
+          <div class="card-elevated is-featured anim-card-1">
+            <div>
+              <span class="eyebrow">Envoyer une demande</span>
+              <h2>Démarrer un projet avec Lumina</h2>
+              <p style="color: var(--charcoal-muted); margin: 12px 0 18px;">
+                Pour demander un pack <strong>Product Studio</strong> ou <strong>Lumina Campaign</strong>, complétez notre formulaire en quelques minutes. Nous reviendrons vers vous après étude de votre besoin.
+              </p>
+              <ul class="feature-list">
+                <li>Précisez votre activité et le pack souhaité</li>
+                <li>Indiquez votre produit ou l'offre à promouvoir</li>
+                <li>Mentionnez les canaux ou réseaux visés</li>
+              </ul>
+            </div>
+            <a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full js-order-link">
+              Ouvrir le formulaire de demande ↗
+            </a>
+          </div>
+
+          <div class="card-elevated anim-card-2">
+            <div>
+              <span class="eyebrow">Réseaux officiels</span>
+              <h3>Retrouvez Lumina sur les réseaux</h3>
+              <p style="color: var(--charcoal-muted); margin: 12px 0 20px;">
+                Découvrez nos publications, exemples de visuels et formats promotionnels sur nos pages officielles :
+              </p>
+
+              <div style="display: grid; gap: 12px;">
+                <a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-social js-ig-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  <span>Instagram — @lumina.product_studio</span>
+                </a>
+
+                <a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-social js-tt-link">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                  <span>TikTok — @lumina.product_st</span>
+                </a>
+              </div>
+            </div>
+            <div class="limits-box" style="margin-bottom: 0;">
+              <strong>LinkedIn (Lumina Agency) :</strong> Lien en attente de vérification de l'URL officielle avant affichage.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VUE 8 : MENTIONS LÉGALES & CONFIDENTIALITÉ
+         ====================================================================== -->
+    <section id="mentions-legales" class="view-section">
+      <div class="container">
+        <div class="section-header anim-card-1">
+          <span class="eyebrow">Informations réglementaires</span>
+          <h2>Mentions légales &amp; Confidentialité</h2>
+          <p>Informations de transparence relatives au site et au traitement des demandes de prestations.</p>
+        </div>
+
+        <div class="card-elevated anim-card-2" style="gap: 14px;">
+          <div>
+            <h3>1. Éditeur du site</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+              Nom commercial : <strong>Lumina Product Studio &amp; Lumina Campaign</strong><br>
+              Responsable de la publication : <em>[À confirmer avant mise en activité commerciale définitive]</em><br>
+              Statut juridique / Numéro SIRET : <em>[À compléter selon le statut retenu]</em><br>
+              Adresse et contact e-mail professionnel : <em>[À compléter]</em>
+            </p>
+          </div>
+
+          <div>
+            <h3>2. Hébergement</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+              Ce site est hébergé par <strong>Netlify, Inc.</strong> — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis (https://www.netlify.com).
+            </p>
+          </div>
+
+          <div>
+            <h3>3. Données personnelles &amp; Formulaire de demande</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-muted);">
+              Ce site vitrine n'utilise aucun cookie publicitaire ni traceur tiers intrusif et ne collecte aucune donnée bancaire. Lorsque vous cliquez sur un bouton de demande de prestation, vous êtes dirigé vers un formulaire hébergé sur <strong>Google Forms</strong> (service fourni par Google). Les données saisies (nom de l'activité, contact, besoin commercial) sont utilisées uniquement pour étudier votre demande et vous répondre. Vous pouvez demander l'accès, la modification ou la suppression de vos informations à tout moment en contactant Lumina.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       PIED DE PAGE
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand-name" style="color: var(--ivory);">Lumina</span>
+          <span class="brand-sub" style="display: block; color: var(--beige); margin-bottom: 12px;">Product Studio &amp; Campaign</span>
+          <p style="font-size: 0.9rem; color: rgba(246, 241, 232, 0.75); max-width: 360px;">
+            Visuels publicitaires et campagnes marketing structurées. Prestations ponctuelles, personnalisées et sans abonnement.
+          </p>
+        </div>
+
+        <div>
+          <strong style="display: block; margin-bottom: 12px; font-size: 0.9rem;">Navigation</strong>
+          <ul class="footer-links">
+            <li><button type="button" class="js-nav-tab" data-target="accueil">Accueil</button></li>
+            <li><button type="button" class="js-nav-tab" data-target="offres-globales">Toutes les offres (Studio &amp; Campaign)</button></li>
+            <li><button type="button" class="js-nav-tab" data-target="studio">Lumina Product Studio</button></li>
+            <li><button type="button" class="js-nav-tab" data-target="campaign">Lumina Campaign</button></li>
+            <li><button type="button" class="js-nav-tab" data-target="fonctionnement">Fonctionnement</button></li>
+            <li><button type="button" class="js-nav-tab" data-target="faq">FAQ</button></li>
+            <li><button type="button" class="js-nav-tab" data-target="mentions-legales">Mentions légales &amp; Confidentialité</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <strong style="display: block; margin-bottom: 12px; font-size: 0.9rem;">Liens officiels</strong>
+          <ul class="footer-links">
+            <li><a href="https://forms.gle/mY2wkRphtXaiv8Eo6" target="_blank" rel="noopener noreferrer" class="js-order-link">Formulaire de demande (Google Forms)</a></li>
+            <li><a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer" class="js-ig-link">Instagram (@lumina.product_studio)</a></li>
+            <li><a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer" class="js-tt-link">TikTok (@lumina.product_st)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear">2026</span> Lumina Product Studio &amp; Campaign. Tous droits réservés.</span>
+        <span>Prestations ponctuelles sans abonnement</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const LUMINA_CONFIG = {
+      orderFormUrl: "https://forms.gle/mY2wkRphtXaiv8Eo6",
+      instagramUrl: "https://www.instagram.com/lumina.product_studio/",
+      tiktokUrl: "https://www.tiktok.com/@lumina.product_st"
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Liens officiels centralisés
+      document.querySelectorAll(".js-order-link").forEach(el => el.setAttribute("href", LUMINA_CONFIG.orderFormUrl));
+      document.querySelectorAll(".js-ig-link").forEach(el => el.setAttribute("href", LUMINA_CONFIG.instagramUrl));
+      document.querySelectorAll(".js-tt-link").forEach(el => el.setAttribute("href", LUMINA_CONFIG.tiktokUrl));
+
+      // 2. Année dynamique
+      const yearEl = document.getElementById("currentYear");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // 3. Navigation par onglets avec relance propre des animations CSS
+      const tabs = document.querySelectorAll(".js-nav-tab");
+      const sections = document.querySelectorAll(".view-section");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuToggle = document.getElementById("menuToggle");
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          if (!targetId) return;
+
+          sections.forEach(sec => sec.classList.remove("is-active"));
+
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            // Force le recalcul CSS (reflow) pour que l'animation se rejoue à chaque clic
+            void targetSection.offsetWidth;
+            targetSection.classList.add("is-active");
+          }
+
+          tabs.forEach(t => t.classList.remove("is-active-tab"));
+          document.querySelectorAll(`.js-nav-tab[data-target="${targetId}"]`).forEach(t => t.classList.add("is-active-tab"));
+
+          if (mobileMenu && mobileMenu.classList.contains("is-open")) {
+            mobileMenu.classList.remove("is-open");
+            if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+          }
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+
+      // 4. Menu mobile iPhone
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", function () {
+          const isOpen = mobileMenu.classList.toggle("is-open");
+          menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      }
+
+      // 5. FAQ interactive (Accordéon)
+      document.querySelectorAll(".faq-question").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const item = btn.parentElement;
+          const isOpen = item.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
