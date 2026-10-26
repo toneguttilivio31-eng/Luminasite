@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lumina Product Studio &amp; Lumina Campaign | Visuels produits et campagnes marketing</title>
+  <meta name="description" content="Des contenus commerciaux cohérents et personnalisés pour mieux présenter vos produits (Lumina Product Studio) et préparer vos campagnes marketing (Lumina Campaign).">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F6F1E8">
+  <link rel="canonical" href="https://lumina-product-studio.netlify.app/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Lumina Product Studio &amp; Campaign">
+  <meta property="og:title" content="Lumina — Donnez à vos produits une image professionnelle">
+  <meta property="og:description" content="Des visuels publicitaires et des contenus marketing pensés pour vos produits, votre marque et vos objectifs.">
+  <meta property="og:url" content="https://lumina-product-studio.netlify.app/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #F6F1E8;
+      --ivory-light: #FAF8F3;
+      --charcoal: #242321;
+      --charcoal-muted: #52504C;
+      --sage: #A9B9A5;
+      --sage-dark: #4A5D46;
+      --sage-light: #E4ECE2;
+      --beige: #D8C7B2;
+      --beige-light: #EBE1D5;
+      --error: #9E2A2B;
+      --error-bg: #F9EAEB;
+      --border: rgba(36, 35, 33, 0.13);
+      --border-strong: rgba(36, 35, 33, 0.28);
+      --shadow-sm: 0 4px 18px rgba(36, 35, 33, 0.05);
+      --shadow-md: 0 12px 32px rgba(36, 35, 33, 0.09);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 1160px;
+      --header-height: 72px;
+      --transition: 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      background-color: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.62;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .skip-link {
+      position: absolute; top: -100px; left: 16px;
+      background: var(--charcoal); color: var(--ivory);
+      padding: 10px 16px; border-radius: var(--radius-sm); z-index: 999; font-weight: 600;
+    }
+    .skip-link:focus { top: 12px; }
+    a { color: inherit; text-decoration: none; transition: all var(--transition); }
+    ul, ol { list-style: none; }
+    button, input, select, textarea { font-family: inherit; font-size: 16px; color: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--charcoal); outline-offset: 3px; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(16px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseDot {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(169, 185, 165, 0.85); }
+      70% { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(169, 185, 165, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(169, 185, 165, 0); }
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-view { display: none; padding: 44px 0 76px; }
+    .page-view.is-active {
+      display: block;
+      animation: fadeSlideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Bandeau supérieur animé */
+    .top-bar {
+      background: linear-gradient(270deg, #242321, #383530, #2c332b, #242321);
+      background-size: 300% 300%;
+      animation: gradientFlow 8s ease infinite;
+      color: var(--ivory);
+      padding: 10px 16px;
+      font-size: 0.84rem;
+      border-bottom: 1px solid rgba(246, 241, 232, 0.15);
+      position: relative;
+      z-index: 102;
+    }
+    .top-bar-inner {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: 8px 14px; text-align: center;
+    }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background-color: rgba(169, 185, 165, 0.2); border: 1px solid var(--sage);
+      color: var(--ivory); padding: 2px 10px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .status-dot { width: 7px; height: 7px; background-color: var(--sage); border-radius: 50%; animation: pulseDot 1.8s infinite; }
+    .top-bar-btn {
+      background-color: var(--sage); color: var(--charcoal);
+      font-weight: 700; font-size: 0.78rem; padding: 4px 12px; border-radius: 999px;
+      transition: transform var(--transition), background-color var(--transition);
+    }
+    .top-bar-btn:hover { background-color: var(--ivory); transform: scale(1.04); }
+
+    /* En-tête & Navigation */
+    .site-header {
+      position: sticky; top: 0; z-index: 100; height: var(--header-height);
+      background-color: rgba(246, 241, 232, 0.96);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .brand-logo { display: flex; flex-direction: column; line-height: 1.08; text-align: left; }
+    .brand-name { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+    .brand-sub { font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--charcoal-muted); font-weight: 600; }
+    .nav-links { display: none; align-items: center; gap: 4px; }
+    .nav-btn {
+      font-size: 0.86rem; font-weight: 500; color: var(--charcoal-muted);
+      padding: 8px 10px; border-radius: var(--radius-sm); transition: all var(--transition);
+    }
+    .nav-btn:hover { color: var(--charcoal); background-color: var(--beige-light); }
+    .nav-btn.is-active { color: var(--charcoal); font-weight: 700; background-color: var(--sage-light); }
+    .nav-cta-desktop { display: none; }
+    .menu-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: var(--header-height); left: 0; right: 0;
+      background-color: var(--ivory); border-bottom: 1px solid var(--border-strong);
+      padding: 20px; box-shadow: var(--shadow-md); z-index: 99;
+      max-height: calc(100vh - var(--header-height)); overflow-y: auto;
+    }
+    .mobile-menu.is-open { display: block; animation: fadeSlideUp 0.22s ease forwards; }
+    .mobile-menu ul { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+    .mobile-menu .nav-btn { width: 100%; text-align: left; padding: 12px; font-size: 0.98rem; font-weight: 600; border-bottom: 1px solid var(--border); }
+
+    /* Typographie & Boutons */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--sage-dark); background-color: var(--sage-light); border: 1px solid var(--sage);
+      padding: 5px 12px; border-radius: 999px; margin-bottom: 14px;
+    }
+    h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; line-height: 1.16; color: var(--charcoal); }
+    h1 { font-size: clamp(2.05rem, 4.6vw, 3.3rem); margin-bottom: 16px; }
+    h2 { font-size: clamp(1.65rem, 3.3vw, 2.4rem); margin-bottom: 12px; }
+    h3 { font-size: clamp(1.25rem, 2.2vw, 1.58rem); margin-bottom: 8px; }
+    .section-header { max-width: 740px; margin-bottom: 34px; }
+    .section-header p { color: var(--charcoal-muted); font-size: 1.01rem; }
+    .divider { margin: 48px 0; border: none; border-top: 1px solid var(--border); }
+
+    .btn-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 48px; padding: 12px 22px; font-size: 0.92rem; font-weight: 600;
+      border-radius: var(--radius-sm); transition: all var(--transition); text-align: center;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-primary { background-color: var(--charcoal); color: var(--ivory); border: 1px solid var(--charcoal); }
+    .btn-primary:hover { background-color: #383633; box-shadow: var(--shadow-sm); }
+    .btn-secondary { background-color: transparent; color: var(--charcoal); border: 1px solid var(--charcoal); }
+    .btn-secondary:hover { background-color: var(--beige-light); }
+    .btn-sage { background-color: var(--sage); color: var(--charcoal); border: 1px solid var(--sage); }
+    .btn-sage:hover { background-color: #97a993; }
+    .btn-full { width: 100%; }
+
+    /* Grilles & Cartes */
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr; gap: 18px; }
+
+    .card {
+      background-color: var(--ivory-light); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 26px 22px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
+      position: relative; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+    .card.is-featured { background-color: var(--ivory); border: 1.5px solid var(--charcoal); }
+
+    .pack-meta-top { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--charcoal-muted); }
+    .pack-price-wrap { margin: 10px 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .pack-price { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 700; line-height: 1; }
+    .pack-audience { font-size: 0.9rem; color: var(--charcoal-muted); margin-bottom: 12px; }
+    .pack-section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--charcoal); margin: 12px 0 6px; display: block; }
+
+    .list-included, .list-excluded { display: flex; flex-direction: column; gap: 7px; font-size: 0.89rem; }
+    .list-included li, .list-excluded li { display: flex; align-items: flex-start; gap: 8px; }
+    .list-included li::before { content: "✓"; color: var(--sage-dark); font-weight: 700; flex-shrink: 0; }
+    .list-excluded { color: var(--charcoal-muted); font-size: 0.84rem; }
+    .list-excluded li::before { content: "—"; color: var(--charcoal-muted); flex-shrink: 0; }
+
+    .pack-specs {
+      background-color: var(--beige-light); padding: 12px; border-radius: var(--radius-sm);
+      font-size: 0.82rem; color: var(--charcoal); display: grid; gap: 6px; margin-top: 10px;
+    }
+
+    /* Formulaire 7 étapes */
+    .form-wrapper {
+      background-color: var(--ivory-light); border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md); padding: 26px 20px; max-width: 900px; margin: 0 auto;
+    }
+    .form-step { padding: 22px 0; border-bottom: 1px solid var(--border); }
+    .form-step:first-of-type { padding-top: 0; }
+    .form-step:last-of-type { border-bottom: none; }
+    .step-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; background-color: var(--sage-light); color: var(--sage-dark);
+      padding: 3px 10px; border-radius: 999px; margin-bottom: 6px; border: 1px solid var(--sage);
+    }
+    .field-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 14px; }
+    .field-group { display: flex; flex-direction: column; gap: 5px; }
+    .field-label { font-weight: 600; font-size: 0.89rem; color: var(--charcoal); }
+    .req { color: var(--error); margin-left: 2px; }
+    .opt { font-weight: 400; font-size: 0.78rem; color: var(--charcoal-muted); }
+    .field-input {
+      width: 100%; padding: 11px 13px; background-color: var(--ivory);
+      border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+      transition: border-color var(--transition);
+    }
+    .field-input:focus { outline: none; border-color: var(--charcoal); box-shadow: 0 0 0 3px rgba(169, 185, 165, 0.35); }
+    .field-input.has-error { border-color: var(--error); background-color: var(--error-bg); }
+    textarea.field-input { min-height: 88px; resize: vertical; }
+    .err-text { display: none; color: var(--error); font-size: 0.8rem; font-weight: 500; }
+    .err-text.is-visible { display: block; }
+
+    .choice-cards { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+    .choice-label {
+      display: flex; align-items: flex-start; gap: 10px; padding: 13px 15px;
+      background-color: var(--ivory); border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-sm); cursor: pointer; transition: all var(--transition);
+    }
+    .choice-label:hover { background-color: var(--beige-light); }
+    .choice-label.is-checked { background-color: var(--sage-light); border-color: var(--charcoal); font-weight: 600; }
+    .choice-label input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--charcoal); flex-shrink: 0; }
+
+    .check-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .check-pill {
+      display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px;
+      background-color: var(--ivory); border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer;
+    }
+    .check-pill input { width: 16px; height: 16px; accent-color: var(--charcoal); }
+
+    .recap-calculator {
+      background-color: var(--ivory); border: 1.5px solid var(--charcoal);
+      border-radius: var(--radius-sm); padding: 18px; margin-top: 16px;
+    }
+    .recap-total { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--charcoal); }
+
+    /* FAQ & Footer */
+    .faq-list { max-width: 840px; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background-color: var(--ivory-light); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .faq-btn {
+      width: 100%; text-align: left; padding: 16px 18px; font-weight: 600; font-size: 0.95rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .faq-ans { display: none; padding: 12px 18px 16px; font-size: 0.9rem; color: var(--charcoal-muted); border-top: 1px solid var(--border); }
+    .faq-item.is-open .faq-ans { display: block; }
+
+    .site-footer { background-color: var(--charcoal); color: var(--ivory); padding: 48px 0 32px; margin-top: 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(246, 241, 232, 0.15); }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: rgba(246, 241, 232, 0.82); }
+    .footer-links button { text-align: left; color: inherit; }
+    .footer-links button:hover, .footer-links a:hover { color: #ffffff; text-decoration: underline; }
+    .footer-bottom { padding-top: 20px; font-size: 0.8rem; color: rgba(246, 241, 232, 0.65); display: flex; flex-direction: column; gap: 8px; }
+
+    @media (min-width: 768px) {
+      .grid-2, .field-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3, .choice-cards { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .form-wrapper { padding: 34px 30px; }
+      .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+    @media (min-width: 1040px) {
+      .menu-toggle, .mobile-menu { display: none !important; }
+      .nav-links { display: flex; }
+      .nav-cta-desktop { display: inline-flex; }
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- BANDEAU SUPÉRIEUR ANIMÉ — ACCÈS AUX 2 SERVICES -->
+  <div class="top-bar" role="region" aria-label="Présentation des deux services">
+    <div class="container top-bar-inner">
+      <span class="status-pill">
+        <span class="status-dot" aria-hidden="true"></span>
+        Studio &amp; Campaign
+      </span>
+      <span>
+        <strong>Lumina Product Studio</strong> (79 € / 119 €) &amp; <strong>Lumina Campaign</strong> (79 € / 149 €)
+      </span>
+      <button type="button" class="top-bar-btn js-nav" data-target="tous-les-packs">
+        Comparer les 4 packs ↗
+      </button>
+    </div>
+  </div>
+
+  <!-- A. EN-TÊTE -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <button type="button" class="brand-logo js-nav" data-target="accueil" aria-label="Lumina - Retour à l'accueil">
+        <span class="brand-name">Lumina</span>
+        <span class="brand-sub">Product Studio &amp; Campaign</span>
+      </button>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><button type="button" class="nav-btn is-active js-nav" data-target="accueil">Accueil</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="studio">Product Studio</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="campaign">Campaign</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="tous-les-packs">Les 4 Packs</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="fonctionnement">Fonctionnement</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="faq">FAQ</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="contact">Contact</button></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="btn btn-primary nav-cta-desktop js-nav" data-target="demande">
+        Demander une prestation
+      </button>
+
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+      <ul>
+        <li><button type="button" class="nav-btn is-active js-nav" data-target="accueil">Accueil</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="studio">Lumina Product Studio</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="campaign">Lumina Campaign</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="tous-les-packs">Comparer les 4 Packs</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="fonctionnement">Comment ça fonctionne</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="faq">Questions fréquentes (FAQ)</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="contact">Contact &amp; Réseaux</button></li>
+      </ul>
+      <button type="button" class="btn btn-primary btn-full js-nav" data-target="demande">
+        Demander une prestation
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- B. SECTION D'ACCUEIL + E. POURQUOI LUMINA -->
+    <section id="view-accueil" class="page-view is-active" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="eyebrow">Lumina Product Studio &amp; Campaign</span>
+            <h1 id="hero-heading">Donnez à vos produits une image professionnelle.</h1>
+            <p style="font-size: 1.06rem; color: var(--charcoal-muted); margin-bottom: 12px;">
+              Des visuels publicitaires et des contenus marketing pensés pour vos produits, votre marque et vos objectifs.
+            </p>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--charcoal); background-color: var(--beige-light); padding: 12px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--charcoal);">
+              « Des contenus commerciaux cohérents et personnalisés pour mieux présenter vos produits et préparer vos campagnes marketing. »
+            </p>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary js-nav" data-target="studio">
+                Découvrir Product Studio
+              </button>
+              <button type="button" class="btn btn-secondary js-nav" data-target="campaign">
+                Découvrir Campaign
+              </button>
+              <button type="button" class="btn btn-sage js-nav" data-target="demande">
+                Demander une prestation
+              </button>
+            </div>
+          </div>
+
+          <div class="card is-featured">
+            <div>
+              <span class="pack-meta-top">Deux services distincts et complémentaires</span>
+              <h3>Présentation produit ou préparation de campagne</h3>
+              <ul class="list-included" style="margin-top: 14px;">
+                <li><strong>Lumina Product Studio :</strong> Création de visuels publicitaires et de contenus commerciaux (titre, description, arguments) pour présenter un ou deux produits.</li>
+                <li><strong>Lumina Campaign :</strong> Préparation structurée d'une campagne marketing (angle, accroches, textes, appels à l'action et recommandations de diffusion).</li>
+                <li><strong>Réception directe :</strong> Votre demande nous est envoyée directement sur notre boîte professionnelle <strong>Lumina.product.contact@gmail.com</strong>.</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-secondary btn-full js-nav" data-target="tous-les-packs">
+              Voir et comparer les 4 packs →
+            </button>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- E. POURQUOI LUMINA -->
+        <div class="section-header">
+          <span class="eyebrow">Nos engagements</span>
+          <h2>Pourquoi choisir Lumina ?</h2>
+          <p>Une approche claire, structurée et adaptée à la réalité des marques indépendantes, des boutiques et des entreprises.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div>
+              <h3>Contenus adaptés au produit</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Chaque visuel et chaque texte commercial est pensé selon les caractéristiques réelles et le positionnement de votre produit.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h3>Respect des éléments distinctifs</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Préservation attentive de la forme, des couleurs, de l'étiquette, du logo et de l'emballage qui font l'identité de votre produit.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h3>Livrables clairement définis</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Vous connaissez dès le départ les livrables inclus, les formats remis, les limites de chaque pack et la série de corrections incluse.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h3>Ouvert à différents secteurs</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Prestations adaptées à une grande variété de produits et d'offres commerciales, sans se limiter à une seule catégorie.</p>
+            </div>
+          </div>
+          <div class="card is-featured">
+            <div>
+              <h3>Combinaison Studio + Campaign</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Possibilité de commander un seul service ou de combiner visuels produits et préparation marketing dans une seule demande.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C. PRÉSENTATION DE LUMINA PRODUCT STUDIO -->
+    <section id="view-studio" class="page-view" aria-labelledby="studio-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Service 1 — Présentation visuelle &amp; commerciale</span>
+          <h1 id="studio-heading">Lumina Product Studio</h1>
+          <p>
+            Création de visuels publicitaires et de contenus commerciaux pour présenter un produit. La prestation associe la présentation visuelle du produit à des textes commerciaux personnalisés.
+          </p>
+        </div>
+        <div class="grid-2" id="studioPacksContainer"></div>
+      </div>
+    </section>
+
+    <!-- D. PRÉSENTATION DE LUMINA CAMPAIGN -->
+    <section id="view-campaign" class="page-view" aria-labelledby="campaign-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Service 2 — Préparation marketing structurée</span>
+          <h1 id="campaign-heading">Lumina Campaign</h1>
+          <p>
+            Préparation structurée d’une campagne marketing pour promouvoir un produit, un lancement, une offre commerciale ou un événement. La prestation apporte un angle marketing, des accroches, des textes, des appels à l’action et des recommandations de diffusion selon le pack.
+          </p>
+        </div>
+        <div class="grid-2" id="campaignPacksContainer"></div>
+      </div>
+    </section>
+
+    <!-- COMPARATIF DES 4 PACKS -->
+    <section id="view-tous-les-packs" class="page-view" aria-labelledby="all-packs-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Comparatif complet</span>
+          <h1 id="all-packs-heading">Les 4 packs officiels Lumina</h1>
+          <p>Comparez les deux offres Product Studio et les deux offres Campaign. Cliquez sur « Demander ce pack » pour ouvrir le formulaire pré-rempli.</p>
+        </div>
+
+        <h2 style="margin-bottom: 18px;">Lumina Product Studio</h2>
+        <div class="grid-2" id="allStudioContainer" style="margin-bottom: 44px;"></div>
+
+        <h2 style="margin-bottom: 18px;">Lumina Campaign</h2>
+        <div class="grid-2" id="allCampaignContainer"></div>
+      </div>
+    </section>
+
+    <!-- F. COMMENT ÇA FONCTIONNE -->
+    <section id="view-fonctionnement" class="page-view" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Parcours client</span>
+          <h1 id="how-heading">Comment ça fonctionne</h1>
+          <p>Les modalités définitives sont systématiquement confirmées après examen de votre demande.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <div>
+              <span class="pack-meta-top">Étape 1</span>
+              <h3>Le client décrit son besoin</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Vous choisissez votre service et votre pack, puis renseignez les informations sur votre produit ou votre offre dans le formulaire.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="pack-meta-top">Étape 2</span>
+              <h3>Lumina examine la demande</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Nous recevons votre demande par e-mail sur Lumina.product.contact@gmail.com et analysons la faisabilité de votre projet.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="pack-meta-top">Étape 3</span>
+              <h3>Confirmation des détails</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">Les détails, le périmètre exact de la prestation, les modalités et les délais sont confirmés avec vous avant tout démarrage.</p>
+            </div>
+          </div>
+          <div class="card is-featured">
+            <div>
+              <span class="pack-meta-top">Étape 4</span>
+              <h3>Réalisation et transmission</h3>
+              <p style="font-size: 0.9rem; color: var(--charcoal-muted);">La prestation est réalisée dans le respect du brief validé et les livrables finaux vous sont transmis dans les formats prévus.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary js-nav" data-target="demande">
+            Démarrer ma demande de prestation →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FORMULAIRE DE DEMANDE INTÉGRÉ (ENVOI DIRECT SUR LUMINA.PRODUCT.CONTACT@GMAIL.COM) -->
+    <section id="view-demande" class="page-view" aria-labelledby="form-heading">
+      <div class="container">
+        <div class="section-header" style="margin-left: auto; margin-right: auto;">
+          <span class="eyebrow">Demande de prestation (Envoi direct par e-mail)</span>
+          <h1 id="form-heading">Formulaire de demande de prestation</h1>
+          <p>
+            Ce formulaire transmet directement votre demande à <strong>Lumina.product.contact@gmail.com</strong>. Il s'agit d'une demande de prestation et non d'un paiement en ligne.
+          </p>
+        </div>
+
+        <!-- MESSAGE DE CONFIRMATION EXACT APRÈS ENVOI RÉUSSI -->
+        <div id="confirmationScreen" class="card is-featured" style="display: none; max-width: 760px; margin: 0 auto; background-color: var(--sage-light);">
+          <div>
+            <h2>Merci pour votre demande !</h2>
+            <p style="margin-top: 12px;">Votre demande a bien été transmise à Lumina.</p>
+            <p style="margin-top: 10px;">
+              Nous examinerons les informations de votre projet et vous recontacterons par e-mail pour confirmer les détails de la prestation, sa faisabilité, les délais et les prochaines étapes.
+            </p>
+            <p style="margin-top: 10px; font-weight: 600;">
+              L’envoi de ce formulaire ne constitue pas encore une acceptation définitive de la commande ni une confirmation de paiement.
+            </p>
+            <p style="margin-top: 14px; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700;">
+              À bientôt,<br>
+              Lumina Product Studio &amp; Lumina Campaign
+            </p>
+            <p id="savedRefDisplay" style="margin-top: 12px; font-size: 0.85rem; color: var(--charcoal-muted);"></p>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" id="resetNewRequestBtn">Nouvelle demande</button>
+            <button type="button" class="btn btn-secondary js-nav" data-target="accueil">Retour à l'accueil</button>
+          </div>
+        </div>
+
+        <!-- FORMULAIRE SANS SUPABASE — RELIÉ À LUMINA.PRODUCT.CONTACT@GMAIL.COM -->
+        <form
+          name="demande-prestation-lumina"
+          method="POST"
+          data-netlify="true"
+          id="luminaOrderForm"
+          class="form-wrapper"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="demande-prestation-lumina">
+          <input type="hidden" name="reference_demande" id="reference_demande">
+          <input type="hidden" name="montant_indicatif_total" id="montant_indicatif_total">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <!-- ÉTAPE 1 — INFORMATIONS DU CLIENT -->
+          <div class="form-step">
+            <span class="step-badge">Étape 1 sur 7</span>
+            <h3>Informations du client</h3>
+
+            <div class="field-grid">
+              <div class="field-group">
+                <label for="f_nom" class="field-label">Nom et prénom <span class="req">*</span></label>
+                <input type="text" id="f_nom" name="Nom_et_prenom" class="field-input" required autocomplete="name">
+                <span class="err-text" id="err-f_nom">Veuillez renseigner votre nom et prénom.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_marque" class="field-label">Nom de la marque, boutique ou entreprise <span class="req">*</span></label>
+                <input type="text" id="f_marque" name="Marque_ou_entreprise" class="field-input" required autocomplete="organization">
+                <span class="err-text" id="err-f_marque">Veuillez renseigner le nom de votre marque ou entreprise.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_email" class="field-label">Adresse e-mail <span class="req">*</span></label>
+                <input type="email" id="f_email" name="email" class="field-input" required autocomplete="email">
+                <span class="err-text" id="err-f_email">Veuillez saisir une adresse e-mail valide.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_site" class="field-label">Site internet ou liens vers les réseaux sociaux <span class="opt">(facultatif)</span></label>
+                <input type="text" id="f_site" name="Site_ou_reseaux" class="field-input" placeholder="https://... ou @votre_marque">
+              </div>
+
+              <div class="field-group">
+                <label for="f_type_activite" class="field-label">Type d’activité <span class="req">*</span></label>
+                <select id="f_type_activite" name="Type_activite" class="field-input" required>
+                  <option value="">-- Sélectionnez votre activité --</option>
+                  <option value="Marque indépendante">Marque indépendante</option>
+                  <option value="Boutique physique">Boutique physique</option>
+                  <option value="Boutique en ligne">Boutique en ligne</option>
+                  <option value="Créateur ou fabricant de produits">Créateur ou fabricant de produits</option>
+                  <option value="Entreprise">Entreprise</option>
+                  <option value="Autre">Autre</option>
+                </select>
+                <span class="err-text" id="err-f_type_activite">Veuillez sélectionner votre type d'activité.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_decouverte" class="field-label">Découverte de Lumina <span class="opt">(facultatif)</span></label>
+                <select id="f_decouverte" name="Decouverte_Lumina" class="field-input">
+                  <option value="">-- Comment nous avez-vous connus ? --</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Recommandation">Recommandation</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 2 — CHOIX DU SERVICE -->
+          <div class="form-step">
+            <span class="step-badge">Étape 2 sur 7</span>
+            <h3>Choix du service</h3>
+            <p style="font-size: 0.88rem; color: var(--charcoal-muted);">Vous pouvez demander un seul service ou combiner Product Studio et Campaign.</p>
+
+            <div class="choice-cards" role="radiogroup" aria-label="Choix du service">
+              <label class="choice-label is-checked" id="lbl-srv-studio">
+                <input type="radio" name="Service_choisi" value="Lumina Product Studio" checked>
+                <div>
+                  <strong>Lumina Product Studio</strong>
+                  <div style="font-size: 0.8rem; color: var(--charcoal-muted);">Visuels &amp; textes produits</div>
+                </div>
+              </label>
+
+              <label class="choice-label" id="lbl-srv-campaign">
+                <input type="radio" name="Service_choisi" value="Lumina Campaign">
+                <div>
+                  <strong>Lumina Campaign</strong>
+                  <div style="font-size: 0.8rem; color: var(--charcoal-muted);">Préparation de campagne</div>
+                </div>
+              </label>
+
+              <label class="choice-label" id="lbl-srv-both">
+                <input type="radio" name="Service_choisi" value="Product Studio + Campaign">
+                <div>
+                  <strong>Product Studio + Campaign</strong>
+                  <div style="font-size: 0.8rem; color: var(--charcoal-muted);">Demande combinée</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 3 — CHOIX DES PACKS & RÉCAPITULATIF CALCULÉ -->
+          <div class="form-step">
+            <span class="step-badge">Étape 3 sur 7</span>
+            <h3>Choix des packs et récapitulatif</h3>
+
+            <div class="field-grid">
+              <div class="field-group" id="groupPackStudio">
+                <label for="f_pack_studio" class="field-label">Pack Lumina Product Studio <span class="req">*</span></label>
+                <select id="f_pack_studio" name="Pack_Product_Studio" class="field-input">
+                  <option value="Essentials — 79 €">Essentials — 79 € (1 produit, jusqu'à 2 visuels + textes)</option>
+                  <option value="Collection — 119 €">Collection — 119 € (Jusqu'à 2 produits, 2 visuels au total + textes)</option>
+                </select>
+              </div>
+
+              <div class="field-group" id="groupPackCampaign" style="display: none;">
+                <label for="f_pack_campaign" class="field-label">Pack Lumina Campaign <span class="req">*</span></label>
+                <select id="f_pack_campaign" name="Pack_Lumina_Campaign" class="field-input">
+                  <option value="Non sélectionné">-- Non sélectionné --</option>
+                  <option value="Campaign Essentiel — 79 €">Campaign Essentiel — 79 € (Angle, 3 accroches, 2 textes, 2 CTA)</option>
+                  <option value="Campaign Complète — 149 €">Campaign Complète — 149 € (Stratégie, 5 accroches, 4 textes, plan 7j)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="recap-calculator" aria-live="polite">
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 10px;">
+                <div>
+                  <strong style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em;">Montant indicatif total des prestations sélectionnées :</strong>
+                  <div style="font-size: 0.8rem; color: var(--charcoal-muted);">Ce total est indicatif ; la demande devra être confirmée par Lumina avant toute commande définitive.</div>
+                </div>
+                <span class="recap-total" id="displayTotalAmount">79 €</span>
+              </div>
+              <div style="font-size: 0.86rem;">
+                <strong>Livrables inclus dans votre sélection :</strong>
+                <ul class="list-included" id="displaySelectedDeliverables" style="margin-top: 6px;"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 4 — INFORMATIONS SUR LE PRODUIT OU L'OFFRE -->
+          <div class="form-step">
+            <span class="step-badge">Étape 4 sur 7</span>
+            <h3>Informations sur le produit ou l’offre</h3>
+
+            <div class="field-grid">
+              <div class="field-group">
+                <label for="f_prod_nom" class="field-label">Nom du produit ou de l’offre <span class="req">*</span></label>
+                <input type="text" id="f_prod_nom" name="Nom_produit_ou_offre" class="field-input" required>
+                <span class="err-text" id="err-f_prod_nom">Veuillez indiquer le nom du produit ou de l'offre.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_prod_cat" class="field-label">Catégorie du produit ou de l’offre <span class="req">*</span></label>
+                <input type="text" id="f_prod_cat" name="Categorie_produit_ou_offre" class="field-input" required placeholder="Ex : Soin visage, Bougie, Bijou, Service, Vêtement...">
+                <span class="err-text" id="err-f_prod_cat">Veuillez indiquer la catégorie.</span>
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <label for="f_prod_desc" class="field-label">Description du produit ou de l’offre <span class="req">*</span></label>
+                <textarea id="f_prod_desc" name="Description_produit_ou_offre" class="field-input" required placeholder="Caractéristiques, composition, usage, particularités..."></textarea>
+                <span class="err-text" id="err-f_prod_desc">Veuillez décrire votre produit ou votre offre.</span>
+              </div>
+
+              <div class="field-group" id="secondProductBox" style="grid-column: 1 / -1; display: none; background-color: var(--beige-light); padding: 14px; border-radius: var(--radius-sm);">
+                <label for="f_prod_second" class="field-label">Description du 2e produit (Pack Collection ou produits multiples) <span class="opt">(recommandé pour Collection)</span></label>
+                <textarea id="f_prod_second" name="Second_produit_details" class="field-input" placeholder="Nom, description, prix et avantages du second produit à présenter..."></textarea>
+              </div>
+
+              <div class="field-group">
+                <label for="f_prod_prix" class="field-label">Prix de vente ou montant de l’offre <span class="opt">(facultatif)</span></label>
+                <input type="text" id="f_prod_prix" name="Prix_vente_ou_offre" class="field-input" placeholder="Ex : 35 €">
+              </div>
+
+              <div class="field-group">
+                <label for="f_prod_cible" class="field-label">Public cible <span class="req">*</span></label>
+                <input type="text" id="f_prod_cible" name="Public_cible" class="field-input" required placeholder="À quels clients s'adresse ce produit ou cette offre ?">
+                <span class="err-text" id="err-f_prod_cible">Veuillez préciser le public cible.</span>
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <label for="f_prod_avantages" class="field-label">Trois principaux avantages <span class="req">*</span></label>
+                <textarea id="f_prod_avantages" name="Trois_principaux_avantages" class="field-input" required placeholder="1. Premier avantage clé&#10;2. Deuxième avantage clé&#10;3. Troisième avantage clé"></textarea>
+                <span class="err-text" id="err-f_prod_avantages">Veuillez indiquer les trois principaux avantages.</span>
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <label for="f_prod_diff" class="field-label">Différence par rapport aux offres concurrentes <span class="opt">(facultatif)</span></label>
+                <input type="text" id="f_prod_diff" name="Difference_concurrence" class="field-input" placeholder="Ce qui distingue votre produit ou votre marque">
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 5 — PHOTOS ET IDENTITÉ VISUELLE -->
+          <div class="form-step" id="stepPhotosIdentity">
+            <span class="step-badge">Étape 5 sur 7</span>
+            <h3>Photos et identité visuelle</h3>
+
+            <div class="field-grid">
+              <div class="field-group">
+                <label for="f_photos_dispo" class="field-label">Disposez-vous déjà de photos du produit ? <span class="req" id="reqStarPhotos">*</span></label>
+                <select id="f_photos_dispo" name="Disposition_photos" class="field-input">
+                  <option value="">-- Sélectionnez --</option>
+                  <option value="Oui, plusieurs photos">Oui, plusieurs photos</option>
+                  <option value="Oui, une seule photo">Oui, une seule photo</option>
+                  <option value="Non, je n’ai pas de photo">Non, je n’ai pas de photo</option>
+                </select>
+                <span class="err-text" id="err-f_photos_dispo">Veuillez préciser si vous disposez de photos.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_style_visuel" class="field-label">Style visuel préféré <span class="req" id="reqStarStyle">*</span></label>
+                <select id="f_style_visuel" name="Style_visuel_prefere" class="field-input">
+                  <option value="">-- Sélectionnez un style --</option>
+                  <option value="Naturel et professionnel">Naturel et professionnel</option>
+                  <option value="Moderne et épuré">Moderne et épuré</option>
+                  <option value="Élégant et raffiné">Élégant et raffiné</option>
+                  <option value="Coloré et dynamique">Coloré et dynamique</option>
+                  <option value="Créatif et original">Créatif et original</option>
+                  <option value="Je vous laisse proposer">Je vous laisse proposer</option>
+                </select>
+                <span class="err-text" id="err-f_style_visuel">Veuillez sélectionner un style visuel.</span>
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <span class="field-label">Réseaux ou supports de diffusion souhaités</span>
+                <div class="check-pills">
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="Instagram"> Instagram</label>
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="TikTok"> TikTok</label>
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="LinkedIn"> LinkedIn</label>
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="Facebook"> Facebook</label>
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="Site internet ou boutique en ligne"> Site internet ou boutique en ligne</label>
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="Publicité en ligne"> Publicité en ligne</label>
+                  <label class="check-pill"><input type="checkbox" name="supports_visuels" value="Autre"> Autre</label>
+                </div>
+                <input type="hidden" name="Supports_visuels_souhaites" id="supports_visuels_liste">
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <label for="f_elements_fideles" class="field-label">Éléments du produit devant impérativement rester fidèles <span class="req" id="reqStarFideles">*</span></label>
+                <input type="text" id="f_elements_fideles" name="Elements_produit_fideles" class="field-input" placeholder="Ex : Forme, taille, couleurs, étiquette, logo, emballage, détails distinctifs...">
+                <span class="err-text" id="err-f_elements_fideles">Veuillez indiquer les éléments du produit à préserver impérativement.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_couleurs_marque" class="field-label">Couleurs ou univers de la marque <span class="opt">(facultatif)</span></label>
+                <input type="text" id="f_couleurs_marque" name="Couleurs_univers_marque" class="field-input" placeholder="Ex : Tons naturels, beige, vert sauge...">
+              </div>
+
+              <div class="field-group">
+                <label for="f_ref_visuelles" class="field-label">Références visuelles ou liens d’inspiration <span class="opt">(facultatif)</span></label>
+                <input type="text" id="f_ref_visuelles" name="References_visuelles" class="field-input" placeholder="Liens ou descriptions d'ambiances">
+              </div>
+            </div>
+
+            <div class="pack-specs" style="margin-top: 14px;">
+              <strong>Transmission de vos photos :</strong> Vos photos produits pourront être envoyées directement par retour d'e-mail à <strong>Lumina.product.contact@gmail.com</strong> dès réception de notre message de prise en charge.
+            </div>
+          </div>
+
+          <!-- ÉTAPE 6 — BESOINS MARKETING -->
+          <div class="form-step">
+            <span class="step-badge">Étape 6 sur 7</span>
+            <h3>Besoins marketing</h3>
+
+            <div class="field-grid">
+              <div class="field-group">
+                <label for="f_msg_principal" class="field-label">Message principal à transmettre <span class="req">*</span></label>
+                <input type="text" id="f_msg_principal" name="Message_principal" class="field-input" required placeholder="L'idée essentielle à retenir">
+                <span class="err-text" id="err-f_msg_principal">Veuillez indiquer le message principal à transmettre.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_raison_choix" class="field-label">Principale raison pour laquelle le client devrait choisir le produit <span class="req">*</span></label>
+                <input type="text" id="f_raison_choix" name="Raison_choisir_produit" class="field-input" required placeholder="L'argument décisif">
+                <span class="err-text" id="err-f_raison_choix">Veuillez indiquer la raison principale de choisir votre produit.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_ton" class="field-label">Ton souhaité <span class="req">*</span></label>
+                <select id="f_ton" name="Ton_souhaite" class="field-input" required>
+                  <option value="">-- Sélectionnez le ton --</option>
+                  <option value="Professionnel">Professionnel</option>
+                  <option value="Chaleureux et accessible">Chaleureux et accessible</option>
+                  <option value="Élégant">Élégant</option>
+                  <option value="Dynamique et accrocheur">Dynamique et accrocheur</option>
+                  <option value="Direct et commercial">Direct et commercial</option>
+                  <option value="Je vous laisse choisir">Je vous laisse choisir</option>
+                </select>
+                <span class="err-text" id="err-f_ton">Veuillez sélectionner un ton.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_objectif" class="field-label">Objectif principal <span class="req">*</span></label>
+                <select id="f_objectif" name="Objectif_principal" class="field-input" required>
+                  <option value="">-- Sélectionnez l'objectif --</option>
+                  <option value="Faire connaître un produit">Faire connaître un produit</option>
+                  <option value="Présenter un nouveau produit">Présenter un nouveau produit</option>
+                  <option value="Promouvoir une offre ou une réduction">Promouvoir une offre ou une réduction</option>
+                  <option value="Attirer de nouveaux clients">Attirer de nouveaux clients</option>
+                  <option value="Développer la visibilité de la marque">Développer la visibilité de la marque</option>
+                  <option value="Améliorer la présentation du produit">Améliorer la présentation du produit</option>
+                  <option value="Soutenir un événement commercial">Soutenir un événement commercial</option>
+                  <option value="Autre">Autre</option>
+                </select>
+                <span class="err-text" id="err-f_objectif">Veuillez sélectionner un objectif principal.</span>
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <label for="f_mots_eviter" class="field-label">Mots, arguments ou promesses à utiliser ou éviter <span class="opt">(facultatif)</span></label>
+                <input type="text" id="f_mots_eviter" name="Mots_utiliser_ou_eviter" class="field-input" placeholder="Termes obligatoires ou mots à exclure">
+              </div>
+
+              <div id="campaignSpecificFields" style="grid-column: 1 / -1; display: none; border-top: 1px dashed var(--border-strong); padding-top: 14px;">
+                <div class="field-grid" style="margin-top: 0;">
+                  <div class="field-group" style="grid-column: 1 / -1;">
+                    <label for="f_camp_evenement" class="field-label">Offre ou événement à promouvoir (Spécifique Campaign) <span class="req">*</span></label>
+                    <textarea id="f_camp_evenement" name="Campaign_offre_ou_evenement" class="field-input" placeholder="Détaillez l'offre promotionnelle, le lancement ou l'événement commercial..."></textarea>
+                    <span class="err-text" id="err-f_camp_evenement">Veuillez décrire l'offre ou l'événement à promouvoir pour Campaign.</span>
+                  </div>
+
+                  <div class="field-group" style="grid-column: 1 / -1;">
+                    <span class="field-label">Canaux de diffusion souhaités pour Campaign <span class="opt">(facultatif)</span></span>
+                    <div class="check-pills">
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="Instagram"> Instagram</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="TikTok"> TikTok</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="LinkedIn"> LinkedIn</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="Facebook"> Facebook</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="Site internet"> Site internet</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="E-mail"> E-mail</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="Publicité en ligne"> Publicité en ligne</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="Autre"> Autre</label>
+                      <label class="check-pill"><input type="checkbox" name="canaux_campaign" value="Je souhaite être conseillé"> Je souhaite être conseillé</label>
+                    </div>
+                    <input type="hidden" name="Canaux_Campaign_souhaites" id="canaux_campaign_liste">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ÉTAPE 7 — DATE ET FINALISATION -->
+          <div class="form-step">
+            <span class="step-badge">Étape 7 sur 7</span>
+            <h3>Date et finalisation</h3>
+
+            <div class="field-grid">
+              <div class="field-group">
+                <label for="f_date_souhaitee" class="field-label">Date souhaitée de livraison ou de lancement <span class="req">*</span></label>
+                <input type="date" id="f_date_souhaitee" name="Date_souhaitee" class="field-input" required>
+                <span class="err-text" id="err-f_date_souhaitee">Veuillez indiquer une date souhaitée.</span>
+              </div>
+
+              <div class="field-group">
+                <label for="f_pref_contact" class="field-label">Préférence de contact <span class="req">*</span></label>
+                <select id="f_pref_contact" name="Preference_contact" class="field-input" required>
+                  <option value="Par e-mail">Par e-mail</option>
+                  <option value="Par Instagram">Par Instagram</option>
+                </select>
+              </div>
+
+              <div class="field-group" style="grid-column: 1 / -1;">
+                <label for="f_infos_comp" class="field-label">Informations complémentaires <span class="opt">(facultatif)</span></label>
+                <textarea id="f_infos_comp" name="Informations_complementaires" class="field-input" placeholder="Précisions ou questions éventuelles..."></textarea>
+              </div>
+            </div>
+
+            <div style="margin-top: 18px;">
+              <label class="choice-label" style="align-items: flex-start;">
+                <input type="checkbox" id="f_droits_confirm" name="Confirmation_droits" value="Confirmé" required>
+                <span style="font-size: 0.88rem;">
+                  « Je confirme disposer des droits ou autorisations nécessaires pour transmettre les photos, logos et informations fournis à Lumina dans le cadre de cette demande. » <span class="req">*</span>
+                </span>
+              </label>
+              <span class="err-text" id="err-f_droits_confirm">Vous devez confirmer disposer des droits sur les éléments transmis.</span>
+            </div>
+
+            <div class="pack-specs" style="margin-top: 14px;">
+              <strong>Notice de confidentialité :</strong> Les informations saisies dans ce formulaire sont envoyées directement sur la boîte e-mail professionnelle de Lumina (<a href="mailto:Lumina.product.contact@gmail.com" style="text-decoration: underline;">Lumina.product.contact@gmail.com</a>) uniquement pour étudier votre demande et vous répondre. Aucune base de données externe (Supabase) ni aucun traceur publicitaire n'est utilisé.
+            </div>
+
+            <div id="globalFormError" style="display: none; margin-top: 16px; padding: 14px; background-color: var(--error-bg); border: 1px solid var(--error); border-radius: var(--radius-sm); color: var(--error); font-size: 0.88rem;"></div>
+
+            <div class="btn-group">
+              <button type="submit" class="btn btn-primary btn-full" id="submitOrderBtn">
+                Envoyer ma demande à Lumina
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- H. QUESTIONS FRÉQUENTES -->
+    <section id="view-faq" class="page-view" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Questions fréquentes</span>
+          <h1 id="faq-heading">Réponses claires sur nos packs et notre fonctionnement</h1>
+        </div>
+        <div class="faq-list" id="faqContainer"></div>
+      </div>
+    </section>
+
+    <!-- G. RÉSEAUX SOCIAUX & CONTACT OFFICIEL -->
+    <section id="view-contact" class="page-view" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Contact &amp; Réseaux officiels</span>
+          <h1 id="contact-heading">Contacter Lumina et suivre nos publications</h1>
+        </div>
+
+        <div class="grid-2">
+          <div class="card is-featured">
+            <div>
+              <span class="pack-meta-top">Contact professionnel</span>
+              <h3>Formulaire intégré &amp; Adresse e-mail directe</h3>
+              <p style="font-size: 0.92rem; color: var(--charcoal-muted); margin-top: 8px;">
+                Utilisez notre formulaire en 7 étapes pour envoyer directement votre demande détaillée sur notre boîte mail, ou écrivez-nous à :
+              </p>
+              <div class="pack-specs" style="margin-top: 14px; font-size: 0.95rem;">
+                <strong>Adresse e-mail officielle :</strong>
+                <a href="mailto:Lumina.product.contact@gmail.com" style="text-decoration: underline; font-weight: 700;">Lumina.product.contact@gmail.com</a>
+              </div>
+            </div>
+            <div style="display: grid; gap: 10px;">
+              <button type="button" class="btn btn-primary btn-full js-nav" data-target="demande">
+                Remplir le formulaire de demande →
+              </button>
+              <a href="mailto:Lumina.product.contact@gmail.com" class="btn btn-secondary btn-full">
+                Écrire directement par e-mail ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <span class="pack-meta-top">Réseaux sociaux</span>
+              <h3>Suivre Lumina</h3>
+              <p style="font-size: 0.92rem; color: var(--charcoal-muted); margin: 8px 0 16px;">
+                Découvrez nos publications et l'univers de Lumina sur nos comptes officiels :
+              </p>
+              <div style="display: grid; gap: 10px;">
+                <a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full" style="justify-content: flex-start;">
+                  <span>Instagram — @lumina.product_studio ↗</span>
+                </a>
+                <a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full" style="justify-content: flex-start;">
+                  <span>TikTok — @lumina.product_st ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- I. PIED DE PAGE -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand-name" style="color: var(--ivory);">Lumina</span>
+          <span class="brand-sub" style="display: block; color: var(--beige); margin-bottom: 10px;">Product Studio &amp; Campaign</span>
+          <p style="font-size: 0.86rem; color: rgba(246, 241, 232, 0.78); max-width: 340px;">
+            Des contenus commerciaux cohérents et personnalisés pour mieux présenter vos produits et préparer vos campagnes marketing.
+          </p>
+          <p style="font-size: 0.86rem; margin-top: 10px;">
+            E-mail : <a href="mailto:Lumina.product.contact@gmail.com" style="text-decoration: underline; color: var(--beige);">Lumina.product.contact@gmail.com</a>
+          </p>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--beige); margin-bottom: 10px;">Services &amp; Informations</strong>
+          <ul class="footer-links">
+            <li><button type="button" class="js-nav" data-target="accueil">Accueil</button></li>
+            <li><button type="button" class="js-nav" data-target="studio">Lumina Product Studio (79 € / 119 €)</button></li>
+            <li><button type="button" class="js-nav" data-target="campaign">Lumina Campaign (79 € / 149 €)</button></li>
+            <li><button type="button" class="js-nav" data-target="tous-les-packs">Comparatif des 4 packs</button></li>
+            <li><button type="button" class="js-nav" data-target="fonctionnement">Comment ça fonctionne</button></li>
+            <li><button type="button" class="js-nav" data-target="faq">Questions fréquentes</button></li>
+            <li><button type="button" class="js-nav" data-target="demande">Demander une prestation</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--beige); margin-bottom: 10px;">Réseaux sociaux</strong>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer">Instagram (@lumina.product_studio) ↗</a></li>
+            <li><a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer">TikTok (@lumina.product_st) ↗</a></li>
+            <li><a href="mailto:Lumina.product.contact@gmail.com">Lumina.product.contact@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear">2026</span> Lumina Product Studio &amp; Lumina Campaign.</span>
+        <span>Réception directe par e-mail — Sans base de données externe</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SCRIPT : ENVOI DIRECT SUR LUMINA.PRODUCT.CONTACT@GMAIL.COM (ZÉRO SUPABASE)
+       ======================================================================== -->
+  <script>
+    const BUSINESS_EMAIL = "Lumina.product.contact@gmail.com";
+    const EMAIL_ENDPOINT = "https://formsubmit.co/ajax/" + BUSINESS_EMAIL;
+
+    const PACKS_DATA = {
+      studio: [
+        {
+          id: "essentials",
+          service: "Lumina Product Studio",
+          selectValue: "Essentials — 79 €",
+          name: "PACK 1 — LUMINA ESSENTIALS",
+          price: "79 €",
+          audience: "Pour un client qui souhaite améliorer la présentation commerciale d’un seul produit.",
+          limit: "1 produit (jusqu'à 2 visuels publicitaires)",
+          revisions: "1 série de corrections regroupées sur les livrables (dans le périmètre du brief initial)",
+          formats: "Visuels en JPG ou PNG • Textes dans un PDF ou fichier texte clairement organisé",
+          included: [
+            "1. Un produit.",
+            "2. Jusqu’à deux visuels publicitaires de ce produit.",
+            "3. Un titre commercial adapté au produit.",
+            "4. Une description commerciale prête à utiliser.",
+            "5. Trois arguments de vente personnalisés.",
+            "6. Un document récapitulatif regroupant les textes et les livrables.",
+            "7. Une série de corrections regroupées sur les livrables, dans le périmètre du brief initial."
+          ],
+          excluded: [
+            "Une campagne marketing complète",
+            "Une vidéo",
+            "Une séance photo physique",
+            "La publication des contenus sur les réseaux et la gestion des comptes sociaux",
+            "Une nouvelle direction créative complète après validation du brief"
+          ]
+        },
+        {
+          id: "collection",
+          service: "Lumina Product Studio",
+          selectValue: "Collection — 119 €",
+          name: "PACK 2 — LUMINA COLLECTION",
+          price: "119 €",
+          audience: "Pour une marque ou une boutique souhaitant présenter deux produits de façon cohérente.",
+          limit: "Jusqu'à 2 produits — Limite stricte de 2 visuels au total (1 visuel par produit)",
+          revisions: "1 série de corrections regroupées sur les livrables (dans le périmètre du brief initial)",
+          formats: "Visuels en JPG ou PNG • Textes dans un PDF ou fichier texte organisé par produit",
+          included: [
+            "1. Jusqu’à deux produits.",
+            "2. Un visuel publicitaire par produit, soit deux visuels au total.",
+            "3. Un titre commercial par produit.",
+            "4. Une description commerciale par produit.",
+            "5. Trois arguments de vente par produit.",
+            "6. Une direction visuelle cohérente entre les deux produits.",
+            "7. Un document récapitulatif avec les textes et les livrables.",
+            "8. Une série de corrections regroupées sur les livrables, dans le périmètre du brief initial."
+          ],
+          excluded: [
+            "Deux visuels par produit (limite de 2 visuels au total)",
+            "Une vidéo",
+            "La publication sur les réseaux et la gestion des comptes sociaux",
+            "Une campagne marketing complète"
+          ]
+        }
+      ],
+      campaign: [
+        {
+          id: "campaign-essentiel",
+          service: "Lumina Campaign",
+          selectValue: "Campaign Essentiel — 79 €",
+          name: "PACK 3 — LUMINA CAMPAIGN ESSENTIEL",
+          price: "79 €",
+          audience: "Pour préparer une campagne ciblée autour d’un produit, d’une promotion, d’un lancement ou d’un événement commercial.",
+          limit: "1 campagne ciblée (3 accroches, 2 textes, 2 appels à l'action)",
+          revisions: "1 série de corrections regroupées sur les livrables (dans le périmètre du brief initial)",
+          formats: "Document PDF ou fichier texte organisé et prêt à exploiter",
+          included: [
+            "1. Une synthèse du besoin, de l’objectif et du public visé.",
+            "2. Un angle marketing principal.",
+            "3. Trois accroches publicitaires.",
+            "4. Deux propositions de textes promotionnels.",
+            "5. Deux appels à l’action adaptés.",
+            "6. Une recommandation des canaux de diffusion pertinents.",
+            "7. Un document final regroupant les éléments de campagne.",
+            "8. Une série de corrections regroupées sur les livrables, dans le périmètre du brief initial."
+          ],
+          excluded: [
+            "La création de visuels ou de vidéos",
+            "Le calendrier de diffusion détaillé sur sept jours",
+            "La configuration des campagnes publicitaires et le budget publicitaire",
+            "La publication des contenus et la gestion quotidienne des publicités"
+          ]
+        },
+        {
+          id: "campaign-complete",
+          service: "Lumina Campaign",
+          selectValue: "Campaign Complète — 149 €",
+          name: "PACK 4 — LUMINA CAMPAIGN COMPLÈTE",
+          price: "149 €",
+          audience: "Pour une entreprise qui souhaite une préparation marketing plus approfondie.",
+          limit: "1 campagne complète avec plan de diffusion sur 7 jours (5 accroches, 4 textes, 4 CTA)",
+          revisions: "1 série de corrections regroupées sur les livrables (dans le périmètre du brief initial)",
+          formats: "Document PDF ou fichier texte organisé par section • Plan de diffusion sous forme de tableau lisible",
+          included: [
+            "1. Une synthèse du besoin, de l’objectif et du public cible.",
+            "2. Une stratégie et un angle marketing principal.",
+            "3. Cinq accroches publicitaires.",
+            "4. Quatre textes promotionnels adaptés aux canaux retenus.",
+            "5. Quatre appels à l’action.",
+            "6. Un plan de diffusion sur sept jours, avec le contenu conseillé et l’objectif de chaque étape.",
+            "7. Une recommandation de suivi et d’optimisation.",
+            "8. Un document final structuré et prêt à exploiter.",
+            "9. Une série de corrections regroupées sur les livrables, dans le périmètre du brief initial."
+          ],
+          excluded: [
+            "La création de visuels ou de vidéos",
+            "L’achat d’espace publicitaire et la gestion quotidienne de la campagne",
+            "La publication automatique sur les réseaux",
+            "La garantie de résultats commerciaux"
+          ]
+        }
+      ]
+    };
+
+    const FAQ_LIST = [
+      {
+        q: "Quelle est la différence entre Product Studio et Campaign ?",
+        a: "Lumina Product Studio est dédié à la présentation commerciale d'un ou deux produits (visuels publicitaires, titre, description et arguments de vente). Lumina Campaign est dédié à la préparation structurée d'une campagne marketing (synthèse, angle marketing, accroches, textes promotionnels, appels à l'action et recommandations ou plan de diffusion sur 7 jours)."
+      },
+      {
+        q: "Puis-je commander les deux services ?",
+        a: "Oui. Dans le formulaire de demande (Étape 2), vous pouvez sélectionner « Product Studio + Campaign » pour combiner un pack de création visuelle avec un pack de préparation de campagne en une seule demande."
+      },
+      {
+        q: "Dois-je déjà posséder des photos ?",
+        a: "Il est recommandé de disposer d'au moins une photo nette de votre produit afin que nous puissions préserver fidèlement sa forme, son étiquette et ses détails distinctifs. Le formulaire vous permet d'indiquer votre situation exacte afin que nous vérifiions la faisabilité avec vous."
+      },
+      {
+        q: "Quels formats vais-je recevoir ?",
+        a: "Pour Product Studio, les visuels sont livrés en JPG ou PNG et les textes dans un PDF ou fichier texte clairement organisé. Pour Campaign, vous recevez un document PDF ou fichier texte organisé (avec un tableau lisible pour le plan de diffusion sur 7 jours du pack Campaign Complète)."
+      },
+      {
+        q: "Combien de corrections sont incluses ?",
+        a: "Chaque pack inclut une (1) série de corrections regroupées sur les livrables, dans le périmètre du brief initial validé avant le démarrage."
+      },
+      {
+        q: "Les campagnes publicitaires sont-elles publiées par Lumina ?",
+        a: "Non. Lumina prépare et livre les contenus et le plan de campagne prêts à être exploités, mais n'assure ni la publication sur vos réseaux sociaux, ni la gestion quotidienne de vos comptes ou de vos publicités payantes."
+      },
+      {
+        q: "Les résultats commerciaux sont-ils garantis ?",
+        a: "Non. Les performances commerciales dépendent de nombreux facteurs propres à votre produit, votre marché, vos prix et votre diffusion. Lumina s'engage sur la cohérence et la qualité des livrables définis dans chaque pack, sans promesse de ventes garanties."
+      },
+      {
+        q: "Comment la demande est-elle confirmée ?",
+        a: "Dès que vous validez le formulaire, votre demande est envoyée par e-mail à Lumina (Lumina.product.contact@gmail.com). Nous l'examinons et vous recontactons par e-mail pour confirmer la faisabilité, le périmètre et les délais avant tout démarrage."
+      },
+      {
+        q: "Comment transmettre mes photos et références ?",
+        a: "Vous pouvez indiquer vos liens de référence directement à l'Étape 5 du formulaire. Vos photos produits sont ensuite transmises par simple réponse à notre e-mail de confirmation."
+      }
+    ];
+
+    function renderPackCard(pack) {
+      return `
+        <article class="card is-featured">
+          <div>
+            <span class="pack-meta-top">${pack.service}</span>
+            <h3>${pack.name}</h3>
+            <div class="pack-price-wrap">
+              <span class="pack-price">${pack.price}</span>
+            </div>
+            <p class="pack-audience">${pack.audience}</p>
+
+            <div class="pack-specs">
+              <div><strong>Périmètre :</strong> ${pack.limit}</div>
+              <div><strong>Formats :</strong> ${pack.formats}</div>
+              <div><strong>Corrections :</strong> ${pack.revisions}</div>
+            </div>
+
+            <span class="pack-section-label">Livrables inclus :</span>
+            <ul class="list-included">
+              ${pack.included.map(i => `<li>${i}</li>`).join("")}
+            </ul>
+
+            <span class="pack-section-label">Non inclus :</span>
+            <ul class="list-excluded">
+              ${pack.excluded.map(e => `<li>${e}</li>`).join("")}
+            </ul>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-full js-request-pack" data-service="${pack.service}" data-pack="${pack.selectValue}">
+            Demander ce pack
+          </button>
+        </article>
+      `;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const STORAGE_KEY = "lumina_clean_draft_v3";
+
+      const studioHtml = PACKS_DATA.studio.map(renderPackCard).join("");
+      const campaignHtml = PACKS_DATA.campaign.map(renderPackCard).join("");
+
+      document.getElementById("studioPacksContainer").innerHTML = studioHtml;
+      document.getElementById("campaignPacksContainer").innerHTML = campaignHtml;
+      document.getElementById("allStudioContainer").innerHTML = studioHtml;
+      document.getElementById("allCampaignContainer").innerHTML = campaignHtml;
+
+      document.getElementById("faqContainer").innerHTML = FAQ_LIST.map((item, idx) => `
+        <div class="faq-item ${idx === 0 ? 'is-open' : ''}">
+          <button type="button" class="faq-btn" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+            <span>${item.q}</span>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-ans"><p>${item.a}</p></div>
+        </div>
+      `).join("");
+
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+      const views = document.querySelectorAll(".page-view");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuToggle = document.getElementById("menuToggle");
+
+      function navigateTo(viewName) {
+        const target = document.getElementById("view-" + viewName);
+        if (!target) return;
+        views.forEach(v => v.classList.remove("is-active"));
+        void target.offsetWidth;
+        target.classList.add("is-active");
+
+        document.querySelectorAll(".nav-btn").forEach(btn => {
+          btn.classList.toggle("is-active", btn.getAttribute("data-target") === viewName);
+        });
+
+        if (mobileMenu.classList.contains("is-open")) {
+          mobileMenu.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".js-nav").forEach(btn => {
+        btn.addEventListener("click", function () {
+          navigateTo(this.getAttribute("data-target"));
+        });
+      });
+
+      menuToggle.addEventListener("click", function () {
+        const open = mobileMenu.classList.toggle("is-open");
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.querySelectorAll(".faq-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const open = this.parentElement.classList.toggle("is-open");
+          this.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      });
+
+      // Logique du formulaire
+      const form = document.getElementById("luminaOrderForm");
+      const serviceRadios = document.querySelectorAll('input[name="Service_choisi"]');
+      const groupPackStudio = document.getElementById("groupPackStudio");
+      const groupPackCampaign = document.getElementById("groupPackCampaign");
+      const selStudio = document.getElementById("f_pack_studio");
+      const selCampaign = document.getElementById("f_pack_campaign");
+      const displayTotal = document.getElementById("displayTotalAmount");
+      const displayDeliverables = document.getElementById("displaySelectedDeliverables");
+      const inputTotalHidden = document.getElementById("montant_indicatif_total");
+      const secondProductBox = document.getElementById("secondProductBox");
+      const campaignSpecificFields = document.getElementById("campaignSpecificFields");
+
+      function updateFormState() {
+        const srv = document.querySelector('input[name="Service_choisi"]:checked').value;
+        const hasStudio = (srv === "Lumina Product Studio" || srv === "Product Studio + Campaign");
+        const hasCampaign = (srv === "Lumina Campaign" || srv === "Product Studio + Campaign");
+
+        document.getElementById("lbl-srv-studio").classList.toggle("is-checked", srv === "Lumina Product Studio");
+        document.getElementById("lbl-srv-campaign").classList.toggle("is-checked", srv === "Lumina Campaign");
+        document.getElementById("lbl-srv-both").classList.toggle("is-checked", srv === "Product Studio + Campaign");
+
+        groupPackStudio.style.display = hasStudio ? "flex" : "none";
+        groupPackCampaign.style.display = hasCampaign ? "flex" : "none";
+
+        if (hasCampaign && selCampaign.value === "Non sélectionné") {
+          selCampaign.value = "Campaign Essentiel — 79 €";
+        }
+        if (!hasCampaign) {
+          selCampaign.value = "Non sélectionné";
+        }
+
+        const isCollection = hasStudio && selStudio.value.includes("Collection");
+        secondProductBox.style.display = (isCollection || srv === "Product Studio + Campaign") ? "flex" : "none";
+        campaignSpecificFields.style.display = hasCampaign ? "block" : "none";
+
+        document.getElementById("reqStarPhotos").style.display = hasStudio ? "inline" : "none";
+        document.getElementById("reqStarStyle").style.display = hasStudio ? "inline" : "none";
+        document.getElementById("reqStarFideles").style.display = hasStudio ? "inline" : "none";
+
+        let total = 0;
+        let deliverablesList = [];
+
+        if (hasStudio) {
+          const studioPrice = selStudio.value.includes("119") ? 119 : 79;
+          total += studioPrice;
+          const packObj = PACKS_DATA.studio.find(p => p.selectValue === selStudio.value);
+          if (packObj) {
+            deliverablesList.push(`<strong>${packObj.name} (${packObj.price}) :</strong> ` + packObj.included.join(" "));
+          }
+        }
+
+        if (hasCampaign) {
+          const campPrice = selCampaign.value.includes("149") ? 149 : 79;
+          total += campPrice;
+          const packObj = PACKS_DATA.campaign.find(p => p.selectValue === selCampaign.value);
+          if (packObj) {
+            deliverablesList.push(`<strong>${packObj.name} (${packObj.price}) :</strong> ` + packObj.included.join(" "));
+          }
+        }
+
+        displayTotal.textContent = total + " €";
+        inputTotalHidden.value = total + " € (indicatif)";
+        displayDeliverables.innerHTML = deliverablesList.map(d => `<li><span>${d}</span></li>`).join("");
+      }
+
+      serviceRadios.forEach(r => r.addEventListener("change", () => { updateFormState(); saveDraft(); }));
+      selStudio.addEventListener("change", () => { updateFormState(); saveDraft(); });
+      selCampaign.addEventListener("change", () => { updateFormState(); saveDraft(); });
+
+      document.addEventListener("click", function (e) {
+        const packBtn = e.target.closest(".js-request-pack");
+        if (!packBtn) return;
+        const srv = packBtn.getAttribute("data-service");
+        const packVal = packBtn.getAttribute("data-pack");
+
+        document.querySelector(`input[name="Service_choisi"][value="${srv}"]`).checked = true;
+        updateFormState();
+
+        if (srv === "Lumina Product Studio") {
+          selStudio.value = packVal;
+        } else {
+          selCampaign.value = packVal;
+        }
+        updateFormState();
+        saveDraft();
+        navigateTo("demande");
+      });
+
+      function saveDraft() {
+        try {
+          const data = {};
+          form.querySelectorAll("input, select, textarea").forEach(el => {
+            if (!el.name || el.type === "hidden" || el.name === "_honey") return;
+            if (el.type === "radio") {
+              if (el.checked) data[el.name] = el.value;
+            } else if (el.type === "checkbox") {
+              if (!data[el.name]) data[el.name] = [];
+              if (el.checked) data[el.name].push(el.value);
+            } else {
+              data[el.name] = el.value;
+            }
+          });
+          sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (err) {}
+      }
+
+      function restoreDraft() {
+        try {
+          const raw = sessionStorage.getItem(STORAGE_KEY);
+          if (!raw) { updateFormState(); return; }
+          const data = JSON.parse(raw);
+          Object.keys(data).forEach(name => {
+            const els = form.querySelectorAll(`[name="${name}"]`);
+            els.forEach(el => {
+              if (el.type === "radio") {
+                el.checked = (el.value === data[name]);
+              } else if (el.type === "checkbox" && Array.isArray(data[name])) {
+                el.checked = data[name].includes(el.value);
+              } else if (typeof data[name] === "string") {
+                el.value = data[name];
+              }
+            });
+          });
+          updateFormState();
+        } catch (err) {
+          updateFormState();
+        }
+      }
+
+      form.addEventListener("input", saveDraft);
+      restoreDraft();
+
+      function markError(fieldId, isInvalid) {
+        const el = document.getElementById(fieldId);
+        const err = document.getElementById("err-" + fieldId);
+        if (el) el.classList.toggle("has-error", isInvalid);
+        if (err) err.classList.toggle("is-visible", isInvalid);
+        return !isInvalid;
+      }
+
+      function validateAllFields() {
+        let ok = true;
+        const srv = document.querySelector('input[name="Service_choisi"]:checked').value;
+        const hasStudio = (srv === "Lumina Product Studio" || srv === "Product Studio + Campaign");
+        const hasCampaign = (srv === "Lumina Campaign" || srv === "Product Studio + Campaign");
+
+        const emailVal = document.getElementById("f_email").value.trim();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+
+        ok = markError("f_nom", !document.getElementById("f_nom").value.trim()) && ok;
+        ok = markError("f_marque", !document.getElementById("f_marque").value.trim()) && ok;
+        ok = markError("f_email", !emailOk) && ok;
+        ok = markError("f_type_activite", !document.getElementById("f_type_activite").value) && ok;
+
+        ok = markError("f_prod_nom", !document.getElementById("f_prod_nom").value.trim()) && ok;
+        ok = markError("f_prod_cat", !document.getElementById("f_prod_cat").value.trim()) && ok;
+        ok = markError("f_prod_desc", !document.getElementById("f_prod_desc").value.trim()) && ok;
+        ok = markError("f_prod_cible", !document.getElementById("f_prod_cible").value.trim()) && ok;
+        ok = markError("f_prod_avantages", !document.getElementById("f_prod_avantages").value.trim()) && ok;
+
+        if (hasStudio) {
+          ok = markError("f_photos_dispo", !document.getElementById("f_photos_dispo").value) && ok;
+          ok = markError("f_style_visuel", !document.getElementById("f_style_visuel").value) && ok;
+          ok = markError("f_elements_fideles", !document.getElementById("f_elements_fideles").value.trim()) && ok;
+        } else {
+          markError("f_photos_dispo", false);
+          markError("f_style_visuel", false);
+          markError("f_elements_fideles", false);
+        }
+
+        ok = markError("f_msg_principal", !document.getElementById("f_msg_principal").value.trim()) && ok;
+        ok = markError("f_raison_choix", !document.getElementById("f_raison_choix").value.trim()) && ok;
+        ok = markError("f_ton", !document.getElementById("f_ton").value) && ok;
+        ok = markError("f_objectif", !document.getElementById("f_objectif").value) && ok;
+
+        if (hasCampaign) {
+          ok = markError("f_camp_evenement", !document.getElementById("f_camp_evenement").value.trim()) && ok;
+        } else {
+          markError("f_camp_evenement", false);
+        }
+
+        ok = markError("f_date_souhaitee", !document.getElementById("f_date_souhaitee").value) && ok;
+        ok = markError("f_droits_confirm", !document.getElementById("f_droits_confirm").checked) && ok;
+
+        return ok;
+      }
+
+      const submitBtn = document.getElementById("submitOrderBtn");
+      const globalErr = document.getElementById("globalFormError");
+      const confirmScreen = document.getElementById("confirmationScreen");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        globalErr.style.display = "none";
+
+        if (!validateAllFields()) {
+          globalErr.style.display = "block";
+          globalErr.textContent = "Certains champs obligatoires sont incomplets. Veuillez vérifier les indications en rouge ci-dessus.";
+          const firstInvalid = form.querySelector(".has-error");
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        const refId = "LUM-" + Date.now().toString().slice(-6);
+        document.getElementById("reference_demande").value = refId;
+
+        const checkedSupports = Array.from(form.querySelectorAll('input[name="supports_visuels"]:checked')).map(c => c.value).join(", ");
+        document.getElementById("supports_visuels_liste").value = checkedSupports || "Non précisé";
+
+        const checkedCanaux = Array.from(form.querySelectorAll('input[name="canaux_campaign"]:checked')).map(c => c.value).join(", ");
+        document.getElementById("canaux_campaign_liste").value = checkedCanaux || "Non précisé";
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Envoi de votre demande par e-mail...";
+
+        const formData = new FormData(form);
+        const payload = {};
+        formData.forEach((val, key) => {
+          if (key !== "supports_visuels" && key !== "canaux_campaign" && key !== "form-name") {
+            payload[key] = val;
+          }
+        });
+        payload["_subject"] = "Nouvelle demande Lumina (" + refId + ") — " + document.getElementById("f_marque").value;
+        payload["_template"] = "table";
+        payload["_captcha"] = "false";
+
+        try {
+          // 1. Envoi direct par e-mail à Lumina.product.contact@gmail.com via FormSubmit AJAX
+          const emailRes = await fetch(EMAIL_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          // 2. Sauvegarde secondaire sur Netlify Forms en tâche de fond
+          fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+          }).catch(() => {});
+
+          if (emailRes.ok) {
+            form.style.display = "none";
+            document.getElementById("savedRefDisplay").textContent = "Référence de votre demande : " + refId;
+            confirmScreen.style.display = "flex";
+            try { sessionStorage.removeItem(STORAGE_KEY); } catch (err) {}
+            form.reset();
+            updateFormState();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else {
+            throw new Error("Erreur d'envoi e-mail");
+          }
+        } catch (err) {
+          const fallbackBody = encodeURIComponent(
+            "Bonjour Lumina,\n\nVoici ma demande de prestation (" + refId + ") :\n" +
+            "- Nom : " + document.getElementById("f_nom").value + "\n" +
+            "- Marque : " + document.getElementById("f_marque").value + "\n" +
+            "- E-mail : " + document.getElementById("f_email").value + "\n" +
+            "- Service : " + document.querySelector('input[name="Service_choisi"]:checked').value + "\n" +
+            "- Montant indicatif : " + inputTotalHidden.value + "\n" +
+            "- Produit / Offre : " + document.getElementById("f_prod_nom").value + "\n" +
+            "- Description : " + document.getElementById("f_prod_desc").value + "\n" +
+            "- Avantages : " + document.getElementById("f_prod_avantages").value + "\n" +
+            "- Éléments fidèles : " + document.getElementById("f_elements_fideles").value + "\n" +
+            "- Date souhaitée : " + document.getElementById("f_date_souhaitee").value
+          );
+          globalErr.style.display = "block";
+          globalErr.innerHTML = `<strong>L'envoi automatique a rencontré un problème réseau.</strong> Vos réponses sont conservées : vous pouvez réessayer ou <a href="mailto:Lumina.product.contact@gmail.com?subject=${encodeURIComponent('Demande Lumina ' + refId)}&body=${fallbackBody}" style="text-decoration:underline; font-weight:700;">appuyer ici pour envoyer directement l'e-mail pré-rempli à Lumina.product.contact@gmail.com ↗</a>.`;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Envoyer ma demande à Lumina";
+        }
+      });
+
+      document.getElementById("resetNewRequestBtn").addEventListener("click", function () {
+        confirmScreen.style.display = "none";
+        form.style.display = "block";
+      });
+    });
+  </script>
+</body>
+</html>
