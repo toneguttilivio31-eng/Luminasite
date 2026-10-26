@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lumina Product Studio &amp; Campaign | Visuels produits et campagnes marketing</title>
+  <meta name="description" content="Valorisez vos produits et structurez vos campagnes marketing avec Lumina Product Studio & Campaign. Prestations ponctuelles dès 59 €, sans abonnement.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#F6F1E8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #F6F1E8;
+      --bg-surface: #FAF8F3;
+      --bg-warm: #EBE1D5;
+      --text-main: #242321;
+      --text-muted: #52504C;
+      --accent: #A9B9A5;
+      --accent-dark: #4F634B;
+      --accent-light: #E4ECE2;
+      --sand: #D8C7B2;
+      --border: rgba(36, 35, 33, 0.13);
+      --border-strong: rgba(36, 35, 33, 0.28);
+      --shadow-sm: 0 4px 18px rgba(36, 35, 33, 0.05);
+      --shadow-md: 0 14px 36px rgba(36, 35, 33, 0.09);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 1180px;
+      --header-height: 74px;
+      --transition: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      width: 100%;
+    }
+    .skip-link {
+      position: absolute; top: -100px; left: 16px;
+      background: var(--text-main); color: var(--bg-primary);
+      padding: 10px 16px; border-radius: var(--radius-sm); z-index: 999; font-weight: 600;
+    }
+    .skip-link:focus { top: 12px; }
+    a { color: inherit; text-decoration: none; transition: all var(--transition); }
+    ul, ol { list-style: none; }
+    button { font-family: inherit; font-size: inherit; color: inherit; cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--text-main); outline-offset: 3px; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 16px; }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseDot {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(169, 185, 165, 0.85); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(169, 185, 165, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(169, 185, 165, 0); }
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-view { display: none; padding: 36px 0 60px; width: 100%; }
+    .page-view.is-active {
+      display: block;
+      animation: fadeSlideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Bandeau supérieur */
+    .top-announcement {
+      background: linear-gradient(270deg, #242321, #3a3631, #2b3329, #242321);
+      background-size: 300% 300%;
+      animation: gradientFlow 7s ease infinite;
+      color: var(--bg-primary);
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      border-bottom: 1px solid rgba(246, 241, 232, 0.16);
+      position: relative;
+      z-index: 102;
+    }
+    .top-announcement-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 6px 12px;
+      text-align: center;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: rgba(169, 185, 165, 0.2);
+      border: 1px solid var(--accent);
+      color: var(--bg-primary);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      animation: pulseDot 1.8s infinite;
+    }
+    .announcement-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: var(--accent);
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    /* Header & Navigation mobile */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-height);
+      background-color: rgba(246, 241, 232, 0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+    }
+    .nav-container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .brand-logo { display: flex; flex-direction: column; line-height: 1.08; text-align: left; }
+    .brand-name { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+    .brand-sub { font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+    .nav-links { display: none; align-items: center; gap: 4px; }
+    .nav-btn { font-size: 0.84rem; font-weight: 500; color: var(--text-muted); padding: 8px 10px; border-radius: var(--radius-sm); }
+    .nav-btn.is-active { color: var(--text-main); font-weight: 700; background-color: var(--accent-light); }
+    .nav-cta-desktop { display: none; }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: var(--bg-primary);
+      border-bottom: 1px solid var(--border-strong);
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
+      max-height: calc(100vh - var(--header-height));
+      overflow-y: auto;
+    }
+    .mobile-menu.is-open { display: block; }
+    .mobile-menu ul { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .mobile-menu .nav-btn { width: 100%; text-align: left; padding: 12px 10px; font-size: 0.98rem; font-weight: 600; border-bottom: 1px solid var(--border); }
+
+    /* Typographie & Boutons responsive */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-dark);
+      background-color: var(--accent-light);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; line-height: 1.16; color: var(--text-main); }
+    h1 { font-size: clamp(1.9rem, 7vw, 3.2rem); margin-bottom: 14px; }
+    h2 { font-size: clamp(1.5rem, 5vw, 2.3rem); margin-bottom: 12px; }
+    h3 { font-size: clamp(1.2rem, 4vw, 1.5rem); margin-bottom: 8px; }
+    .section-header { max-width: 100%; margin-bottom: 28px; }
+    .section-header p { color: var(--text-muted); font-size: 0.98rem; }
+    .section-divider { margin: 40px 0; border: none; border-top: 1px solid var(--border); }
+
+    .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; width: 100%; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 20px;
+      font-size: 0.93rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      width: 100%;
+    }
+    .btn-primary { background-color: var(--text-main); color: var(--bg-primary); border: 1px solid var(--text-main); }
+    .btn-secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--text-main); }
+    .btn-sage { background-color: var(--accent); color: var(--text-main); border: 1px solid var(--accent); }
+    .btn-full { width: 100%; }
+
+    /* Grilles adaptatives mobile */
+    .grid-2, .grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; }
+
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      position: relative;
+      width: 100%;
+    }
+    .card.is-highlighted { background-color: var(--bg-primary); border: 1.5px solid var(--text-main); }
+
+    .pack-meta-top { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+    .pack-price-wrap { margin: 8px 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .pack-price { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; line-height: 1; }
+    .pack-audience { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px; }
+    .pack-section-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-main); margin: 10px 0 4px; display: block; }
+
+    .list-included { display: flex; flex-direction: column; gap: 6px; font-size: 0.86rem; }
+    .list-included li { display: flex; align-items: flex-start; gap: 8px; }
+    .list-included li::before { content: "✓"; color: var(--accent-dark); font-weight: 700; flex-shrink: 0; }
+
+    .pack-specs {
+      background-color: var(--bg-warm); padding: 10px 12px; border-radius: var(--radius-sm);
+      font-size: 0.8rem; color: var(--text-main); display: grid; gap: 4px; margin-top: 8px;
+    }
+
+    /* FAQ & Footer */
+    .faq-list { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+    .faq-item { background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; width: 100%; }
+    .faq-btn {
+      width: 100%; text-align: left; padding: 15px 16px; font-weight: 600; font-size: 0.92rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq-ans { display: none; padding: 10px 16px 14px; font-size: 0.88rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+    .faq-item.is-open .faq-ans { display: block; }
+
+    .site-footer { background-color: var(--text-main); color: var(--bg-primary); padding: 40px 0 28px; margin-top: 36px; width: 100%; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(246, 241, 232, 0.15); }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; color: rgba(246, 241, 232, 0.82); }
+    .footer-links button { text-align: left; color: inherit; }
+    .footer-bottom { padding-top: 18px; font-size: 0.78rem; color: rgba(246, 241, 232, 0.65); display: flex; flex-direction: column; gap: 6px; }
+
+    @media (min-width: 768px) {
+      .container { padding: 0 20px; }
+      .btn-group { flex-direction: row; }
+      .btn { width: auto; }
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+    @media (min-width: 1040px) {
+      .menu-toggle, .mobile-menu { display: none !important; }
+      .nav-links { display: flex; }
+      .nav-cta-desktop { display: inline-flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- BANDEAU SUPÉRIEUR -->
+  <div class="top-announcement" role="region" aria-label="Présentation des deux services">
+    <div class="container top-announcement-inner">
+      <span class="status-pill">
+        <span class="status-dot" aria-hidden="true"></span>
+        Studio &amp; Campaign
+      </span>
+      <span>
+        <strong>Lumina Product Studio</strong> (79 € / 119 €) &amp; <strong>Lumina Campaign</strong> (79 € / 149 €)
+      </span>
+      <button type="button" class="announcement-cta js-nav" data-target="tous-les-packs">
+        Comparer ↗
+      </button>
+    </div>
+  </div>
+
+  <!-- EN-TÊTE -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <button type="button" class="brand-logo js-nav" data-target="accueil" aria-label="Lumina - Accueil">
+        <span class="brand-name">Lumina</span>
+        <span class="brand-sub">Product Studio &amp; Campaign</span>
+      </button>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><button type="button" class="nav-btn is-active js-nav" data-target="accueil">Accueil</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="studio">Product Studio</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="campaign">Campaign</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="tous-les-packs">Les 4 Packs</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="fonctionnement">Fonctionnement</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="faq">FAQ</button></li>
+          <li><button type="button" class="nav-btn js-nav" data-target="contact">Contact</button></li>
+        </ul>
+      </nav>
+
+      <a href="mailto:Lumina.product.contact@gmail.com" class="btn btn-primary nav-cta-desktop" style="min-height: 40px; padding: 8px 16px; font-size: 0.85rem;">
+        Contact e-mail ↗
+      </a>
+
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+      <ul>
+        <li><button type="button" class="nav-btn is-active js-nav" data-target="accueil">Accueil</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="studio">Lumina Product Studio</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="campaign">Lumina Campaign</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="tous-les-packs">Comparer les 4 Packs</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="fonctionnement">Comment ça marche</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="faq">Questions fréquentes (FAQ)</button></li>
+        <li><button type="button" class="nav-btn js-nav" data-target="contact">Contact &amp; Réseaux</button></li>
+      </ul>
+      <a href="mailto:Lumina.product.contact@gmail.com" class="btn btn-primary btn-full">
+        Écrire à Lumina.product.contact@gmail.com ↗
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ACCUEIL -->
+    <section id="view-accueil" class="page-view is-active" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="eyebrow">Positionnement officiel Lumina</span>
+            <h1 id="hero-heading">Donnez à vos produits une image professionnelle.</h1>
+            <p style="font-size: 1.02rem; color: var(--text-muted); margin-bottom: 12px;">
+              Des visuels publicitaires et des contenus marketing pensés pour vos produits, votre marque et vos objectifs.
+            </p>
+            <p style="font-size: 0.92rem; font-weight: 600; color: var(--text-main); background-color: var(--bg-warm); padding: 12px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--text-main);">
+              « Des contenus commerciaux cohérents et personnalisés pour mieux présenter vos produits et préparer vos campagnes marketing. »
+            </p>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary js-nav" data-target="studio">
+                Product Studio
+              </button>
+              <button type="button" class="btn btn-secondary js-nav" data-target="campaign">
+                Campaign
+              </button>
+              <a href="mailto:Lumina.product.contact@gmail.com" class="btn btn-sage">
+                Contact e-mail ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="card is-highlighted">
+            <div>
+              <span class="pack-meta-top">Deux services complémentaires</span>
+              <h3>Présentation produit ou campagne</h3>
+              <ul class="list-included" style="margin-top: 12px;">
+                <li><strong>Lumina Product Studio :</strong> Visuels publicitaires et textes commerciaux pour présenter vos produits.</li>
+                <li><strong>Lumina Campaign :</strong> Préparation de campagne (angle, accroches, textes, CTA et planning).</li>
+                <li><strong>Contact direct :</strong> Commandes et échanges par e-mail à <strong>Lumina.product.contact@gmail.com</strong>.</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-secondary btn-full js-nav" data-target="tous-les-packs">
+              Voir et comparer les 4 packs →
+            </button>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-header">
+          <span class="eyebrow">Nos engagements</span>
+          <h2>Pourquoi choisir Lumina ?</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div>
+              <h3>Contenus adaptés</h3>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">Pensé selon les caractéristiques réelles de votre produit.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h3>Éléments fidèles</h3>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">Respect de la forme, de l'étiquette et de l'emballage.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h3>Livrables précis</h3>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">Formats HD et révisions inclus dans chaque pack.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT STUDIO -->
+    <section id="view-studio" class="page-view" aria-labelledby="studio-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Service 1</span>
+          <h1 id="studio-heading">Lumina Product Studio</h1>
+          <p>Visuels publicitaires et contenus commerciaux pour présenter un produit.</p>
+        </div>
+        <div class="grid-2" id="studioPacksContainer"></div>
+      </div>
+    </section>
+
+    <!-- CAMPAIGN -->
+    <section id="view-campaign" class="page-view" aria-labelledby="campaign-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Service 2</span>
+          <h1 id="campaign-heading">Lumina Campaign</h1>
+          <p>Préparation structurée d’une campagne marketing pour promouvoir vos offres.</p>
+        </div>
+        <div class="grid-2" id="campaignPacksContainer"></div>
+      </div>
+    </section>
+
+    <!-- TOUS LES PACKS -->
+    <section id="view-tous-les-packs" class="page-view" aria-labelledby="all-packs-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Comparatif</span>
+          <h1 id="all-packs-heading">Les 4 packs officiels Lumina</h1>
+        </div>
+        <h2 style="margin-bottom: 16px;">Product Studio</h2>
+        <div class="grid-2" id="allStudioContainer" style="margin-bottom: 36px;"></div>
+        <h2 style="margin-bottom: 16px;">Campaign</h2>
+        <div class="grid-2" id="allCampaignContainer"></div>
+      </div>
+    </section>
+
+    <!-- FONCTIONNEMENT -->
+    <section id="view-fonctionnement" class="page-view" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Parcours client</span>
+          <h1 id="how-heading">Comment ça marche</h1>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div>
+              <h3>1. Contact par e-mail</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;">Vous écrivez à Lumina.product.contact@gmail.com en indiquant le pack choisi et votre produit.</p>
+            </div>
+          </div>
+          <div class="card is-highlighted">
+            <div>
+              <h3>2. Validation &amp; Réalisation</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;">Nous confirmons les détails et réalisons les livrables avec 1 cycle de révisions inclus.</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <a href="mailto:Lumina.product.contact@gmail.com" class="btn btn-primary">
+            Commander par e-mail ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="view-faq" class="page-view" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">FAQ</span>
+          <h1 id="faq-heading">Questions fréquentes</h1>
+        </div>
+        <div class="faq-list" id="faqContainer"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="view-contact" class="page-view" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Contact</span>
+          <h1 id="contact-heading">Contactez Lumina</h1>
+        </div>
+        <div class="card is-highlighted" style="text-align: center; padding: 36px 16px;">
+          <h2 style="font-size: 1.3rem; margin-bottom: 12px;">
+            <a href="mailto:Lumina.product.contact@gmail.com" style="text-decoration: underline;">Lumina.product.contact@gmail.com</a>
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Réponse sous 24h à 48h ouvrées.</p>
+          <a href="mailto:Lumina.product.contact@gmail.com" class="btn btn-primary">Écrire un e-mail ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand-name" style="color: var(--bg-primary);">Lumina</span>
+          <span class="brand-sub" style="display: block; color: var(--sand); margin-bottom: 8px;">Product Studio &amp; Campaign</span>
+          <p style="font-size: 0.85rem; color: rgba(246, 241, 232, 0.75);">Lumina.product.contact@gmail.com</p>
+        </div>
+        <div>
+          <strong style="display: block; font-size: 0.78rem; text-transform: uppercase; color: var(--sand); margin-bottom: 8px;">Réseaux</strong>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/lumina.product_studio/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+            <li><a href="https://www.tiktok.com/@lumina.product_st" target="_blank" rel="noopener noreferrer">TikTok ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="currentYear">2026</span> Lumina Product Studio &amp; Campaign.</span>
+        <span>Sans abonnement</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const BUSINESS_EMAIL = "Lumina.product.contact@gmail.com";
+
+    const STUDIO_OFFERS = [
+      {
+        id: "essentials",
+        service: "Lumina Product Studio",
+        name: "PACK 1 — LUMINA ESSENTIALS",
+        price: "79 €",
+        audience: "Pour un produit unique.",
+        limit: "1 produit (jusqu'à 2 visuels)",
+        revisions: "1 cycle de révisions inclus",
+        formats: "JPG/PNG + PDF texte",
+        included: ["1 produit", "Jusqu’à 2 visuels HD", "1 titre commercial", "1 description produit", "3 arguments de vente"],
+        excluded: ["Campagne marketing", "Vidéo"]
+      },
+      {
+        id: "collection",
+        service: "Lumina Product Studio",
+        name: "PACK 2 — LUMINA COLLECTION",
+        price: "119 €",
+        audience: "Pour deux produits coordonnés.",
+        limit: "Jusqu'à 2 produits (2 visuels au total)",
+        revisions: "1 cycle de révisions inclus",
+        formats: "JPG/PNG + PDF texte",
+        included: ["Jusqu’à 2 produits", "1 visuel par produit", "Titre, description et 3 arguments par produit", "Cohérence visuelle"],
+        excluded: ["Vidéos", "Campagne complète"]
+      }
+    ];
+
+    const CAMPAIGN_OFFERS = [
+      {
+        id: "campaign-essentiel",
+        service: "Lumina Campaign",
+        name: "PACK 3 — CAMPAIGN ESSENTIEL",
+        price: "79 €",
+        audience: "Pour une action ciblée.",
+        limit: "1 campagne (3 accroches, 2 textes, 2 CTA)",
+        revisions: "1 cycle de révisions inclus",
+        formats: "Document PDF",
+        included: ["Synthèse et angle marketing", "3 accroches publicitaires", "2 textes promotionnels", "2 appels à l'action", "Recommandations de diffusion"],
+        excluded: ["Visuels ou vidéos", "Plan sur 7 jours"]
+      },
+      {
+        id: "campaign-complete",
+        service: "Lumina Campaign",
+        name: "PACK 4 — CAMPAIGN COMPLÈTE",
+        price: "149 €",
+        audience: "Pour un lancement ou une promo sur 7 jours.",
+        limit: "1 campagne complète (5 accroches, 4 textes, plan 7j)",
+        revisions: "1 cycle de révisions inclus",
+        formats: "Document PDF (tableau 7j)",
+        included: ["Stratégie et angle marketing", "5 accroches publicitaires", "4 textes promotionnels", "4 appels à l'action", "Plan de diffusion sur 7 jours"],
+        excluded: ["Visuels ou vidéos", "Achat publicitaire payant"]
+      }
+    ];
+
+    const FAQ_LIST = [
+      { q: "Quelle est la différence entre Studio et Campaign ?", a: "Product Studio crée vos visuels et textes produits. Campaign prépare votre stratégie marketing, vos accroches et votre planning." },
+      { q: "Comment commander ?", a: "Contactez-nous directement par e-mail à Lumina.product.contact@gmail.com en indiquant le pack choisi." },
+      { q: "Y a-t-il un abonnement ?", a: "Non, toutes les prestations sont 100 % ponctuelles." }
+    ];
+
+    function renderPackCard(pack) {
+      const mailtoLink = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent('Commande - ' + pack.name)}&body=Bonjour,%0A%0AJe souhaite commander le pack suivant : ${encodeURIComponent(pack.name)} (${encodeURIComponent(pack.price)}).%0A%0AMes informations :%0A- Nom / Marque : %0A- Lien / Site : %0A- Description du produit ou de l'offre : `;
+      return `
+        <article class="card is-highlighted">
+          <div>
+            <span class="pack-meta-top">${pack.service}</span>
+            <h3>${pack.name}</h3>
+            <div class="pack-price-wrap">
+              <span class="pack-price">${pack.price}</span>
+            </div>
+            <p class="pack-audience">${pack.audience}</p>
+            <div class="pack-specs">
+              <div><strong>Périmètre :</strong> ${pack.limit}</div>
+              <div><strong>Formats :</strong> ${pack.formats}</div>
+            </div>
+            <span class="pack-section-label">Livrables inclus :</span>
+            <ul class="list-included">${pack.included.map(i => `<li>${i}</li>`).join("")}</ul>
+          </div>
+          <a href="${mailtoLink}" class="btn btn-primary btn-full">
+            Commander par e-mail (${pack.price}) ↗
+          </a>
+        </article>
+      `;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("studioPacksContainer").innerHTML = STUDIO_OFFERS.map(renderPackCard).join("");
+      document.getElementById("campaignPacksContainer").innerHTML = CAMPAIGN_OFFERS.map(renderPackCard).join("");
+      document.getElementById("allStudioContainer").innerHTML = STUDIO_OFFERS.map(renderPackCard).join("");
+      document.getElementById("allCampaignContainer").innerHTML = CAMPAIGN_OFFERS.map(renderPackCard).join("");
+
+      document.getElementById("faqContainer").innerHTML = FAQ_LIST.map((item, idx) => `
+        <div class="faq-item ${idx === 0 ? 'is-open' : ''}">
+          <button type="button" class="faq-btn" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+            <span>${item.q}</span><span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-ans"><p>${item.a}</p></div>
+        </div>
+      `).join("");
+
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+      const views = document.querySelectorAll(".page-view");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuToggle = document.getElementById("menuToggle");
+
+      function navigateTo(viewName) {
+        const target = document.getElementById("view-" + viewName);
+        if (!target) return;
+        views.forEach(v => v.classList.remove("is-active"));
+        void target.offsetWidth;
+        target.classList.add("is-active");
+        document.querySelectorAll(".nav-btn").forEach(btn => {
+          btn.classList.toggle("is-active", btn.getAttribute("data-target") === viewName);
+        });
+        if (mobileMenu.classList.contains("is-open")) {
+          mobileMenu.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".js-nav").forEach(btn => {
+        btn.addEventListener("click", function () { navigateTo(this.getAttribute("data-target")); });
+      });
+
+      menuToggle.addEventListener("click", function () {
+        const open = mobileMenu.classList.toggle("is-open");
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      document.querySelectorAll(".faq-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const open = this.parentElement.classList.toggle("is-open");
+          this.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
