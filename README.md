@@ -1,51 +1,129 @@
-# Lumina Platform
 
-Application web React/Vite avec deux espaces distincts :
-- **Lumina Product Studio** : présentation des services et offres publicitaires.
-- **Lumina Growth** : authentification Supabase, produits sauvegardés, campagnes et relevés de résultats.
+# Lumina Product Studio
 
-## Fonctionnalités présentes
-- Inscription et connexion par e-mail/mot de passe avec Supabase Auth.
-- Session persistante.
-- Produits : créer, consulter, supprimer.
-- Campagnes : créer, consulter, supprimer, associer à un produit, stocker plateforme, objectif, texte et statut.
-- Résultats : saisir et consulter vues, clics, contacts, ventes, chiffre d'affaires et dépenses.
-- Recommandation de prochaine étape basée sur les données disponibles, sans prétendre récupérer automatiquement les données des réseaux sociaux.
-- Interface responsive et pages séparées Product Studio / Growth.
+Site officiel de Lumina Product Studio, un projet de création de visuels publicitaires pour produits et de campagnes marketing.
 
-## Configuration locale
-Le fichier `.env` est prérempli avec l'URL du projet et la clé publique fournie pour ce projet. Ne jamais y mettre une clé `sb_secret_` ou `service_role`.
+## Objectif du projet
 
-```bash
-npm install
-npm run dev
-```
+Présenter clairement les offres Lumina, permettre aux visiteurs de découvrir les prestations et les diriger vers le formulaire de demande.
 
-## Configuration Netlify
-Dans Netlify > Site configuration > Environment variables, ajouter :
-- `VITE_SUPABASE_URL` = URL du projet Supabase
-- `VITE_SUPABASE_PUBLISHABLE_KEY` = clé publique `sb_publishable_...`
+Le site doit rester moderne, professionnel, rapide et parfaitement adapté aux téléphones, notamment à l’iPhone.
 
-Build command : `npm run build`
-Publish directory : `dist`
+## Méthode de travail
 
-Après modification des variables, déclencher un nouveau déploiement.
+**Le fichier que je modifie avec Gemini est `index.html`.**
 
-## Supabase
-Le script SQL initial doit avoir été exécuté dans SQL Editor. Il crée les tables `profiles`, `products`, `campaigns`, `campaign_metrics` et `growth_tasks`, avec RLS. Dans Authentication > URL Configuration, configure l'URL du site de production dans Site URL et les URL de redirection autorisées.
+Quand je demande à Gemini d'améliorer le site :
 
-## Limites actuelles à connaître
-- Les données de campagnes et de résultats sont saisies manuellement ; aucune connexion Instagram/TikTok/Meta n'est incluse.
-- Les images produit ne sont pas encore téléversées vers Supabase Storage.
-- Les demandes de devis ne sont pas encore envoyées à un backend ou à une boîte e-mail.
-- Le site n'est pas publié automatiquement par ce ZIP : il faut le déployer sur Netlify.
-- Une confirmation d'e-mail peut être requise selon les réglages Supabase.
+- Modifier uniquement `index.html`.
+- Ne pas modifier `src/main.jsx`.
+- Ne pas modifier `src/style.css` ou `src/supabase.js`.
+- Ne pas modifier `package.json`, `netlify.toml` ou les fichiers du dossier `netlify/`.
+- Ne pas ajouter de dépendances, d'abonnements ou de services payants.
+- Ne pas supprimer de fichiers existants.
+- Fournir le code complet de `index.html`, prêt à remplacer l'ancien contenu.
+- Conserver les fonctionnalités et les liens déjà présents dans le fichier, sauf demande explicite de changement.
 
-## Assistant Lumina (optionnel)
-Le widget de chat utilise une FAQ locale de secours. Pour activer les réponses génératives, ajouter `GEMINI_API_KEY` dans Netlify > Site configuration > Environment variables. La clé doit rester côté serveur et ne doit jamais être ajoutée à `VITE_*`, au dépôt public ou au code du navigateur. Google AI Pro n'implique pas automatiquement un quota API gratuit ; vérifier la disponibilité et les conditions de l'API Google avant activation. Sans cette variable, le widget répond avec une FAQ de première orientation et indique que le moteur IA n'est pas configuré.
+Si une fonctionnalité ne peut pas être réalisée uniquement dans `index.html`, expliquer la limite avant de proposer une modification des autres fichiers.
 
-## Promotion de lancement
-Le site affiche les conditions prévues : 14 jours à compter du lancement officiel et au maximum 10 commandes payées et confirmées, selon la première limite atteinte. Le compte à rebours et le compteur de places ne sont volontairement pas affichés tant qu'une date de lancement fixe et un suivi fiable des commandes confirmées ne sont pas configurés. Ne pas annoncer la promotion comme active avant cette configuration.
+## Offres Lumina Product Studio
 
-## Tarifs affichés
-Les tarifs de lancement affichés sont Essentials 59 €, Campaign 119 €, Boutique 199 €. Les tarifs standards indiqués (79 €, 159 €, 269 €) sont des tarifs prévus après lancement, pas des prix historiques. Monthly est indiqué à partir de 299 €/mois et doit être confirmé après mesure du temps de production. La vidéo Campaign doit être confirmée uniquement si elle peut être produite sans coût supplémentaire.
+### Lumina Essentials — 79 €
+
+- 1 produit.
+- Jusqu'à 2 visuels publicitaires.
+- 1 titre commercial.
+- 1 description produit.
+- 3 arguments de vente.
+
+### Lumina Collection — 119 €
+
+- Jusqu'à 2 produits.
+- 1 visuel par produit.
+- 1 titre par produit.
+- 1 description par produit.
+- 3 arguments de vente par produit.
+
+## Offres Lumina Campaign
+
+### Campaign Essentiel — 79 €
+
+- Analyse du besoin et de l'objectif.
+- 1 angle marketing.
+- 3 accroches publicitaires.
+- 2 propositions de textes promotionnels.
+- 2 appels à l'action.
+- Conseils concrets de diffusion.
+
+### Campaign Complète — 149 €
+
+- Définition de l'objectif et de la cible.
+- Stratégie et angle marketing.
+- 5 accroches publicitaires.
+- 4 textes adaptés aux canaux choisis.
+- 4 appels à l'action.
+- Plan de diffusion sur 7 jours.
+- Recommandations de suivi.
+
+Les prestations ne garantissent pas un nombre de ventes ou de résultats commerciaux.
+
+## Formulaire de commande
+
+Formulaire actuel :
+https://forms.gle/mY2wkRphtXaiv8Eo6
+
+Les boutons de commande doivent diriger les visiteurs vers ce formulaire tant qu'aucun autre système n'a été validé.
+
+Ne pas inventer de système de paiement, de tableau de bord client ou de gestion de commandes qui n'existe pas réellement.
+
+## Direction artistique
+
+Palette de couleurs :
+
+- Ivoire crème : `#F6F1E8`
+- Noir doux : `#242321`
+- Vert sauge : `#A9B9A5`
+- Beige chaud : `#D8C7B2`
+
+Le design doit être élégant, lisible, moderne et épuré, sans grands blocs inutiles ni effets visuels excessifs.
+
+Éviter :
+
+- Les designs génériques générés par IA.
+- Le style systématiquement noir et or.
+- Les faux témoignages et les statistiques inventées.
+- Les promesses de ventes garanties.
+- Les maquettes de téléphone décoratives.
+- Les fonctionnalités simulées qui ne fonctionnent pas.
+
+## Réseaux sociaux
+
+Instagram : https://www.instagram.com/lumina.product_studio/
+
+TikTok : https://www.tiktok.com/@lumina.product_st
+
+LinkedIn : Lumina Agency.
+
+Les liens vers les réseaux doivent être accessibles depuis le site.
+
+## Déploiement
+
+Le site est hébergé sur Netlify :
+
+https://lumina-product-studio.netlify.app
+
+Dépôt GitHub :
+
+https://github.com/toneguttilivio31-eng/Luminasite
+
+Le projet utilise Vite et React. Le fichier `src/main.jsx` est actuellement le point d'entrée de l'application construite par Vite.
+
+**Important :** modifier `index.html` ne signifie pas nécessairement modifier l'interface React affichée. Avant toute modification, vérifier si la page demandée est réellement gérée par `index.html` ou par `src/main.jsx`.
+
+Ne jamais modifier la configuration du déploiement sans nécessité et sans l'expliquer.
+
+## Règle principale
+
+Priorité à la simplicité, à la fiabilité et aux solutions gratuites.
+
+Toute amélioration doit conserver le site fonctionnel, éviter les abonnements supplémentaires et ne pas casser les fonctionnalités existantes.
